@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>BIRD-SQL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap core CSS -->
+    <link href="./style/bootstrap.min.css" rel="stylesheet" />
+    <link href="./style/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link
+      href="./style/all.css"
+      rel="stylesheet"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+      crossorigin="anonymous"
+    />
+    <!-- Lato Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom styles for this template -->
+    <link href="./style/clean-blog.min.css" rel="stylesheet" />
+    <link href="./style/bird.css" rel="stylesheet" />
+    <style>
+      /* All fonts changed to Lato */
+      header.masthead .page-heading,
+      header.masthead .post-heading,
+      header.masthead .site-heading {
+        padding: 50px 0 75px;
+      }
+      
+      #main {
+        font-size: 14px;
+      }
+      
+      body {
+        font-family: 'Lato', sans-serif;
+      }
+      
+      #main h1,
+      #main h2,
+      #main h3,
+      #main h4,
+      #main h5,
+      #main h6 {
+        font-weight: 600;
+        margin: 5px 0;
+      }
+      
+      a {
+        color: #17a2b8;
+      }
+      
+      .list-group-item p {
+        margin: 5px 0;
+      }
+      
+      .card {
+        margin-bottom: 10px;
+      }
+      
+      .list-group {
+        margin-bottom: 10px;
+      }
+      
+      .card-header {
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        font-size: 1.25rem;
+        background: #eee;
+      }
+      
+      .badge {
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+      }
+      
+      code,
+      pre {
+        background: #eee;
+        padding: 1px 3px;
+      }
+      
+      .table td,
+      .table th {
+        padding: 0.42em;
+      }
+      
+      .table {
+        margin-top: 8px;
+      }
+      
+      .far,
+      .fas {
+        font-size: 18px;
+      }
+      
+      .affiliation {
+        font-style: italic;
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+      }
+      
+      .paperlink {
+        font-size: 0.85em;
+        font-family: 'Lato', sans-serif;
+      }
+      
+      .crossed {
+        position: relative;
+        padding: 0.1rem;
+        overflow: hidden;
+      }
+      
+      .crossed:before,
+      .crossed:after {
+        position: absolute;
+        content: '';
+        background: #dc3545 !important;
+        display: block;
+        width: 20%;
+        height: 2px;
+        transform: rotate(-45deg);
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        border-radius: 1px;
+      }
+      
+      .crossed:after {
+        transform: rotate(45deg);
+      }
+      
+      .supfact {
+        color: #28a745;
+      }
+      
+      span.line {
+        display: inline-block;
+      }
+      
+      .data-paragraph,
+      .data-question,
+      .data-answer {
+        margin-bottom: 8px;
+        transition: height 0.2s;
+      }
+      
+      .data-paragraph .paragraph-title {
+        color: #888888;
+      }
+      
+      .data-paragraph .supfact {
+        background: #bbffcc;
+        border-radius: 3px;
+        color: inherit;
+        transition: background-color 0.2s;
+      }
+      
+      .data-paragraph .hide {
+        background: none !important;
+      }
+      
+      #bird-title {
+        color: #155E95;
+      }
+      
+      #logo-img {
+        display: inline;
+        max-height: 200px;
+        cursor: pointer;
+        transition: all 0.6s;
+      }
+      
+      #logo-img:hover {
+        transform: scale(1.4);
+      }
+      
+      #caption {
+        font-size: 20px;
+        font-family: 'Lato', sans-serif;
+      }
+      
+      #introduction {
+        font-size: 15px;
+        font-family: 'Lato', sans-serif;
+      }
+      
+      #paper {
+        background-color: #34314c;
+        border-color: #34314c;
+      }
+      
+      .column-img {
+        max-width: 100%;
+      }
+      
+      #illustration {
+        font-family: 'Lato', sans-serif;
+      }
+      
+      .dataset-btn {
+        background-color: #1F7872;
+        min-width: 50% !important;
+      }
+      
+      #citation {
+        font-size: 0.75em;
+        overflow: auto;
+        border: 1px solid #999;
+        margin: 0 4px;
+        padding: 8px;
+        border-radius: 2px;
+      }
+      
+      .flex-box {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 100%;
+        padding: 15px;
+      }
+      
+      .flex-box > div {
+        border-radius: 5px;
+        padding: 8px;
+      }
+      
+      #header-color {
+        background-color: #E1EACD;
+      }
+      
+      #button-group {
+        width: 100%;
+      }
+      
+      .button-row {
+        width: 80%;
+        margin: 0 auto;
+        padding: 5px;
+      }
+      
+      /* Updated: removed width:100% to make the buttons narrower */
+      .btn-d {  
+        color: #fff;
+        font-weight: 400;
+        text-transform: none;
+        background-color: #615EFC;
+        border-radius: 50px; 
+      }
+      
+      .btn-d:hover {
+        background-color: #FF6969;
+      }
+      
+      .btn-b {
+        color: #fff;
+        font-weight: 400;
+        text-transform: none;
+        background-color: #1F7872;
+        border-radius: 50px;
+      }
+      
+      /* The row for train/dev is removed; .btn-round can remain if needed */
+      .btn-round {
+        height: auto;
+        transition: background-color 0.3s;
+      }
+      
+      .btn {
+        padding: 8px;
+      }
+      
+      [data-tooltip]:hover::after {
+        font-variant-caps: normal;
+        content: attr(data-tooltip);
+        position: absolute;
+        border: 1px solid black;
+        background: #eee;
+        padding: 0.25em;
+        border-radius: 2px;
+      }
+      
+      .table-wrapper {
+        display: block;
+        max-width: 100%;
+        padding: 0.5rem;
+      }
+      
+      /* Leaderboard table styling */
+      #ex-table {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      /* Center all header and cell content */
+      #ex-table th, #ex-table td {
+        text-align: center;
+        vertical-align: middle;
+      }
+      
+      /* Custom cell classes */
+      .rank-cell {
+        font-weight: bold;
+        padding: 5px;
+        background: #f8f9fa;
+        border-radius: 4px;
+      }
+      /* Increase model cell width to 60% */
+      .model-cell {
+        width: 60%;
+      }
+      /* Smaller date-cell rectangle */
+      .date-cell {
+        font-size: 0.75em;
+        color: #ffffff;
+        background-color: #574964;
+        padding: 1px 4px;
+        border-radius: 5px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="masthead" id="header-color">
+      <!-- Make this top bar container fluid to stretch full-width -->
+      <div class="container-fluid" style="background-color: #F9F6E6; text-align: left">
+        <img style="margin-top: 5px; padding: 15px" height="70px" src="./logo/bird_fig_main.png" />
+        <img style="margin-top: 5px; padding: 15px" height="70px" src="./logo/google_cloud.png" />
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-md-12 mx-auto">
+            <div class="row site-heading flex-box">
+              <div class="col-lg-3">
+                <img id="logo-img" src="logo/bird_critic.png" alt="logo" />
+              </div>
+              <div class="col-lg-9">
+                <div class="align-middle">
+                  <h1 id="bird-title">BIRD-CRITIC</h1>
+                  <span class="subheading" id="caption">
+                    Can LLMs Fix User Issues in Real-World Database Applications?
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Main Content (max-width set to 1400px) -->
+    <div class="container" id="main" style="max-width: 1400px;">
+      <div class="row" style="display: flex; gap: 1rem;">
+        <!-- Left column at 35% -->
+        <div style="flex: 0 0 35%; max-width: 35%;">
+          <div class="list-group">
+            <div class="list-group-item" id="introduction">
+              <h4>Hi! BIRD-CRITIC</h4>
+              <img src="https://badges.toozhao.com/badges/01HFXP6JKNBG5AW3Y5B95DK568/blue.svg" />
+              <p>
+                We feel grateful to see <a href="https://bird-bench.github.io/" style="color:#155E95; text-decoration: none;"><strong>BIRD-SQL 2023</strong></a> can bring insights and contributions to Text-to-SQL community in LLM era with supervision of DB & DM experts.
+                We also sincerely thank all feedbacks from the community!<br /><br />
+                This year, along with collaboration with <strong style="color:#155E95">G</strong><strong style="color:#D84040">o</strong><strong style="color:#DDA853">o</strong><strong style="color:#155E95">g</strong><strong style="color:#578E7E">l</strong><strong style="color:#D84040">e</strong> Cloud, we are launching <strong style="color:#EB5A3C">BIRD-SQL 2025</strong>, which will cover a wide range of professional DBs and their knowledge in the wild applications.<br /><br />
+                BIRD-CRITIC, the first SQL diagnostic benchmark, is released to answer: <strong>Can large language models (LLMs) fix user issues in real-world database applications?</strong>
+                The benchmark comprises 600 tasks for development and 200 held-out out-of-distribution (OOD) tests.
+                BIRD-CRITIC 1.0 is built on realistic user issues across 4 prominent open-source SQL dialects: MySQL, PostgreSQL, SQL Server, and Oracle.
+                It expands beyond simple SELECT queries to cover a wider range of SQL operations, reflecting actual application scenarios.
+                Finally, an optimized execution-based evaluation environment is included for rigorous and efficient validation.
+
+                <ul>
+                  <li>
+                    <strong>bird-critic-1.0-flash-exp:</strong> A lite version containing <strong style="color:#155E95">200</strong> tasks specifically for PostgreSQL. This is a good starting point for quick experimentation.
+                  </li>
+                  <li>
+                    <strong>bird-critic-1.0-open:</strong> The full version of BIRD-CRITIC, comprising <strong style="color:#155E95">600</strong> tasks covering open-source SQL dialects: PostgreSQL, MySQL, SQL Server, and Oracle. This allows for cross-dialect evaluation.
+                  </li>
+                  <li>
+                    <strong>bird-critic-1.0-postgresql:</strong> A full version containing <strong style="color:#155E95">600</strong> tasks, all in PostgreSQL. This allows for focused analysis within a single dialect.
+                  </li>
+                  <li>
+                    <strong>bird-critic-1.0-bigquery:</strong> A full version containing <strong style="color:#155E95">200</strong> tasks in BigQuery.
+                  </li>
+                </ul>
+              </p>
+              <div id="button-group">
+                <!-- Only keep the Mini-Dev (500) button -->
+                <div class="button-row">
+                  <a href="https://huggingface.co/datasets/birdsql/bird-critic-1.0-flash-exp" target="_blank">
+                    <button type="button" class="btn btn-d">Dataset Download</button>
+                  </a>
+                </div>
+                <!-- Removed Train/Dev buttons -->
+              </div>
+              <div id="button-group">
+                <!-- Only keep the Mini-Dev (500) button -->
+                <div class="button-row">
+                  <a href="https://github.com/bird-bench/BIRD-CRITIC-1" target="_blank">
+                    <button type="button" class="btn btn-d">Code</button>
+                  </a>
+                </div>
+                <!-- Removed Train/Dev buttons -->
+              </div>
+            </div>
+            <div class="list-group-item" id="news">
+              <h4>News</h4>
+              <div class="scroll-container">
+                <div class="card card-outline-secondary mb-4" style="text-align: left">
+                  <div class="card-body" style="background-color: #f1f6f9">
+                    <ul style="padding-left: 0">
+                      <li style="list-style-type: none">
+                        <span style="background-color: #B03052; color: white; padding: 2px 4px; border-radius: 5px;">
+                          <strong style="color: #ffe7ce">Feb. 4, 2025:</strong>
+                        </span>
+                        BIRD CRITIC 1.0 SQL (Flash), a lite version, has been released. Please fill out this form to receive the GT solution SQLs and test case functions via email.
+                        This can help to prevent automated crawling, which is critical for mitigating data leakage problems.</li>
+                      <!-- Additional news items omitted for brevity -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="list-group-item">
+              <h4>GT SQLs & Test Cases</h4>
+              <p>
+                To mititgate data leakage, please free to email <code>bird.bench25@gmail.com</code> for solution SQLs and test cases.
+                The delivery is quite fast.
+              </p>
+            </div>
+            <div class="list-group-item" id="illustration">
+              <h4>BIRD-CRITIC Example</h4>
+              <img
+                src="./img/example_img/example_1.png"
+                class="column-img"
+                id="example-1"
+                style="margin: 0 auto"
+              />
+              <img
+                src="./img/example_img/example_2.png"
+                class="column-img"
+                id="example-2"
+                style="margin: 0 auto"
+              />
+            </div>
+            <div class="list-group-item">
+              <h4>Submission</h4>
+              <p>
+                Please follow the Submission Guideline (below) and contact <code>bird.bench25@gmail.com</code> for test evaluation.
+                Usually, we will return your results in 10 days!
+              </p>
+              <div class="button-row">
+                <a href="https://docs.google.com/document/d/1Rs6d_pcs2vfqW4Ymub7Wb1XtBNlrc-WfH3T7U1ktuBo/edit?usp=sharing" target="_blank">
+                  <button type="button" class="btn btn-d" style="border-radius: 25px;">Submission Guidelines</button>
+                </a>
+              </div>
+            </div>
+            <div class="list-group-item">
+              <h4>Subscribe to BIRD Update</h4>
+              <p>
+                Bird is a long-term research project aimed at bridging the gap between semantic parsing models and the success of database applications. To receive the latest updates of the dataset, you can leave your email address.
+              </p>
+              <form onsubmit="return submitForm();">
+                <input type="email" id="email" name="email" placeholder="Email address" required />
+                <button type="submit">Subscribe</button>
+              </form>
+              <p id="message"></p>
+            </div>
+            <head>
+              <meta charset="utf-8" />
+              <title>Email Subscription</title>
+              <script>
+                function submitForm() {
+                  var email = document.getElementById("email").value;
+                  var url = "https://script.google.com/macros/s/AKfycbynv6Ibnl9gJosprkRmXhbKtllZX8dqrbj_xQkcbZ_NgEDBxwyjz1xyvIvnm_4yPh3ZPA/exec";
+                  var data = "email=" + encodeURIComponent(email);
+
+                  fetch(url, {
+                    method: "POST",
+                    body: data,
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                  })
+                  .then((response) => response.text())
+                  .then((text) => {
+                    document.getElementById("message").innerHTML = "<i>Subscribe Successfully! Thanks for your attention!</i>";
+                  })
+                  .catch((error) => {
+                    console.error("Error:", error);
+                  });
+
+                  return false;
+                }
+              </script>
+            </head>
+            <div class="list-group-item">
+              <h4>Citation</h4>
+              <pre id="citation">
+@article{li2024can,
+  title={Can llm already serve as a database interface? a big bench for large-scale database grounded text-to-sqls},
+  author={Li, Jinyang and Hui, Binyuan and Qu, Ge and Yang, Jiaxi and Li, Binhua and Li, Bowen and Wang, Bailin and Qin, Bowen and Geng, Ruiying and Huo, Nan and others},
+  journal={Advances in Neural Information Processing Systems},
+  volume={36},
+  year={2024}
+}
+              </pre>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right column takes up the remaining space -->
+        <div style="flex: 1;">
+          <div class="card card-outline-secondary">
+            <div class="card-header">Leaderboard - BIRD-CRITIC-Flash</div>
+            <div class="table-wrapper">
+              <table id="ex-table" class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Rank</th>
+                        <th scope="col">Model</th>
+                        <th scope="col">Pass Rate (%)</th>
+                        <th scope="col">Institute</th>
+                        <th scope="col">Link</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Tier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="rank-cell">1</td>
+                        <td class="model-cell">o1-preview-2024-09-12</td>
+                        <td>38.5</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/openai_reasoning.png"
+                            alt="openai_reasoning"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>🏆 Leading</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">2</td>
+                        <td class="model-cell">deepseek-reasoner (r1)</td>
+                        <td>34.0</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/deepseek-reason.png"
+                            alt="deepseek-reason"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>🌟 Elite</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">3</td>
+                        <td class="model-cell">gpt-4o-2024-11-20</td>
+                        <td>29.0</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/openai.png"
+                            alt="openai"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-11-20</span></td>
+                        <td>🌟 Elite</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">4</td>
+                        <td class="model-cell">o1-mini</td>
+                        <td>28.0</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/openai_reasoning.png"
+                            alt="openai_reasoning"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>💎 Superior</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">5</td>
+                        <td class="model-cell">deepseek-V3</td>
+                        <td>27.5</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/deepseek.png"
+                            alt="deepseek"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>💎 Superior</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">6</td>
+                        <td class="model-cell">phi-4</td>
+                        <td>24.5</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/ms.png"
+                            alt="microsoft"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>💎 Superior</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">7</td>
+                        <td class="model-cell">claude-3-5-sonnet</td>
+                        <td>24.0</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/anthropic.png"
+                            alt="Anthropic"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>🔸 Advanced</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">8</td>
+                        <td class="model-cell">gemini-2.0-flash-exp</td>
+                        <td>24.0</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/google.png"
+                            alt="google"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>🔸 Advanced</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">9</td>
+                        <td class="model-cell">Qwen2.5-Coder-32B-Instruct</td>
+                        <td>23.5</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/qwen.png"
+                            alt="qwen"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>🔸 Advanced</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">10</td>
+                        <td class="model-cell">gemini-2.0-flash-thinking-exp</td>
+                        <td>19.5</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/google-reason.png"
+                            alt="google"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>🔸 Advanced</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">11</td>
+                        <td class="model-cell">Meta-Llama-3.3-70B-Instruct</td>
+                        <td>18.5</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/meta.png"
+                            alt="meta"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>💫 Standard</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">12</td>
+                        <td class="model-cell">Codestral-22B-v0.1</td>
+                        <td>18.0</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/mistral.png"
+                            alt="mistral"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>💫 Standard</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">13</td>
+                        <td class="model-cell">gemma-2-27b-it</td>
+                        <td>18.0</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/google.png"
+                            alt="google"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>💫 Standard</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">14</td>
+                        <td class="model-cell">QwQ-32B-Preview</td>
+                        <td>17.5</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/qwen-reason.png"
+                            alt="qwen-reason"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>💫 Standard</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">15</td>
+                        <td class="model-cell">starcoder2-15b-instruct-v0.1</td>
+                        <td>15.5</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/bigcode.png"
+                            alt="bigcode"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>💫 Standard</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">16</td>
+                        <td class="model-cell">DeepSeek-Coder-V2-Lite-Instruct</td>
+                        <td>12.5</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/deepseek.png"
+                            alt="deepseek"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>⚪ Basic</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">17</td>
+                        <td class="model-cell">Mixtral-8x7B-Instruct-v0.1</td>
+                        <td>11.5</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/mistral.png"
+                            alt="mistral"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>⚪ Basic</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">18</td>
+                        <td class="model-cell">gemma-2-9b-it</td>
+                        <td>10.5</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/google.png"
+                            alt="google"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>⚪ Basic</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">19</td>
+                        <td class="model-cell">Yi-1.5-34B-Chat-16K</td>
+                        <td>10.5</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/yi.png"
+                            alt="yi"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>⚪ Basic</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">20</td>
+                        <td class="model-cell">CodeLlama-34b-Instruct-hf</td>
+                        <td>10.0</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/meta.png"
+                            alt="meta"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>⚪ Basic</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">21</td>
+                        <td class="model-cell">CodeLlama-13b-Instruct-hf</td>
+                        <td>8.5</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/meta.png"
+                            alt="meta"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>⚪ Basic</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">22</td>
+                        <td class="model-cell">Mistral-7B-Instruct-v0.2</td>
+                        <td>3.5</td>
+                        <td>
+                          <img 
+                            src="./img/institute_img/mistral.png"
+                            alt="mistral"
+                            style="max-height:20px; vertical-align:middle;"
+                          />
+                        </td>
+                        <td></td>
+                        <td><span class="date-cell">2024-09-12</span></td>
+                        <td>⚪ Basic</td>
+                    </tr>
+                </tbody>
+              </table>
+              <p><strong>Tier Classification (By Ranking):</strong></p>
+              <ul>
+                <li>🏆 Leading: The Best!</li>
+                <li>🌟 Elite: Top 15%</li>
+                <li>💎 Superior: Top 30%</li>
+                <li>🔸 Advanced: Top 45%</li>
+                <li>💫 Standard: Top 70%</li>
+                <li>⚪ Basic: Bottom 30%</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.row -->
+      
+      <hr />
+      
+      <!-- Bootstrap core JavaScript -->
+      <script src="./js/jquery.min.js"></script>
+      <script src="./js/bootstrap.bundle.min.js"></script>
+      
+      <!-- Custom scripts for this template -->
+      <script src="./js/clean-blog.min.js"></script>
+      <script>
+        // Function for BIRD-CRITIC (if needed)
+        function showBirdCriticMessage() {
+          alert(
+            "BIRD-CRITIC is the first SQL debugging benchmark investigating whether LLMs can effectively resolve user issues in real-world database applications. It contains 600 tasks in dev and 200 OOD hidden tests. The full challenges in BIRD-SQL 2025 are under collaboration with Google Cloud.\n\n" +
+            "Key Highlights:\n" +
+            "• 5 popular SQL dialects: MySQL, PostgreSQL, SQLServer, Oracle, and one OOD dialect\n" +
+            "• Challenging tasks that go beyond SELECT (e.g., CREATE TRIGGER, UPDATE constraints, SQL Optimization)\n" +
+            "• Each task is derived from real-world user cases and reproduced within the BIRD environment, verified by human experts\n" +
+            "• Multi-thread sandbox enabling fast and robust evaluation\n" +
+            "• Professionally curated test cases for each task.\n" +
+            "We will release a PREVIEW set in this month and full set next month. Email us if you have some suggestions or new contents that you want to see!\n\n" +
+            "Other exciting Sibling benchmarks you may expect in BIRD-SQL 2025:\n" +
+            "• BIRD-CRITIC 1.5 (Repo-level Code Debugging for Real-World DB Applications)\n" +
+            "• BIRD-Interact\n" +
+            "• BIRD-Vision\n" +
+            "• BIRD-Pro & BIRD-Pro Max: The second generation of BIRD-SQL covering comprehensive DB operations / BI querying with new open-source enterprise-level databases with thousands of columns, advanced constrains and TB-level data."
+          );
+        }
+      </script>
+    </div><!-- /.container -->
+  </body>
+</html>
