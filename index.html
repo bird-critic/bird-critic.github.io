@@ -322,6 +322,43 @@
         border-radius: 5px;
         display: inline-block;
       }
+
+
+      #flash-table .model-cell {
+        width: auto;     
+        max-width: 30%;  
+      }
+
+
+      #ex-table th, #ex-table td, #flash-table th, #flash-table td {
+        text-align: center;
+        vertical-align: middle;
+        padding: 0.42em;
+      }
+
+
+      #flash-table th:nth-child(1), #flash-table td:nth-child(1) { width: 5%; }  /* Rank */
+      #flash-table th:nth-child(2), #flash-table td:nth-child(2) { width: 30%; } /* Model */
+      #flash-table th:nth-child(3), #flash-table td:nth-child(3) { width: 10%; } /* Pass Rate */
+      #flash-table th:nth-child(4), #flash-table td:nth-child(4) { width: 8%; }  /* Institute */
+      #flash-table th:nth-child(5), #flash-table td:nth-child(5) { width: 5%; }  /* Link */
+      #flash-table th:nth-child(6), #flash-table td:nth-child(6) { width: 12%; } /* Date */
+      #flash-table th:nth-child(7), #flash-table td:nth-child(7) { width: 10%; } /* Tier */
+
+
+      #ex-table th:nth-child(1), #ex-table td:nth-child(1) { width: 5%; }  /* Rank */
+      #ex-table th:nth-child(2), #ex-table td:nth-child(2) { width: 30%; } /* Model */
+      #ex-table th:nth-child(3), #ex-table td:nth-child(3) { width: 10%; } /* Pass Rate */
+      #ex-table th:nth-child(4), #ex-table td:nth-child(4) { width: 8%; }  /* Institute */
+      #ex-table th:nth-child(5), #ex-table td:nth-child(5) { width: 5%; }  /* Link */
+      #ex-table th:nth-child(6), #ex-table td:nth-child(6) { width: 12%; } /* Date */
+      #ex-table th:nth-child(7), #ex-table td:nth-child(7) { width: 10%; } /* Tier */
+
+
+      #ex-table, #flash-table {
+        width: 100%;
+        table-layout: fixed; 
+      }
     </style>
   </head>
   <body>
@@ -414,17 +451,17 @@
                     <ul style="padding-left: 0">
                       <li style="list-style-type: none">
                         <span style="background-color: #B03052; color: white; padding: 2px 4px; border-radius: 5px;">
-                          <strong style="color: #ffe7ce">Feb. 4, 2025:</strong>
+                          <strong style="color: #ffe7ce">Apr. 23, 2025:</strong>
                         </span>
-                        &nbsp<code>bird-critic-1.0-flash-exp</code> has been updated! We've added the <strong>issue_type</strong> label, which classifies issues into 4 main categories: <em>Query</em>, <em>Management</em>, <em>Personalization</em>, and <em>Efficiency</em>. Please download the newest version through Hugging Face Datasets!
+                        We have released bird-critic-1.0-open (600 tasks by 4 dialects). Check out the data in <a href="https://huggingface.co/datasets/birdsql/bird-critic-1.0-open" target="_blank" style="color:#155E95; text-decoration: none;">Hugging Face</a> and the newest code in <a href="https://github.com/bird-bench/BIRD-CRITIC-1/tree/main" target="_blank" style="color:#155E95; text-decoration: none;">GitHub</a>. The full set of PostgreSQL will be released 1 week later. It seems that bird-critic is a challenging reasoning tasks for text-to-SQL since all top-performing models are reasoning-based models. Have fun! Thanks!
                       </li>
                       <li style="list-style-type: none">
                         <span style="background-color: #B03052; color: white; padding: 2px 4px; border-radius: 5px;">
                           <strong style="color: #ffe7ce">Feb. 4, 2025:</strong>
                         </span>
-                        &nbspBIRD CRITIC 1.0 SQL (Flash), a lite version, has been released. Please fill out this form to receive the GT solution SQLs and test case functions via email.
-                        This can help to prevent automated crawling, which is critical for mitigating data leakage problems.
-                      </li>
+                        BIRD CRITIC 1.0 SQL (Flash), a lite version, has been released. Please fill out this form to receive the GT solution SQLs and test case functions via email.
+                        This can help to prevent automated crawling, which is critical for mitigating data leakage problems.</li>
+                      <!-- Additional news items omitted for brevity -->
                     </ul>
                   </div>
                 </div>
@@ -517,428 +554,273 @@
           </div>
         </div>
         
-        <!-- Right column takes up the remaining space -->
-        <div style="flex: 1;">
-          <div class="card card-outline-secondary">
-            <div class="card-header">Leaderboard - BIRD-CRITIC-Flash</div>
-            <div class="table-wrapper">
-              <table id="ex-table" class="table">
-                <thead class="thead-light">
-                    <tr>
-                        <th scope="col">Rank</th>
-                        <th scope="col">Model</th>
-                        <th scope="col">Pass Rate (%)</th>
-                        <th scope="col">Institute</th>
-                        <th scope="col">Link</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Tier</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="rank-cell">1</td>
-                        <td class="model-cell">o1-preview-2024-09-12</td>
-                        <td>38.5</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/openai_reasoning.png"
-                            alt="openai_reasoning"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>🏆 Leading</td>
-                    </tr>
-                    <tr>
-                      <td class="rank-cell">2</td>
-                      <td class="model-cell">o3-mini-2025-01-31</td>
-                      <td>37.0</td>
-                      <td>
-                        <img 
-                          src="./img/institute_img/openai_reasoning.png"
-                          alt="openai_reasoning"
-                          style="max-height:20px;  vertical-align:middle;"
-                        />
-                      </td>
-                      <td></td>
-                      <td><span class="date-cell">2025-02-25</span></td>
-                      <td>🌟 Elite</td>
-                  </tr>
-                    <tr>
-                        <td class="rank-cell">3</td>
-                        <td class="model-cell">deepseek-reasoner (r1)</td>
-                        <td>34.0</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/deepseek-reason.png"
-                            alt="deepseek-reason"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>🌟 Elite</td>
-                    </tr>
-                    <tr>
-                      <td class="rank-cell">4</td>
-                      <td class="model-cell">claude-3-7-sonnet-2025-02-19(thinking)</td>
-                      <td>32.0</td>
-                      <td>
-                        <img 
-                          src="./img/institute_img/anthropic.png"
-                          alt="anthropic"
-                          style="max-height:20px; vertical-align:middle;"
-                        />
-                      </td>
-                      <td></td>
-                      <td><span class="date-cell">2025-02-28</span></td>
-                      <td>🌟 Elite</td>
-                  </tr>
-                    <tr>
-                      <td class="rank-cell">5</td>
-                      <td class="model-cell">claude-3-7-sonnet-2025-02-19</td>
-                      <td>29.0</td>
-                      <td>
-                        <img 
-                          src="./img/institute_img/anthropic.png"
-                          alt="anthropic"
-                          style="max-height:20px; vertical-align:middle;"
-                        />
-                      </td>
-                      <td></td>
-                      <td><span class="date-cell">2025-02-27</span></td>
-                      <td>🌟 Elite</td>
-                  </tr>
-                    <tr>
-                        <td class="rank-cell">5</td>
-                        <td class="model-cell">gpt-4o-2024-11-20</td>
-                        <td>29.0</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/openai.png"
-                            alt="openai"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2024-11-20</span></td>
-                        <td>🌟 Elite</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">7</td>
-                        <td class="model-cell">o1-mini</td>
-                        <td>28.0</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/openai_reasoning.png"
-                            alt="openai_reasoning"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>💎 Superior</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">8</td>
-                        <td class="model-cell">deepseek-V3</td>
-                        <td>27.5</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/deepseek.png"
-                            alt="deepseek"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>💎 Superior</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">9</td>
-                        <td class="model-cell">phi-4</td>
-                        <td>24.5</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/ms.png"
-                            alt="microsoft"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>💎 Superior</td>
-                    </tr>
-                    <tr>
-                      <td class="rank-cell">9</td>
-                      <td class="model-cell">QwQ-32B</td>
-                      <td>24.5</td>
-                      <td>
-                        <img 
-                          src="./img/institute_img/qwen-reason.png"
-                          alt="qwen-reason"
-                          style="max-height:20px; vertical-align:middle;"
-                        />
-                      </td>
-                      <td></td>
-                      <td><span class="date-cell">2025-03-10</span></td>
-                      <td>💎 Superior</td>
-                  </tr>
-                    <tr>
-                        <td class="rank-cell">11</td>
-                        <td class="model-cell">claude-3-5-sonnet</td>
-                        <td>24.0</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/anthropic.png"
-                            alt="Anthropic"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>🔸 Advanced</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">12</td>
-                        <td class="model-cell">gemini-2.0-flash-exp</td>
-                        <td>24.0</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/google.png"
-                            alt="google"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>🔸 Advanced</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">13</td>
-                        <td class="model-cell">Qwen2.5-Coder-32B-Instruct</td>
-                        <td>23.5</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/qwen.png"
-                            alt="qwen"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>🔸 Advanced</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">14</td>
-                        <td class="model-cell">gemini-2.0-flash-thinking-exp</td>
-                        <td>19.5</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/google-reason.png"
-                            alt="google"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>🔸 Advanced</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">15</td>
-                        <td class="model-cell">Meta-Llama-3.3-70B-Instruct</td>
-                        <td>18.5</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/meta.png"
-                            alt="meta"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>💫 Standard</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">16</td>
-                        <td class="model-cell">Codestral-22B-v0.1</td>
-                        <td>18.0</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/mistral.png"
-                            alt="mistral"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>💫 Standard</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">17</td>
-                        <td class="model-cell">gemma-2-27b-it</td>
-                        <td>18.0</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/google.png"
-                            alt="google"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>💫 Standard</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">18</td>
-                        <td class="model-cell">QwQ-32B-Preview</td>
-                        <td>17.5</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/qwen-reason.png"
-                            alt="qwen-reason"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>💫 Standard</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">19</td>
-                        <td class="model-cell">starcoder2-15b-instruct-v0.1</td>
-                        <td>15.5</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/bigcode.png"
-                            alt="bigcode"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>💫 Standard</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">20</td>
-                        <td class="model-cell">DeepSeek-Coder-V2-Lite-Instruct</td>
-                        <td>12.5</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/deepseek.png"
-                            alt="deepseek"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>⚪ Basic</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">21</td>
-                        <td class="model-cell">Mixtral-8x7B-Instruct-v0.1</td>
-                        <td>11.5</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/mistral.png"
-                            alt="mistral"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>⚪ Basic</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">22</td>
-                        <td class="model-cell">gemma-2-9b-it</td>
-                        <td>10.5</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/google.png"
-                            alt="google"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>⚪ Basic</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">23</td>
-                        <td class="model-cell">Yi-1.5-34B-Chat-16K</td>
-                        <td>10.5</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/yi.png"
-                            alt="yi"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>⚪ Basic</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">24</td>
-                        <td class="model-cell">CodeLlama-34b-Instruct-hf</td>
-                        <td>10.0</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/meta.png"
-                            alt="meta"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>⚪ Basic</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">25</td>
-                        <td class="model-cell">CodeLlama-13b-Instruct-hf</td>
-                        <td>8.5</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/meta.png"
-                            alt="meta"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>⚪ Basic</td>
-                    </tr>
-                    <tr>
-                        <td class="rank-cell">26</td>
-                        <td class="model-cell">Mistral-7B-Instruct-v0.2</td>
-                        <td>3.5</td>
-                        <td>
-                          <img 
-                            src="./img/institute_img/mistral.png"
-                            alt="mistral"
-                            style="max-height:20px; vertical-align:middle;"
-                          />
-                        </td>
-                        <td></td>
-                        <td><span class="date-cell">2025-01-30</span></td>
-                        <td>⚪ Basic</td>
-                    </tr>
-                </tbody>
-              </table>
-              <p><strong>Tier Classification (By Ranking):</strong></p>
-              <ul>
-                <li>🏆 Leading: The Best!</li>
-                <li>🌟 Elite: Top 15%</li>
-                <li>💎 Superior: Top 30%</li>
-                <li>🔸 Advanced: Top 45%</li>
-                <li>💫 Standard: Top 70%</li>
-                <li>⚪ Basic: Bottom 30%</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <!-- Right column with one leaderboard -->
+<div style="flex: 1;">
+  <!-- Only keeping the first Leaderboard: BIRD-CRITIC-1.0-Open with 10 entries -->
+  <div class="card card-outline-secondary mb-4">
+    <div class="card-header">Leaderboard - BIRD-CRITIC-1.0-Open</div>
+    <!-- SQL Dialect Filter Tags - INTERACTIVE BUTTONS -->
+    <div style="text-align: center; margin: 10px 0;">
+      <button class="btn btn-sm dialect-filter-btn" 
+              data-dialect="overall" 
+              data-color="#574964" 
+              style="background-color: #574964; color: white; border-radius: 20px; margin: 5px; padding: 5px 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease; border: none;">
+        🌐 Overall
+      </button>
+      <button class="btn btn-sm dialect-filter-btn" 
+              data-dialect="postgresql" 
+              data-color="#3F83B4" 
+              style="background-color: #e0e0e0; color: #666; border-radius: 20px; margin: 5px; padding: 5px 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s ease; border: none;">
+        PostgreSQL
+      </button>
+      <button class="btn btn-sm dialect-filter-btn" 
+              data-dialect="mysql" 
+              data-color="#E97E03" 
+              style="background-color: #e0e0e0; color: #666; border-radius: 20px; margin: 5px; padding: 5px 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s ease; border: none;">
+        MySQL
+      </button>
+      <button class="btn btn-sm dialect-filter-btn" 
+              data-dialect="sqlserver" 
+              data-color="#BA2639" 
+              style="background-color: #e0e0e0; color: #666; border-radius: 20px; margin: 5px; padding: 5px 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s ease; border: none;">
+        SQL Server
+      </button>
+      <button class="btn btn-sm dialect-filter-btn" 
+              data-dialect="oracle" 
+              data-color="#C74634" 
+              style="background-color: #e0e0e0; color: #666; border-radius: 20px; margin: 5px; padding: 5px 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s ease; border: none;">
+        Oracle
+      </button>
+    </div>
+    <div class="table-wrapper">
+      <table id="ex-table" class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Model</th>
+                <th scope="col">Pass Rate (%)</th>
+                <th scope="col">Institute</th>
+                <th scope="col">Link</th>
+                <th scope="col">Date</th>
+                <th scope="col">Tier</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="rank-cell">1</td>
+                <td class="model-cell">o1-preview-2025-04-20</td>
+                <td>35.5</td>
+                <td>
+                  <img 
+                    src="./img/institute_img/openai_reasoning.png"
+                    alt="openai_reasoning"
+                    style="max-height:20px; vertical-align:middle;"
+                  />
+                </td>
+                <td></td>
+                <td><span class="date-cell">2025-04-20</span></td>
+                <td>🏆 Leading</td>
+            </tr>
+            <tr>
+                <td class="rank-cell">2</td>
+                <td class="model-cell">deepseek-reasoner (r1)</td>
+                <td>32.0</td>
+                <td>
+                  <img 
+                    src="./img/institute_img/deepseek-reason.png"
+                    alt="deepseek-reason"
+                    style="max-height:20px; vertical-align:middle;"
+                  />
+                </td>
+                <td></td>
+                <td><span class="date-cell">2025-04-20</span></td>
+                <td>🌟 Elite</td>
+            </tr>
+            <tr>
+                <td class="rank-cell">3</td>
+                <td class="model-cell">gpt-4o-2024-11-20</td>
+                <td>27.5</td>
+                <td>
+                  <img 
+                    src="./img/institute_img/openai.png"
+                    alt="openai"
+                    style="max-height:20px; vertical-align:middle;"
+                  />
+                </td>
+                <td></td>
+                <td><span class="date-cell">2024-11-20</span></td>
+                <td>🌟 Elite</td>
+            </tr>
+            <tr>
+                <td class="rank-cell">4</td>
+                <td class="model-cell">o1-mini</td>
+                <td>25.0</td>
+                <td>
+                  <img 
+                    src="./img/institute_img/openai_reasoning.png"
+                    alt="openai_reasoning"
+                    style="max-height:20px; vertical-align:middle;"
+                  />
+                </td>
+                <td></td>
+                <td><span class="date-cell">2025-04-20</span></td>
+                <td>💎 Superior</td>
+            </tr>
+            <tr>
+                <td class="rank-cell">5</td>
+                <td class="model-cell">deepseek-V3</td>
+                <td>24.5</td>
+                <td>
+                  <img 
+                    src="./img/institute_img/deepseek.png"
+                    alt="deepseek"
+                    style="max-height:20px; vertical-align:middle;"
+                  />
+                </td>
+                <td></td>
+                <td><span class="date-cell">2025-04-20</span></td>
+                <td>💎 Superior</td>
+            </tr>
+            <tr>
+                <td class="rank-cell">6</td>
+                <td class="model-cell">phi-4</td>
+                <td>22.0</td>
+                <td>
+                  <img 
+                    src="./img/institute_img/ms.png"
+                    alt="microsoft"
+                    style="max-height:20px; vertical-align:middle;"
+                  />
+                </td>
+                <td></td>
+                <td><span class="date-cell">2025-04-20</span></td>
+                <td>💎 Superior</td>
+            </tr>
+            <tr>
+                <td class="rank-cell">7</td>
+                <td class="model-cell">claude-3-5-sonnet</td>
+                <td>21.5</td>
+                <td>
+                  <img 
+                    src="./img/institute_img/anthropic.png"
+                    alt="Anthropic"
+                    style="max-height:20px; vertical-align:middle;"
+                  />
+                </td>
+                <td></td>
+                <td><span class="date-cell">2025-04-20</span></td>
+                <td>🔸 Advanced</td>
+            </tr>
+            <tr>
+                <td class="rank-cell">8</td>
+                <td class="model-cell">gemini-2.0-pro</td>
+                <td>21.0</td>
+                <td>
+                  <img 
+                    src="./img/institute_img/google.png"
+                    alt="google"
+                    style="max-height:20px; vertical-align:middle;"
+                  />
+                </td>
+                <td></td>
+                <td><span class="date-cell">2025-04-20</span></td>
+                <td>🔸 Advanced</td>
+            </tr>
+            <tr>
+                <td class="rank-cell">9</td>
+                <td class="model-cell">Qwen2.5-Coder-32B-Instruct</td>
+                <td>20.0</td>
+                <td>
+                  <img 
+                    src="./img/institute_img/qwen.png"
+                    alt="qwen"
+                    style="max-height:20px; vertical-align:middle;"
+                  />
+                </td>
+                <td></td>
+                <td><span class="date-cell">2025-04-20</span></td>
+                <td>🔸 Advanced</td>
+            </tr>
+            <tr>
+                <td class="rank-cell">10</td>
+                <td class="model-cell">gemini-2.0-pro-thinking</td>
+                <td>17.5</td>
+                <td>
+                  <img 
+                    src="./img/institute_img/google-reason.png"
+                    alt="google-reason"
+                    style="max-height:20px; vertical-align:middle;"
+                  />
+                </td>
+                <td></td>
+                <td><span class="date-cell">2025-04-20</span></td>
+                <td>🔸 Advanced</td>
+            </tr>
+        </tbody>
+      </table>
+      
+      <p><strong>Tier Classification (By Ranking):</strong></p>
+      <ul>
+        <li>🏆 Leading: The Best!</li>
+        <li>🌟 Elite: Top 15%</li>
+        <li>💎 Superior: Top 30%</li>
+        <li>🔸 Advanced: Top 45%</li>
+        <li>💫 Standard: Top 70%</li>
+        <li>⚪ Basic: Bottom 30%</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="card card-outline-secondary mb-4">
+    <div class="card-header">Leaderboard - BIRD-CRITIC-Flash</div>
+    <div class="table-wrapper">
+      <table id="flash-table" class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">Model</th>
+            <th scope="col">Pass Rate (%)</th>
+            <th scope="col">Institute</th>
+            <th scope="col">Link</th>
+            <th scope="col">Date</th>
+            <th scope="col">Tier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rank-cell">1</td>
+            <td class="model-cell">o1-preview-2024-09-12</td>
+            <td>38.5</td>
+            <td>
+              <img 
+                src="./img/institute_img/openai_reasoning.png"
+                alt="openai_reasoning"
+                style="max-height:20px; vertical-align:middle;"
+              />
+            </td>
+            <td></td>
+            <td><span class="date-cell">2025-01-30</span></td>
+            <td>🏆 Leading</td>
+        </tr>
+        
+        </tbody>
+      </table>
+        
+      <p><strong>Tier Classification (By Ranking):</strong></p>
+      <ul>
+        <li>🏆 Leading: The Best!</li>
+        <li>🌟 Elite: Top 15%</li>
+        <li>💎 Superior: Top 30%</li>
+        <li>🔸 Advanced: Top 45%</li>
+        <li>💫 Standard: Top 70%</li>
+        <li>⚪ Basic: Bottom 30%</li>
+      </ul>
+    </div>
+  </div>
+  
+
+
       </div><!-- /.row -->
       
       <hr />
@@ -968,6 +850,373 @@
             "• BIRD-Pro & BIRD-Pro Max: The second generation of BIRD-SQL covering comprehensive DB operations / BI querying with new open-source enterprise-level databases with thousands of columns, advanced constrains and TB-level data."
           );
         }
+      </script>
+      
+      <!-- Add the SQL dialect filtering JavaScript -->
+      <script>
+        // Define the mock data for different dialects in the first leaderboard
+        const leaderboardData = {
+          'overall': [
+            { rank: 1, model: 'o3-mini-2025-01-31', passRate: '34.50', institute: 'openai_reasoning', date: '2025-04-20', tier: '🏆 Leading' },
+            { rank: 2, model: 'Deepseek-R1', passRate: '33.67', institute: 'deepseek-reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 3, model: 'o1-preview-2024-09-12', passRate: '33.33', institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 4, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: '30.67', institute: 'anthropic_reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 5, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: '30.17', institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 6, model: 'grok-3-beta', passRate: '29.83', institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 7, model: 'GPT-4.1', passRate: '29.67', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 8, model: 'o1-mini', passRate: '28.33', institute: 'openai_reasoning', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 8, model: 'claude-3-7-sonnet-20250219', passRate: '28.33', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 10, model: 'gpt-4o-2024-11-20', passRate: '27.83', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 10, model: 'gemini-2.5-pro-preview-03-25', passRate: '27.83', institute: 'google', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 12, model: 'GPT-4.1-mini', passRate: '27.50', institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'QwQ-32B', passRate: '25.50', institute: 'qwen-reason', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 14, model: 'qwen2.5-coder-32b-instruct', passRate: '25.00', institute: 'qwen', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 15, model: 'Gemini-2.0-Flash', passRate: '24.83', institute: 'google', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 16, model: 'Claude-3.5-Sonnet', passRate: '24.67', institute: 'anthropic', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 17, model: 'Deepseek-V3', passRate: '24.50', institute: 'deepseek', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 18, model: 'o4-mini', passRate: '24.33', institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 19, model: 'llama-3.3-70b-instruct', passRate: '24.17', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'phi-4', passRate: '23.17', institute: 'ms', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 21, model: 'GPT-4.1-nano', passRate: '21.67', institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 22, model: 'gemma-3-27b-it', passRate: '21.00', institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 23, model: 'llama-4-maverick', passRate: '20.33', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 24, model: 'codestral-22b-v0.1', passRate: '20.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 25, model: 'qwen2.5-coder-7b-instruct', passRate: '17.83', institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 26, model: 'mixtral-8x7b-instruct-v0.1', passRate: '15.83', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 27, model: 'starcoder2-15b-instruct-v0.1', passRate: '14.33', institute: 'bigcode', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'llama-4-scout', passRate: '10.00', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 29, model: 'grok-3-mini-beta', passRate: '8.83', institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 30, model: 'mistral-7b-instruct-v0.2', passRate: '6.67', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
+          ],
+          'postgresql': [
+            { rank: 1, model: 'o3-mini-2025-01-31', passRate: '42.33', institute: 'openai_reasoning', date: '2025-04-20', tier: '🏆 Leading' },
+            { rank: 2, model: 'o1-preview-2024-09-12', passRate: '40.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 3, model: 'o1-mini', passRate: '36.67', institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 4, model: 'GPT-4.1', passRate: '36.33', institute: 'openai', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 4, model: 'Deepseek-R1', passRate: '36.33', institute: 'deepseek-reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 6, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: '36.00', institute: 'anthropic_reason', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 7, model: 'grok-3-beta', passRate: '33.33', institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 7, model: 'gemini-2.5-pro-preview-03-25', passRate: '33.33', institute: 'google', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 9, model: 'claude-3-7-sonnet-20250219', passRate: '32.67', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 10, model: 'GPT-4.1-mini', passRate: '31.67', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 10, model: 'o4-mini', passRate: '31.67', institute: 'openai_reasoning', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 10, model: 'gpt-4o-2024-11-20', passRate: '31.67', institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: '29.33', institute: 'google-reason', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 14, model: 'Gemini-2.0-Flash', passRate: '28.67', institute: 'google', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 15, model: 'qwen2.5-coder-32b-instruct', passRate: '28.33', institute: 'qwen', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 15, model: 'QwQ-32B', passRate: '28.33', institute: 'qwen-reason', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 17, model: 'Claude-3.5-Sonnet', passRate: '27.33', institute: 'anthropic', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 17, model: 'Deepseek-V3', passRate: '27.33', institute: 'deepseek', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 19, model: 'llama-3.3-70b-instruct', passRate: '26.67', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'phi-4', passRate: '26.33', institute: 'ms', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 21, model: 'GPT-4.1-nano', passRate: '24.67', institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 22, model: 'gemma-3-27b-it', passRate: '23.00', institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 23, model: 'codestral-22b-v0.1', passRate: '22.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 24, model: 'llama-4-maverick', passRate: '20.67', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 25, model: 'qwen2.5-coder-7b-instruct', passRate: '20.33', institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 26, model: 'mixtral-8x7b-instruct-v0.1', passRate: '18.67', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 27, model: 'starcoder2-15b-instruct-v0.1', passRate: '13.67', institute: 'bigcode', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'grok-3-mini-beta', passRate: '10.33', institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 29, model: 'llama-4-scout', passRate: '8.67', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 30, model: 'mistral-7b-instruct-v0.2', passRate: '7.33', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+          ],
+          'mysql': [
+            { rank: 1, model: 'Deepseek-R1', passRate: '38.00', institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
+            { rank: 2, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: '35.00', institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 2, model: 'gemini-2.5-pro-preview-03-25', passRate: '35.00', institute: 'google', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 4, model: 'o1-preview-2024-09-12', passRate: '33.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 5, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: '31.00', institute: 'anthropic_reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 6, model: 'claude-3-7-sonnet-20250219', passRate: '30.00', institute: 'anthropic', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 6, model: 'gpt-4o-2024-11-20', passRate: '30.00', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 6, model: 'grok-3-beta', passRate: '30.00', institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 9, model: 'o1-mini', passRate: '29.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 10, model: 'Claude-3.5-Sonnet', passRate: '28.00', institute: 'anthropic', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 11, model: 'GPT-4.1', passRate: '28.00', institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 12, model: 'phi-4', passRate: '27.00', institute: 'ms', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'Deepseek-V3', passRate: '26.00', institute: 'deepseek', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'QwQ-32B', passRate: '26.00', institute: 'qwen-reason', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'o3-mini-2025-01-31', passRate: '26.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 16, model: 'llama-4-maverick', passRate: '25.00', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 16, model: 'GPT-4.1-mini', passRate: '25.00', institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 18, model: 'qwen2.5-coder-32b-instruct', passRate: '24.00', institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 18, model: 'o4-mini', passRate: '24.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'llama-3.3-70b-instruct', passRate: '22.00', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'Gemini-2.0-Flash', passRate: '22.00', institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'GPT-4.1-nano', passRate: '22.00', institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'gemma-3-27b-it', passRate: '22.00', institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 24, model: 'qwen2.5-coder-7b-instruct', passRate: '18.00', institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 24, model: 'codestral-22b-v0.1', passRate: '18.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 26, model: 'mixtral-8x7b-instruct-v0.1', passRate: '17.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 27, model: 'starcoder2-15b-instruct-v0.1', passRate: '14.00', institute: 'bigcode', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'llama-4-scout', passRate: '11.00', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'grok-3-mini-beta', passRate: '11.00', institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 30, model: 'mistral-7b-instruct-v0.2', passRate: '8.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+          ],
+          'sqlserver': [
+            { rank: 1, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: '38.00', institute: 'google-reason', date: '2025-04-20', tier: '🏆 Leading' },
+            { rank: 2, model: 'o1-preview-2024-09-12', passRate: '35.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 3, model: 'o3-mini-2025-01-31', passRate: '34.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 3, model: 'Deepseek-R1', passRate: '34.00', institute: 'deepseek-reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 5, model: 'Gemini-2.0-Flash', passRate: '32.00', institute: 'google', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 6, model: 'qwen2.5-coder-32b-instruct', passRate: '31.00', institute: 'qwen', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 6, model: 'GPT-4.1-mini', passRate: '31.00', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 8, model: 'GPT-4.1', passRate: '30.00', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 9, model: 'gemma-3-27b-it', passRate: '29.00', institute: 'google', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 9, model: 'grok-3-beta', passRate: '29.00', institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 9, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: '29.00', institute: 'anthropic_reason', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 12, model: 'llama-3.3-70b-instruct', passRate: '28.00', institute: 'meta', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'starcoder2-15b-instruct-v0.1', passRate: '27.00', institute: 'bigcode', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'codestral-22b-v0.1', passRate: '27.00', institute: 'mistral', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'QwQ-32B', passRate: '27.00', institute: 'qwen-reason', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 16, model: 'gpt-4o-2024-11-20', passRate: '26.00', institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 16, model: 'Claude-3.5-Sonnet', passRate: '26.00', institute: 'anthropic', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 16, model: 'o1-mini', passRate: '26.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 19, model: 'phi-4', passRate: '24.00', institute: 'ms', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'Deepseek-V3', passRate: '23.00', institute: 'deepseek', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'claude-3-7-sonnet-20250219', passRate: '23.00', institute: 'anthropic', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 22, model: 'llama-4-maverick', passRate: '22.00', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 22, model: 'mixtral-8x7b-instruct-v0.1', passRate: '22.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 22, model: 'GPT-4.1-nano', passRate: '22.00', institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 25, model: 'qwen2.5-coder-7b-instruct', passRate: '20.00', institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 26, model: 'o4-mini', passRate: '18.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 27, model: 'gemini-2.5-pro-preview-03-25', passRate: '18.00', institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'llama-4-scout', passRate: '14.00', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 29, model: 'mistral-7b-instruct-v0.2', passRate: '10.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 30, model: 'grok-3-mini-beta', passRate: '9.00', institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
+            
+          ],
+          'oracle': [
+            { rank: 1, model: 'Deepseek-R1', passRate: '21.00', institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
+            { rank: 2, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: '20.00', institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 2, model: 'grok-3-beta', passRate: '20.00', institute: 'grok', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 2, model: 'o3-mini-2025-01-31', passRate: '20.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 5, model: 'claude-3-7-sonnet-20250219', passRate: '19.00', institute: 'anthropic', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 5, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: '16.00', institute: 'anthropic_reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 7, model: 'Deepseek-V3', passRate: '16.00', institute: 'deepseek', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 7, model: 'gpt-4o-2024-11-20', passRate: '16.00', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 9, model: 'llama-3.3-70b-instruct', passRate: '15.00', institute: 'meta', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 9, model: 'QwQ-32B', passRate: '15.00', institute: 'qwen-reason', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 11, model: 'gemini-2.5-pro-preview-03-25', passRate: '14.00', institute: 'google', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 11, model: 'GPT-4.1-mini', passRate: '14.00', institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'llama-4-maverick', passRate: '13.00', institute: 'meta', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 14, model: 'o1-mini', passRate: '12.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 14, model: 'Claude-3.5-Sonnet', passRate: '12.00', institute: 'anthropic', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 14, model: 'o1-preview-2024-09-12', passRate: '12.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '🔸 Advanced'},
+            { rank: 14, model: 'GPT-4.1-nano', passRate: '12.00', institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 18, model: 'GPT-4.1', passRate: '11.00', institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 19, model: 'qwen2.5-coder-32b-instruct', passRate: '10.00', institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'phi-4', passRate: '9.00', institute: 'ms', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'Gemini-2.0-Flash', passRate: '9.00', institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'llama-4-scout', passRate: '9.00', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'codestral-22b-v0.1', passRate: '9.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'o4-mini', passRate: '9.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 25, model: 'qwen2.5-coder-7b-instruct', passRate: '8.00', institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 26, model: 'gemma-3-27b-it', passRate: '6.00', institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 27, model: 'starcoder2-15b-instruct-v0.1', passRate: '4.00', institute: 'bigcode', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'grok-3-mini-beta', passRate: '2.00', institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 29, model: 'mistral-7b-instruct-v0.2', passRate: '0.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 29, model: 'mixtral-8x7b-instruct-v0.1', passRate: '0.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+          ]
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+          // Set up filter buttons for the first leaderboard
+          const filterButtons = document.querySelectorAll('.dialect-filter-btn');
+          
+          // Initialize with Overall selected by default
+          let activeFilter = 'overall';
+          updateButtonStyles();
+          
+          // Call updateLeaderboardTable once at startup to ensure proper initialization
+          updateLeaderboardTable(activeFilter);
+          
+          // Add click event listeners to each filter button
+          filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+              // Update active filter
+              activeFilter = this.getAttribute('data-dialect');
+              
+              // Update button styles
+              updateButtonStyles();
+              
+              // Update the table with filtered data
+              updateLeaderboardTable(activeFilter);
+            });
+          });
+          
+          // Function to update button styles based on active filter
+          function updateButtonStyles() {
+            filterButtons.forEach(button => {
+              const dialect = button.getAttribute('data-dialect');
+              if (dialect === activeFilter) {
+                // Active button - use the original bright color
+                button.style.backgroundColor = button.getAttribute('data-color');
+                button.style.color = 'white';
+                button.style.fontWeight = 'bold';
+                button.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
+              } else {
+                // Inactive button - use gray
+                button.style.backgroundColor = '#e0e0e0';
+                button.style.color = '#666';
+                button.style.fontWeight = 'normal';
+                button.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+              }
+            });
+          }
+          
+          // Function to update the leaderboard table based on selected filter
+          function updateLeaderboardTable(dialect) {
+            // Get all the rows in the table body
+            const tbody = document.querySelector('#ex-table tbody');
+            if (!tbody) return;
+            
+            // Clear the current table rows
+            tbody.innerHTML = '';
+            
+            // Get the data for the selected dialect
+            const data = leaderboardData[dialect];
+            
+            // Create and append new rows for the selected dialect
+            data.forEach(entry => {
+              const row = document.createElement('tr');
+              
+              // Rank cell
+              const rankCell = document.createElement('td');
+              rankCell.className = 'rank-cell';
+              rankCell.textContent = entry.rank;
+              row.appendChild(rankCell);
+              
+              // Model cell
+              const modelCell = document.createElement('td');
+              modelCell.className = 'model-cell';
+              modelCell.textContent = entry.model;
+              row.appendChild(modelCell);
+              
+              // Pass Rate cell
+              const rateCell = document.createElement('td');
+              rateCell.textContent = entry.passRate;
+              row.appendChild(rateCell);
+              
+              // Institute cell
+              const instituteCell = document.createElement('td');
+              const instituteImg = document.createElement('img');
+              instituteImg.src = `./img/institute_img/${entry.institute}.png`;
+              instituteImg.alt = entry.institute;
+              instituteImg.style.maxHeight = '20px';
+              instituteImg.style.verticalAlign = 'middle';
+              instituteCell.appendChild(instituteImg);
+              row.appendChild(instituteCell);
+              
+              // Link cell (empty)
+              const linkCell = document.createElement('td');
+              row.appendChild(linkCell);
+              
+              // Date cell
+              const dateCell = document.createElement('td');
+              const dateSpan = document.createElement('span');
+              dateSpan.className = 'date-cell';
+              dateSpan.textContent = entry.date;
+              dateCell.appendChild(dateSpan);
+              row.appendChild(dateCell);
+              
+              // Tier cell
+              const tierCell = document.createElement('td');
+              tierCell.textContent = entry.tier;
+              row.appendChild(tierCell);
+              
+              // Append the complete row
+              tbody.appendChild(row);
+            });
+          }
+          const flashLeaderboardData = [
+          { rank: 1, model: "o1-preview-2024-09-12", passRate: "38.5", institute: "openai_reasoning", date: "2025-01-30", tier: "🏆 Leading" },
+          { rank: 2, model: "o3-mini-2025-01-31", passRate: "37.0", institute: "openai_reasoning", date: "2025-02-25", tier: "🌟 Elite" },
+          { rank: 3, model: "deepseek-reasoner (r1)", passRate: "34.0", institute: "deepseek-reason", date: "2025-01-30", tier: "🌟 Elite" },
+          { rank: 4, model: "claude-3-7-sonnet-2025-02-19(thinking)", passRate: "32.0", institute: "anthropic_reason", date: "2025-02-28", tier: "🌟 Elite" },
+          { rank: 5, model: "claude-3-7-sonnet-2025-02-19", passRate: "29.0", institute: "anthropic", date: "2025-02-27", tier: "🌟 Elite" },
+          { rank: 5, model: "gpt-4o-2024-11-20", passRate: "29.0", institute: "openai", date: "2024-11-20", tier: "🌟 Elite" },
+          { rank: 7, model: "o1-mini", passRate: "28.0", institute: "openai_reasoning", date: "2025-01-30", tier: "💎 Superior" },
+          { rank: 8, model: "deepseek-V3", passRate: "27.5", institute: "deepseek", date: "2025-01-30", tier: "💎 Superior" },
+          { rank: 9, model: "phi-4", passRate: "24.5", institute: "ms", date: "2025-01-30", tier: "💎 Superior" },
+          { rank: 9, model: "QwQ-32B", passRate: "24.5", institute: "qwen-reason", date: "2025-03-10", tier: "💎 Superior" },
+          { rank: 11, model: "claude-3-5-sonnet", passRate: "24.0", institute: "anthropic", date: "2025-01-30", tier: "🔸 Advanced" },
+          { rank: 12, model: "gemini-2.0-flash-exp", passRate: "24.0", institute: "google", date: "2025-01-30", tier: "🔸 Advanced" },
+          { rank: 13, model: "Qwen2.5-Coder-32B-Instruct", passRate: "23.5", institute: "qwen", date: "2025-01-30", tier: "🔸 Advanced" },
+          { rank: 14, model: "gemini-2.0-flash-thinking-exp", passRate: "19.5", institute: "google-reason", date: "2025-01-30", tier: "🔸 Advanced" },
+          { rank: 15, model: "Meta-Llama-3.3-70B-Instruct", passRate: "18.5", institute: "meta", date: "2025-01-30", tier: "💫 Standard" },
+          { rank: 16, model: "Codestral-22B-v0.1", passRate: "18.0", institute: "mistral", date: "2025-01-30", tier: "💫 Standard" },
+          { rank: 17, model: "gemma-2-27b-it", passRate: "18.0", institute: "google", date: "2025-01-30", tier: "💫 Standard" },
+          { rank: 18, model: "QwQ-32B-Preview", passRate: "17.5", institute: "qwen-reason", date: "2025-01-30", tier: "💫 Standard" },
+          { rank: 19, model: "starcoder2-15b-instruct-v0.1", passRate: "15.5", institute: "bigcode", date: "2025-01-30", tier: "💫 Standard" },
+          { rank: 20, model: "DeepSeek-Coder-V2-Lite-Instruct", passRate: "12.5", institute: "deepseek", date: "2025-01-30", tier: "⚪ Basic" },
+          { rank: 21, model: "Mixtral-8x7B-Instruct-v0.1", passRate: "11.5", institute: "mistral", date: "2025-01-30", tier: "⚪ Basic" },
+          { rank: 22, model: "gemma-2-9b-it", passRate: "10.5", institute: "google", date: "2025-01-30", tier: "⚪ Basic" },
+          { rank: 23, model: "Yi-1.5-34B-Chat-16K", passRate: "10.5", institute: "yi", date: "2025-01-30", tier: "⚪ Basic" },
+          { rank: 24, model: "CodeLlama-34b-Instruct-hf", passRate: "10.0", institute: "meta", date: "2025-01-30", tier: "⚪ Basic" },
+          { rank: 25, model: "CodeLlama-13b-Instruct-hf", passRate: "8.5", institute: "meta", date: "2025-01-30", tier: "⚪ Basic" },
+          { rank: 26, model: "Mistral-7B-Instruct-v0.2", passRate: "3.5", institute: "mistral", date: "2025-01-30", tier: "⚪ Basic" }
+        ];
+        populateFlashTable();
+        function populateFlashTable() {
+          const flashTableBody = document.querySelector('#flash-table tbody');
+          if (!flashTableBody) return;
+          
+          flashTableBody.innerHTML = '';
+          
+          flashLeaderboardData.forEach(entry => {
+            const row = document.createElement('tr');
+            
+            // Rank cell
+            const rankCell = document.createElement('td');
+            rankCell.className = 'rank-cell';
+            rankCell.textContent = entry.rank;
+            row.appendChild(rankCell);
+            
+            // Model cell
+            const modelCell = document.createElement('td');
+            modelCell.className = 'model-cell';
+            modelCell.textContent = entry.model;
+            row.appendChild(modelCell);
+            
+            // Pass Rate cell
+            const rateCell = document.createElement('td');
+            rateCell.textContent = entry.passRate;
+            row.appendChild(rateCell);
+            
+            // Institute cell
+            const instituteCell = document.createElement('td');
+            const instituteImg = document.createElement('img');
+            instituteImg.src = `./img/institute_img/${entry.institute}.png`;
+            instituteImg.alt = entry.institute;
+            instituteImg.style.maxHeight = '20px';
+            instituteImg.style.verticalAlign = 'middle';
+            instituteCell.appendChild(instituteImg);
+            row.appendChild(instituteCell);
+            
+            // Link cell (empty)
+            const linkCell = document.createElement('td');
+            row.appendChild(linkCell);
+            
+            // Date cell
+            const dateCell = document.createElement('td');
+            const dateSpan = document.createElement('span');
+            dateSpan.className = 'date-cell';
+            dateSpan.textContent = entry.date;
+            dateCell.appendChild(dateSpan);
+            row.appendChild(dateCell);
+            
+            // Tier cell
+            const tierCell = document.createElement('td');
+            tierCell.textContent = entry.tier;
+            row.appendChild(tierCell);
+            
+            flashTableBody.appendChild(row);
+          });
+        }
+        });
+      
+
+        
       </script>
     </div><!-- /.container -->
   </body>
