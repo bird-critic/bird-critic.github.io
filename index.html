@@ -322,7 +322,24 @@
         border-radius: 5px;
         display: inline-block;
       }
-
+      .date-cell-new {
+        font-size: 0.75em;
+        font-weight: bold;
+        color: #0a4f78;
+        background-color: #e1eacd;
+        padding: 1px 4px;
+        border-radius: 5px;
+        display: inline-block;
+      }
+      .date-cell-example {
+        font-size: 1.0em;
+        font-weight: bold;
+        color: #0a4f78;
+        background-color: #e1eacd;
+        padding: 1px 4px;
+        border-radius: 5px;
+        display: inline-block;
+      }
 
       #flash-table .model-cell {
         width: auto;     
@@ -786,6 +803,7 @@
         <li>💫 Standard: Top 70%</li>
         <li>⚪ Basic: Bottom 30%</li>
       </ul>
+    <span class="date-cell-example">Date background color</span> means the submission is within <strong>2 weeks</strong>
     </div>
   </div>
 
@@ -834,7 +852,11 @@
         <li>💫 Standard: Top 70%</li>
         <li>⚪ Basic: Bottom 30%</li>
       </ul>
+          <p>
+    <span class="date-cell-example">Date background color</span> means the submission is within <strong>2 weeks</strong>
+    </p>
     </div>
+
   </div>
   
 
@@ -873,207 +895,495 @@
       <!-- Add the SQL dialect filtering JavaScript -->
       <script>
         // Define the mock data for different dialects in the first leaderboard
-        const leaderboardData = {
+        const rawLeaderboardData = {
           'overall': [
-            { rank: 1, model: 'o3-mini-2025-01-31', passRate: '34.50', institute: 'openai_reasoning', date: '2025-04-20', tier: '🏆 Leading' },
-            { rank: 2, model: 'Deepseek-R1', passRate: '33.67', institute: 'deepseek-reason', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 3, model: 'o1-preview-2024-09-12', passRate: '33.33', institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 4, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: '30.67', institute: 'anthropic_reason', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 5, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: '30.17', institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 6, model: 'grok-3-beta', passRate: '29.83', institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 7, model: 'GPT-4.1', passRate: '29.67', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 8, model: 'o1-mini', passRate: '28.33', institute: 'openai_reasoning', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 8, model: 'claude-3-7-sonnet-20250219', passRate: '28.33', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 10, model: 'gpt-4o-2024-11-20', passRate: '27.83', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 10, model: 'gemini-2.5-pro-preview-03-25', passRate: '27.83', institute: 'google', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 12, model: 'GPT-4.1-mini', passRate: '27.50', institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 13, model: 'QwQ-32B', passRate: '25.50', institute: 'qwen-reason', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 14, model: 'qwen2.5-coder-32b-instruct', passRate: '25.00', institute: 'qwen', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 15, model: 'Gemini-2.0-Flash', passRate: '24.83', institute: 'google', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 16, model: 'Claude-3.5-Sonnet', passRate: '24.67', institute: 'anthropic', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 17, model: 'Deepseek-V3', passRate: '24.50', institute: 'deepseek', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 18, model: 'o4-mini', passRate: '24.33', institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 19, model: 'llama-3.3-70b-instruct', passRate: '24.17', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 20, model: 'phi-4', passRate: '23.17', institute: 'ms', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 21, model: 'GPT-4.1-nano', passRate: '21.67', institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 22, model: 'gemma-3-27b-it', passRate: '21.00', institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 23, model: 'llama-4-maverick', passRate: '20.33', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 24, model: 'codestral-22b-v0.1', passRate: '20.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 25, model: 'qwen2.5-coder-7b-instruct', passRate: '17.83', institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 26, model: 'mixtral-8x7b-instruct-v0.1', passRate: '15.83', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 27, model: 'starcoder2-15b-instruct-v0.1', passRate: '14.33', institute: 'bigcode', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 28, model: 'llama-4-scout', passRate: '10.00', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 29, model: 'grok-3-mini-beta', passRate: '8.83', institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 30, model: 'mistral-7b-instruct-v0.2', passRate: '6.67', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
+            { rank: 1, model: 'o3-mini-2025-01-31', passRate: 34.50, institute: 'openai_reasoning', date: '2025-04-20', tier: '🏆 Leading'},
+            { rank: 2, model: 'Deepseek-R1', passRate: 33.67, institute: 'deepseek-reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 3, model: 'o1-preview-2024-09-12', passRate: 33.33, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 4, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: 30.67, institute: 'anthropic_reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 5, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 30.17, institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 6, model: 'grok-3-beta', passRate: 29.83, institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 7, model: 'GPT-4.1', passRate: 29.67, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 8, model: 'o1-mini', passRate: 28.33, institute: 'openai_reasoning', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 8, model: 'claude-3-7-sonnet-20250219', passRate: 28.33, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 10, model: 'gpt-4o-2024-11-20', passRate: 27.83, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 10, model: 'gemini-2.5-pro-preview-03-25', passRate: 27.83, institute: 'google', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 12, model: 'GPT-4.1-mini', passRate: 27.50, institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'QwQ-32B', passRate: 25.50, institute: 'qwen-reason', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 14, model: 'qwen2.5-coder-32b-instruct', passRate: 25.00, institute: 'qwen', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 15, model: 'Gemini-2.0-Flash', passRate: 24.83, institute: 'google', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 16, model: 'Claude-3.5-Sonnet', passRate: 24.67, institute: 'anthropic', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 17, model: 'Deepseek-V3', passRate: 24.50, institute: 'deepseek', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 18, model: 'o4-mini', passRate: 24.33, institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 19, model: 'llama-3.3-70b-instruct', passRate: 24.17, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'phi-4', passRate: 23.17, institute: 'ms', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 21, model: 'GPT-4.1-nano', passRate: 21.67, institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 22, model: 'gemma-3-27b-it', passRate: 21.00, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 23, model: 'llama-4-maverick', passRate: 20.33, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 24, model: 'codestral-22b-v0.1', passRate: 20.00, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 25, model: 'qwen2.5-coder-7b-instruct', passRate: 17.83, institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 26, model: 'mixtral-8x7b-instruct-v0.1', passRate: 15.83, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 27, model: 'starcoder2-15b-instruct-v0.1', passRate: 14.33, institute: 'bigcode', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'llama-4-scout', passRate: 10.00, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 29, model: 'grok-3-mini-beta', passRate: 8.83, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 30, model: 'mistral-7b-instruct-v0.2', passRate: 6.67, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'postgresql': [
-            { rank: 1, model: 'o3-mini-2025-01-31', passRate: '42.33', institute: 'openai_reasoning', date: '2025-04-20', tier: '🏆 Leading' },
-            { rank: 2, model: 'o1-preview-2024-09-12', passRate: '40.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 3, model: 'o1-mini', passRate: '36.67', institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 4, model: 'GPT-4.1', passRate: '36.33', institute: 'openai', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 4, model: 'Deepseek-R1', passRate: '36.33', institute: 'deepseek-reason', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 6, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: '36.00', institute: 'anthropic_reason', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 7, model: 'grok-3-beta', passRate: '33.33', institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 7, model: 'gemini-2.5-pro-preview-03-25', passRate: '33.33', institute: 'google', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 9, model: 'claude-3-7-sonnet-20250219', passRate: '32.67', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 10, model: 'GPT-4.1-mini', passRate: '31.67', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 10, model: 'o4-mini', passRate: '31.67', institute: 'openai_reasoning', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 10, model: 'gpt-4o-2024-11-20', passRate: '31.67', institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 13, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: '29.33', institute: 'google-reason', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 14, model: 'Gemini-2.0-Flash', passRate: '28.67', institute: 'google', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 15, model: 'qwen2.5-coder-32b-instruct', passRate: '28.33', institute: 'qwen', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 15, model: 'QwQ-32B', passRate: '28.33', institute: 'qwen-reason', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 17, model: 'Claude-3.5-Sonnet', passRate: '27.33', institute: 'anthropic', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 17, model: 'Deepseek-V3', passRate: '27.33', institute: 'deepseek', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 19, model: 'llama-3.3-70b-instruct', passRate: '26.67', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 20, model: 'phi-4', passRate: '26.33', institute: 'ms', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 21, model: 'GPT-4.1-nano', passRate: '24.67', institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 22, model: 'gemma-3-27b-it', passRate: '23.00', institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 23, model: 'codestral-22b-v0.1', passRate: '22.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 24, model: 'llama-4-maverick', passRate: '20.67', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 25, model: 'qwen2.5-coder-7b-instruct', passRate: '20.33', institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 26, model: 'mixtral-8x7b-instruct-v0.1', passRate: '18.67', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 27, model: 'starcoder2-15b-instruct-v0.1', passRate: '13.67', institute: 'bigcode', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 28, model: 'grok-3-mini-beta', passRate: '10.33', institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 29, model: 'llama-4-scout', passRate: '8.67', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 30, model: 'mistral-7b-instruct-v0.2', passRate: '7.33', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 1, model: 'o3-mini-2025-01-31', passRate: 42.33, institute: 'openai_reasoning', date: '2025-04-20', tier: '🏆 Leading' },
+            { rank: 2, model: 'o1-preview-2024-09-12', passRate: 40.00, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 3, model: 'o1-mini', passRate: 36.67, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 4, model: 'GPT-4.1', passRate: 36.33, institute: 'openai', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 4, model: 'Deepseek-R1', passRate: 36.33, institute: 'deepseek-reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 6, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: 36.00, institute: 'anthropic_reason', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 7, model: 'grok-3-beta', passRate: 33.33, institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 7, model: 'gemini-2.5-pro-preview-03-25', passRate: 33.33, institute: 'google', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 9, model: 'claude-3-7-sonnet-20250219', passRate: 32.67, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 10, model: 'GPT-4.1-mini', passRate: 31.67, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 10, model: 'o4-mini', passRate: 31.67, institute: 'openai_reasoning', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 10, model: 'gpt-4o-2024-11-20', passRate: 31.67, institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 29.33, institute: 'google-reason', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 14, model: 'Gemini-2.0-Flash', passRate: 28.67, institute: 'google', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 15, model: 'qwen2.5-coder-32b-instruct', passRate: 28.33, institute: 'qwen', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 15, model: 'QwQ-32B', passRate: 28.33, institute: 'qwen-reason', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 17, model: 'Claude-3.5-Sonnet', passRate: 27.33, institute: 'anthropic', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 17, model: 'Deepseek-V3', passRate: 27.33, institute: 'deepseek', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 19, model: 'llama-3.3-70b-instruct', passRate: 26.67, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'phi-4', passRate: 26.33, institute: 'ms', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 21, model: 'GPT-4.1-nano', passRate: 24.67, institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 22, model: 'gemma-3-27b-it', passRate: 23.00, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 23, model: 'codestral-22b-v0.1', passRate: 22.00, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 24, model: 'llama-4-maverick', passRate: 20.67, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 25, model: 'qwen2.5-coder-7b-instruct', passRate: 20.33, institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 26, model: 'mixtral-8x7b-instruct-v0.1', passRate: 18.67, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 27, model: 'starcoder2-15b-instruct-v0.1', passRate: 13.67, institute: 'bigcode', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'grok-3-mini-beta', passRate: 10.33, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 29, model: 'llama-4-scout', passRate: 8.67, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 30, model: 'mistral-7b-instruct-v0.2', passRate: 7.33, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
           ],
           'mysql': [
-            { rank: 1, model: 'Deepseek-R1', passRate: '38.00', institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
-            { rank: 2, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: '35.00', institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 2, model: 'gemini-2.5-pro-preview-03-25', passRate: '35.00', institute: 'google', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 4, model: 'o1-preview-2024-09-12', passRate: '33.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 5, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: '31.00', institute: 'anthropic_reason', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 6, model: 'claude-3-7-sonnet-20250219', passRate: '30.00', institute: 'anthropic', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 6, model: 'gpt-4o-2024-11-20', passRate: '30.00', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 6, model: 'grok-3-beta', passRate: '30.00', institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 9, model: 'o1-mini', passRate: '29.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 10, model: 'Claude-3.5-Sonnet', passRate: '28.00', institute: 'anthropic', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 11, model: 'GPT-4.1', passRate: '28.00', institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 12, model: 'phi-4', passRate: '27.00', institute: 'ms', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 13, model: 'Deepseek-V3', passRate: '26.00', institute: 'deepseek', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 13, model: 'QwQ-32B', passRate: '26.00', institute: 'qwen-reason', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 13, model: 'o3-mini-2025-01-31', passRate: '26.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 16, model: 'llama-4-maverick', passRate: '25.00', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 16, model: 'GPT-4.1-mini', passRate: '25.00', institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 18, model: 'qwen2.5-coder-32b-instruct', passRate: '24.00', institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 18, model: 'o4-mini', passRate: '24.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 20, model: 'llama-3.3-70b-instruct', passRate: '22.00', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 20, model: 'Gemini-2.0-Flash', passRate: '22.00', institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 20, model: 'GPT-4.1-nano', passRate: '22.00', institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 20, model: 'gemma-3-27b-it', passRate: '22.00', institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 24, model: 'qwen2.5-coder-7b-instruct', passRate: '18.00', institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 24, model: 'codestral-22b-v0.1', passRate: '18.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 26, model: 'mixtral-8x7b-instruct-v0.1', passRate: '17.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 27, model: 'starcoder2-15b-instruct-v0.1', passRate: '14.00', institute: 'bigcode', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 28, model: 'llama-4-scout', passRate: '11.00', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 28, model: 'grok-3-mini-beta', passRate: '11.00', institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 30, model: 'mistral-7b-instruct-v0.2', passRate: '8.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 1, model: 'Deepseek-R1', passRate: 38.00, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
+            { rank: 2, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 35.00, institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 2, model: 'gemini-2.5-pro-preview-03-25', passRate: 35.00, institute: 'google', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 4, model: 'o1-preview-2024-09-12', passRate: 33.00, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 5, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: 31.00, institute: 'anthropic_reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 6, model: 'claude-3-7-sonnet-20250219', passRate: 30.00, institute: 'anthropic', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 6, model: 'gpt-4o-2024-11-20', passRate: 30.00, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 6, model: 'grok-3-beta', passRate: 30.00, institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 9, model: 'o1-mini', passRate: 29.00, institute: 'openai_reasoning', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 10, model: 'Claude-3.5-Sonnet', passRate: 28.00, institute: 'anthropic', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 11, model: 'GPT-4.1', passRate: 28.00, institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 12, model: 'phi-4', passRate: 27.00, institute: 'ms', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'Deepseek-V3', passRate: 26.00, institute: 'deepseek', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'QwQ-32B', passRate: 26.00, institute: 'qwen-reason', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'o3-mini-2025-01-31', passRate: 26.00, institute: 'openai_reasoning', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 16, model: 'llama-4-maverick', passRate: 25.00, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 16, model: 'GPT-4.1-mini', passRate: 25.00, institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 18, model: 'qwen2.5-coder-32b-instruct', passRate: 24.00, institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 18, model: 'o4-mini', passRate: 24.00, institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'llama-3.3-70b-instruct', passRate: 22.00, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'Gemini-2.0-Flash', passRate: 22.00, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'GPT-4.1-nano', passRate: 22.00, institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'gemma-3-27b-it', passRate: 22.00, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 24, model: 'qwen2.5-coder-7b-instruct', passRate: 18.00, institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 24, model: 'codestral-22b-v0.1', passRate: 18.00, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 26, model: 'mixtral-8x7b-instruct-v0.1', passRate: 17.00, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 27, model: 'starcoder2-15b-instruct-v0.1', passRate: 14.00, institute: 'bigcode', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'llama-4-scout', passRate: 11.00, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'grok-3-mini-beta', passRate: 11.00, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 30, model: 'mistral-7b-instruct-v0.2', passRate: 8.00, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
           ],
           'sqlserver': [
-            { rank: 1, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: '38.00', institute: 'google-reason', date: '2025-04-20', tier: '🏆 Leading' },
-            { rank: 2, model: 'o1-preview-2024-09-12', passRate: '35.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 3, model: 'o3-mini-2025-01-31', passRate: '34.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 3, model: 'Deepseek-R1', passRate: '34.00', institute: 'deepseek-reason', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 5, model: 'Gemini-2.0-Flash', passRate: '32.00', institute: 'google', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 6, model: 'qwen2.5-coder-32b-instruct', passRate: '31.00', institute: 'qwen', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 6, model: 'GPT-4.1-mini', passRate: '31.00', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 8, model: 'GPT-4.1', passRate: '30.00', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 9, model: 'gemma-3-27b-it', passRate: '29.00', institute: 'google', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 9, model: 'grok-3-beta', passRate: '29.00', institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 9, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: '29.00', institute: 'anthropic_reason', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 12, model: 'llama-3.3-70b-instruct', passRate: '28.00', institute: 'meta', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 13, model: 'starcoder2-15b-instruct-v0.1', passRate: '27.00', institute: 'bigcode', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 13, model: 'codestral-22b-v0.1', passRate: '27.00', institute: 'mistral', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 13, model: 'QwQ-32B', passRate: '27.00', institute: 'qwen-reason', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 16, model: 'gpt-4o-2024-11-20', passRate: '26.00', institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 16, model: 'Claude-3.5-Sonnet', passRate: '26.00', institute: 'anthropic', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 16, model: 'o1-mini', passRate: '26.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 19, model: 'phi-4', passRate: '24.00', institute: 'ms', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 20, model: 'Deepseek-V3', passRate: '23.00', institute: 'deepseek', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 20, model: 'claude-3-7-sonnet-20250219', passRate: '23.00', institute: 'anthropic', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 22, model: 'llama-4-maverick', passRate: '22.00', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 22, model: 'mixtral-8x7b-instruct-v0.1', passRate: '22.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 22, model: 'GPT-4.1-nano', passRate: '22.00', institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 25, model: 'qwen2.5-coder-7b-instruct', passRate: '20.00', institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 26, model: 'o4-mini', passRate: '18.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 27, model: 'gemini-2.5-pro-preview-03-25', passRate: '18.00', institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 28, model: 'llama-4-scout', passRate: '14.00', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 29, model: 'mistral-7b-instruct-v0.2', passRate: '10.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 30, model: 'grok-3-mini-beta', passRate: '9.00', institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 1, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 38.00, institute: 'google-reason', date: '2025-04-20', tier: '🏆 Leading' },
+            { rank: 2, model: 'o1-preview-2024-09-12', passRate: 35.00, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 3, model: 'o3-mini-2025-01-31', passRate: 34.00, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 3, model: 'Deepseek-R1', passRate: 34.00, institute: 'deepseek-reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 5, model: 'Gemini-2.0-Flash', passRate: 32.00, institute: 'google', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 6, model: 'qwen2.5-coder-32b-instruct', passRate: 31.00, institute: 'qwen', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 6, model: 'GPT-4.1-mini', passRate: 31.00, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 8, model: 'GPT-4.1', passRate: 30.00, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 9, model: 'gemma-3-27b-it', passRate: 29.00, institute: 'google', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 9, model: 'grok-3-beta', passRate: 29.00, institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 9, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: 29.00, institute: 'anthropic_reason', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 12, model: 'llama-3.3-70b-instruct', passRate: 28.00, institute: 'meta', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'starcoder2-15b-instruct-v0.1', passRate: 27.00, institute: 'bigcode', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'codestral-22b-v0.1', passRate: 27.00, institute: 'mistral', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'QwQ-32B', passRate: 27.00, institute: 'qwen-reason', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 16, model: 'gpt-4o-2024-11-20', passRate: 26.00, institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 16, model: 'Claude-3.5-Sonnet', passRate: 26.00, institute: 'anthropic', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 16, model: 'o1-mini', passRate: 26.00, institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 19, model: 'phi-4', passRate: 24.00, institute: 'ms', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'Deepseek-V3', passRate: 23.00, institute: 'deepseek', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'claude-3-7-sonnet-20250219', passRate: 23.00, institute: 'anthropic', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 22, model: 'llama-4-maverick', passRate: 22.00, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 22, model: 'mixtral-8x7b-instruct-v0.1', passRate: 22.00, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 22, model: 'GPT-4.1-nano', passRate: 22.00, institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 25, model: 'qwen2.5-coder-7b-instruct', passRate: 20.00, institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 26, model: 'o4-mini', passRate: 18.00, institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 27, model: 'gemini-2.5-pro-preview-03-25', passRate: 18.00, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'llama-4-scout', passRate: 14.00, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 29, model: 'mistral-7b-instruct-v0.2', passRate: 10.00, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 30, model: 'grok-3-mini-beta', passRate: 9.00, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
             
           ],
           'oracle': [
-            { rank: 1, model: 'Deepseek-R1', passRate: '21.00', institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
-            { rank: 2, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: '20.00', institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 2, model: 'grok-3-beta', passRate: '20.00', institute: 'grok', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 2, model: 'o3-mini-2025-01-31', passRate: '20.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 5, model: 'claude-3-7-sonnet-20250219', passRate: '19.00', institute: 'anthropic', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 5, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: '16.00', institute: 'anthropic_reason', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 7, model: 'Deepseek-V3', passRate: '16.00', institute: 'deepseek', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 7, model: 'gpt-4o-2024-11-20', passRate: '16.00', institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 9, model: 'llama-3.3-70b-instruct', passRate: '15.00', institute: 'meta', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 9, model: 'QwQ-32B', passRate: '15.00', institute: 'qwen-reason', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 11, model: 'gemini-2.5-pro-preview-03-25', passRate: '14.00', institute: 'google', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 11, model: 'GPT-4.1-mini', passRate: '14.00', institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 13, model: 'llama-4-maverick', passRate: '13.00', institute: 'meta', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 14, model: 'o1-mini', passRate: '12.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 14, model: 'Claude-3.5-Sonnet', passRate: '12.00', institute: 'anthropic', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 14, model: 'o1-preview-2024-09-12', passRate: '12.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '🔸 Advanced'},
-            { rank: 14, model: 'GPT-4.1-nano', passRate: '12.00', institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 18, model: 'GPT-4.1', passRate: '11.00', institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 19, model: 'qwen2.5-coder-32b-instruct', passRate: '10.00', institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 20, model: 'phi-4', passRate: '9.00', institute: 'ms', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 20, model: 'Gemini-2.0-Flash', passRate: '9.00', institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 20, model: 'llama-4-scout', passRate: '9.00', institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 20, model: 'codestral-22b-v0.1', passRate: '9.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 20, model: 'o4-mini', passRate: '9.00', institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 25, model: 'qwen2.5-coder-7b-instruct', passRate: '8.00', institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 26, model: 'gemma-3-27b-it', passRate: '6.00', institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 27, model: 'starcoder2-15b-instruct-v0.1', passRate: '4.00', institute: 'bigcode', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 28, model: 'grok-3-mini-beta', passRate: '2.00', institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 29, model: 'mistral-7b-instruct-v0.2', passRate: '0.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 29, model: 'mixtral-8x7b-instruct-v0.1', passRate: '0.00', institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 1, model: 'Deepseek-R1', passRate: 21.00, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
+            { rank: 2, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 20.00, institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 2, model: 'grok-3-beta', passRate: 20.00, institute: 'grok', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 2, model: 'o3-mini-2025-01-31', passRate: 20.00, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 5, model: 'claude-3-7-sonnet-20250219', passRate: 19.00, institute: 'anthropic', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 5, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: 16.00, institute: 'anthropic_reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 7, model: 'Deepseek-V3', passRate: 16.00, institute: 'deepseek', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 7, model: 'gpt-4o-2024-11-20', passRate: 16.00, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 9, model: 'llama-3.3-70b-instruct', passRate: 15.00, institute: 'meta', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 9, model: 'QwQ-32B', passRate: 15.00, institute: 'qwen-reason', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 11, model: 'gemini-2.5-pro-preview-03-25', passRate: 14.00, institute: 'google', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 11, model: 'GPT-4.1-mini', passRate: 14.00, institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'llama-4-maverick', passRate: 13.00, institute: 'meta', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 14, model: 'o1-mini', passRate: 12.00, institute: 'openai_reasoning', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 14, model: 'Claude-3.5-Sonnet', passRate: 12.00, institute: 'anthropic', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 14, model: 'o1-preview-2024-09-12', passRate: 12.00, institute: 'openai_reasoning', date: '2025-04-20', tier: '🔸 Advanced'},
+            { rank: 14, model: 'GPT-4.1-nano', passRate: 12.00, institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 18, model: 'GPT-4.1', passRate: 11.00, institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 19, model: 'qwen2.5-coder-32b-instruct', passRate: 10.00, institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'phi-4', passRate: 9.00, institute: 'ms', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'Gemini-2.0-Flash', passRate: 9.00, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'llama-4-scout', passRate: 9.00, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'codestral-22b-v0.1', passRate: 9.00, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'o4-mini', passRate: 9.00, institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 25, model: 'qwen2.5-coder-7b-instruct', passRate: 8.00, institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 26, model: 'gemma-3-27b-it', passRate: 6.00, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 27, model: 'starcoder2-15b-instruct-v0.1', passRate: 4.00, institute: 'bigcode', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'grok-3-mini-beta', passRate: 2.00, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 29, model: 'mistral-7b-instruct-v0.2', passRate: 0.00, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 29, model: 'mixtral-8x7b-instruct-v0.1', passRate: 0.00, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
           ]
         };
+        // Function to calculate tiers based on rank and total entries
+        function getTier(rank, total) {
+          if (rank === 1) return "🏆 Leading";
+          if (rank <= Math.ceil(total * 0.15)) return "🌟 Elite";
+          if (rank <= Math.ceil(total * 0.30)) return "💎 Superior";
+          if (rank <= Math.ceil(total * 0.45)) return "🔸 Advanced";
+          if (rank <= Math.ceil(total * 0.70)) return "💫 Standard";
+          return "⚪ Basic";
+        }
 
-        document.addEventListener('DOMContentLoaded', function() {
-          // Set up filter buttons for the first leaderboard
-          const filterButtons = document.querySelectorAll('.dialect-filter-btn');
+        // Process the raw data to add ranks and tiers
+        const leaderboardData = {};
+        for (const dialect in rawLeaderboardData) {
+          // Sort by pass rate (descending)
+          const sorted = [...rawLeaderboardData[dialect]].sort((a, b) => b.passRate - a.passRate);
           
-          // Initialize with Overall selected by default
+          // Add rank and tier
+          leaderboardData[dialect] = sorted.map((entry, index) => {
+            const rank = index + 1;
+            return {
+              rank: rank,
+              model: entry.model,
+              passRate: entry.passRate,
+              institute: entry.institute,
+              date: entry.date,
+              link: entry.link,
+              tier: getTier(rank, sorted.length)
+            };
+          });
+        }
+function isWithinPast14Days(dateString) {
+  // 当前日期
+  const currentDate = new Date(); 
+  
+  // 将日期字符串转换为日期对象
+  const recordDate = new Date(dateString);
+  
+  // 计算差值（毫秒）
+  const diffTime = currentDate - recordDate;
+  
+  // 将毫秒转换为天数
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  
+  // 如果天数小于等于14，则返回true
+  return diffDays <= 14 && diffDays >= 0;
+}
+      document.addEventListener('DOMContentLoaded', function() {
+        // Set up filter buttons for the first leaderboard
+        const filterButtons = document.querySelectorAll('.dialect-filter-btn');
+        
+        // Initialize with Overall selected by default
+        let activeFilter = 'overall';
+        updateButtonStyles();
+        
+        // Call updateLeaderboardTable once at startup to ensure proper initialization
+        updateLeaderboardTable(activeFilter);
+        
+        // Add click event listeners to each filter button
+        filterButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            // Update active filter
+            activeFilter = this.getAttribute('data-dialect');
+            
+            // Update button styles
+            updateButtonStyles();
+            
+            // Update the table with filtered data
+            updateLeaderboardTable(activeFilter);
+          });
+        });
+        
+        // Function to update button styles based on active filter
+        function updateButtonStyles() {
+          filterButtons.forEach(button => {
+            const dialect = button.getAttribute('data-dialect');
+            if (dialect === activeFilter) {
+              // Active button - use the original bright color
+              button.style.backgroundColor = button.getAttribute('data-color');
+              button.style.color = 'white';
+              button.style.fontWeight = 'bold';
+              button.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
+            } else {
+              // Inactive button - use gray
+              button.style.backgroundColor = '#e0e0e0';
+              button.style.color = '#666';
+              button.style.fontWeight = 'normal';
+              button.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+            }
+          });
+        }
+  
+      // Function to update the leaderboard table based on selected filter
+      function updateLeaderboardTable(dialect) {
+        // 获取所有表格行
+        const tbody = document.querySelector('#ex-table tbody');
+        if (!tbody) return;
+        
+        // 清空当前表格行
+        tbody.innerHTML = '';
+        
+        // 获取选定方言的数据
+        const data = leaderboardData[dialect];
+        
+        // 创建并附加选定方言的新行
+        data.forEach(entry => {
+          const row = document.createElement('tr');
+          
+          // 排名单元格
+          const rankCell = document.createElement('td');
+          rankCell.className = 'rank-cell';
+          rankCell.textContent = entry.rank;
+          row.appendChild(rankCell);
+          
+          // 模型单元格
+          const modelCell = document.createElement('td');
+          modelCell.className = 'model-cell';
+          modelCell.textContent = entry.model;
+          row.appendChild(modelCell);
+          
+          // 通过率单元格
+          const rateCell = document.createElement('td');
+          rateCell.textContent = entry.passRate.toFixed(1);
+          row.appendChild(rateCell);
+          
+          // 机构单元格
+          const instituteCell = document.createElement('td');
+          const instituteImg = document.createElement('img');
+          instituteImg.src = `./img/institute_img/${entry.institute}.png`;
+          instituteImg.alt = entry.institute;
+          instituteImg.style.maxHeight = '20px';
+          instituteImg.style.verticalAlign = 'middle';
+          instituteCell.appendChild(instituteImg);
+          row.appendChild(instituteCell);
+          
+          // 链接单元格（可能为空）
+          const linkCell = document.createElement('td');
+          if (entry.link) {
+            const linkElement = document.createElement('a');
+            linkElement.href = entry.link;
+            linkElement.target = '_blank';
+            linkElement.textContent = '🔗';
+            linkCell.appendChild(linkElement);
+          }
+          row.appendChild(linkCell);
+          
+          // 日期单元格 - 有条件地改变样式
+          const dateCell = document.createElement('td');
+          const dateSpan = document.createElement('span');
+          
+          // 检查是否在最近14天内
+          if (isWithinPast14Days(entry.date)) {
+            // 新样式 - 反转颜色
+            dateSpan.className = 'date-cell-new';
+          } else {
+            // 原始样式
+            dateSpan.className = 'date-cell';
+          }
+          
+          dateSpan.textContent = entry.date;
+          dateCell.appendChild(dateSpan);
+          row.appendChild(dateCell);
+          
+          // 等级单元格
+          const tierCell = document.createElement('td');
+          tierCell.textContent = entry.tier;
+          row.appendChild(tierCell);
+          
+          // 附加完整行
+          tbody.appendChild(row);
+        });
+      }
+
+          
+          const flashLeaderboardData = [
+          { model: "XiYan-SQL", passRate: 40.0, institute: "alibabacloud", date: "2025-05-22", link: "https://github.com/XGenerationLab/XiYan-SQL" },
+          {  model: "o1-preview-2024-09-12", passRate: 38.5, institute: "openai_reasoning", date: "2025-01-30" },
+          { model: "o3-mini-2025-01-31", passRate: 37.0, institute: "openai_reasoning", date: "2025-02-25" },
+          {  model: "deepseek-reasoner (r1)", passRate: 34.0, institute: "deepseek-reason", date: "2025-01-30" },
+          {  model: "claude-3-7-sonnet-2025-02-19(thinking)", passRate: 32.0, institute: "anthropic_reason", date: "2025-02-28"},
+          { model: "claude-3-7-sonnet-2025-02-19", passRate: 29.0, institute: "anthropic", date: "2025-02-27"},
+          {model: "gpt-4o-2024-11-20", passRate: 29.0, institute: "openai", date: "2024-11-20"},
+          { model: "o1-mini", passRate: 28.0, institute: "openai_reasoning", date: "2025-01-30"},
+          { model: "deepseek-V3", passRate: 27.5, institute: "deepseek", date: "2025-01-30" },
+          { model: "phi-4", passRate: 24.5, institute: "ms", date: "2025-01-30" },
+          {  model: "QwQ-32B", passRate: 24.5, institute: "qwen-reason", date: "2025-03-10" },
+          { model: "claude-3-5-sonnet", passRate: 24.0, institute: "anthropic", date: "2025-01-30" },
+          { model: "gemini-2.0-flash-exp", passRate: 24.0, institute: "google", date: "2025-01-30"},
+          { model: "Qwen2.5-Coder-32B-Instruct", passRate: 23.5, institute: "qwen", date: "2025-01-30" },
+          { model: "gemini-2.0-flash-thinking-exp", passRate: 19.5, institute: "google-reason", date: "2025-01-30"},
+          {  model: "Meta-Llama-3.3-70B-Instruct", passRate: 18.5, institute: "meta", date: "2025-01-30" },
+          { model: "Codestral-22B-v0.1", passRate: 18.0, institute: "mistral", date: "2025-01-30" },
+          { model: "gemma-2-27b-it", passRate: 18.0, institute: "google", date: "2025-01-30" },
+          {  model: "QwQ-32B-Preview", passRate: 17.5, institute: "qwen-reason", date: "2025-01-30"},
+          {  model: "starcoder2-15b-instruct-v0.1", passRate: 15.5, institute: "bigcode", date: "2025-01-30"},
+          { model: "DeepSeek-Coder-V2-Lite-Instruct", passRate: 12.5, institute: "deepseek", date: "2025-01-30" },
+          {  model: "Mixtral-8x7B-Instruct-v0.1", passRate: 11.5, institute: "mistral", date: "2025-01-30"},
+          {  model: "gemma-2-9b-it", passRate: 10.5, institute: "google", date: "2025-01-30" },
+          {  model: "Yi-1.5-34B-Chat-16K", passRate: 10.5, institute: "yi", date: "2025-01-30" },
+          {  model: "CodeLlama-34b-Instruct-hf", passRate: 10.0, institute: "meta", date: "2025-01-30"},
+          {  model: "CodeLlama-13b-Instruct-hf", passRate: 8.5, institute: "meta", date: "2025-01-30"},
+          {  model: "Mistral-7B-Instruct-v0.2", passRate: 3.5, institute: "mistral", date: "2025-01-30",}
+        ];
+        function getTier(rank, total) {
+          if (rank === 1) return "🏆 Leading";
+          if (rank <= total * 0.15) return "🌟 Elite";
+          if (rank <= total * 0.30) return "💎 Superior";
+          if (rank <= total * 0.45) return "🔸 Advanced";
+          if (rank <= total * 0.70) return "💫 Standard";
+          return "⚪ Basic";
+        }
+          // 3) sort & decorate with rank/tier
+        const decorated = flashLeaderboardData
+          .slice() // clone so original order isn’t mutated
+          .sort((a,b) => b.passRate - a.passRate)
+          .map((entry, i, arr) => ({
+            rank:     i + 1,
+            tier:     getTier(i + 1, arr.length),
+            model:    entry.model,
+            passRate: entry.passRate,
+            institute:entry.institute,
+            date:     entry.date,
+            link:     entry.link   // may be undefined for older entries
+          }));
+        populateFlashTable();
+        function populateFlashTable() {
+          const tbody = document.querySelector('#flash-table tbody');
+          if (!tbody) return;
+
+          // 按得分降序排序
+          const sorted = [...flashLeaderboardData]
+                          .sort((a, b) => b.passRate - a.passRate);
+
+          // 计算等级的辅助函数
+          const getTier = (rank, total) => {
+            if (rank === 1) return "🏆 Leading";
+            const pct = rank / total;
+            if (pct <= 0.15) return "🌟 Elite";
+            if (pct <= 0.30) return "💎 Superior";
+            if (pct <= 0.45) return "🔸 Advanced";
+            if (pct <= 0.70) return "💫 Standard";
+            return "⚪ Basic";
+          };
+
+          tbody.innerHTML = '';
+          sorted.forEach((entry, idx) => {
+            const rank = idx + 1;
+            const tier = getTier(rank, sorted.length);
+
+            // 构建 <tr>
+            const row = document.createElement('tr');
+
+            // 排名
+            row.insertCell().outerHTML =
+              `<td class="rank-cell">${rank}</td>`;
+
+            // 模型
+            row.insertCell().outerHTML =
+              `<td class="model-cell">${entry.model}</td>`;
+
+            // 通过率
+            row.insertCell().textContent = entry.passRate.toFixed(1);
+
+            // 机构图标
+            const instituteCell = row.insertCell();
+            instituteCell.innerHTML =
+              `<img src="./img/institute_img/${entry.institute}.png"
+                    alt="${entry.institute}"
+                    style="max-height:20px;vertical-align:middle;">`;
+
+            // 链接（若提供）
+            const linkCell = row.insertCell();
+            if (entry.link) {
+              linkCell.innerHTML =
+                `<a href="${entry.link}" target="_blank">🔗</a>`;
+            }
+
+            // 日期单元格 - 有条件地改变样式
+            const dateCell = row.insertCell();
+            
+            // 检查是否在最近14天内
+            if (isWithinPast14Days(entry.date)) {
+              // 新样式 - 反转颜色
+              dateCell.innerHTML =
+                `<span class="date-cell-new">${entry.date}</span>`;
+            } else {
+              // 原始样式
+              dateCell.innerHTML =
+                `<span class="date-cell">${entry.date}</span>`;
+            }
+
+            // 等级
+            row.insertCell().textContent = tier;
+
+            tbody.appendChild(row);
+          });
+        }
+
+        // 添加一个CSS规则到文档
+        document.addEventListener('DOMContentLoaded', function() {
+          // 为反转日期单元格创建CSS样式
+          
+          // 初始化表格
+          const filterButtons = document.querySelectorAll('.dialect-filter-btn');
           let activeFilter = 'overall';
           updateButtonStyles();
-          
-          // Call updateLeaderboardTable once at startup to ensure proper initialization
           updateLeaderboardTable(activeFilter);
+          populateFlashTable();
           
-          // Add click event listeners to each filter button
+          // 添加过滤按钮的点击事件监听器
           filterButtons.forEach(button => {
             button.addEventListener('click', function() {
-              // Update active filter
               activeFilter = this.getAttribute('data-dialect');
-              
-              // Update button styles
               updateButtonStyles();
-              
-              // Update the table with filtered data
               updateLeaderboardTable(activeFilter);
             });
           });
           
-          // Function to update button styles based on active filter
           function updateButtonStyles() {
             filterButtons.forEach(button => {
               const dialect = button.getAttribute('data-dialect');
               if (dialect === activeFilter) {
-                // Active button - use the original bright color
                 button.style.backgroundColor = button.getAttribute('data-color');
                 button.style.color = 'white';
                 button.style.fontWeight = 'bold';
                 button.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
               } else {
-                // Inactive button - use gray
                 button.style.backgroundColor = '#e0e0e0';
                 button.style.color = '#666';
                 button.style.fontWeight = 'normal';
@@ -1081,156 +1391,8 @@
               }
             });
           }
-          
-          // Function to update the leaderboard table based on selected filter
-          function updateLeaderboardTable(dialect) {
-            // Get all the rows in the table body
-            const tbody = document.querySelector('#ex-table tbody');
-            if (!tbody) return;
-            
-            // Clear the current table rows
-            tbody.innerHTML = '';
-            
-            // Get the data for the selected dialect
-            const data = leaderboardData[dialect];
-            
-            // Create and append new rows for the selected dialect
-            data.forEach(entry => {
-              const row = document.createElement('tr');
-              
-              // Rank cell
-              const rankCell = document.createElement('td');
-              rankCell.className = 'rank-cell';
-              rankCell.textContent = entry.rank;
-              row.appendChild(rankCell);
-              
-              // Model cell
-              const modelCell = document.createElement('td');
-              modelCell.className = 'model-cell';
-              modelCell.textContent = entry.model;
-              row.appendChild(modelCell);
-              
-              // Pass Rate cell
-              const rateCell = document.createElement('td');
-              rateCell.textContent = entry.passRate;
-              row.appendChild(rateCell);
-              
-              // Institute cell
-              const instituteCell = document.createElement('td');
-              const instituteImg = document.createElement('img');
-              instituteImg.src = `./img/institute_img/${entry.institute}.png`;
-              instituteImg.alt = entry.institute;
-              instituteImg.style.maxHeight = '20px';
-              instituteImg.style.verticalAlign = 'middle';
-              instituteCell.appendChild(instituteImg);
-              row.appendChild(instituteCell);
-              
-              // Link cell (empty)
-              const linkCell = document.createElement('td');
-              row.appendChild(linkCell);
-              
-              // Date cell
-              const dateCell = document.createElement('td');
-              const dateSpan = document.createElement('span');
-              dateSpan.className = 'date-cell';
-              dateSpan.textContent = entry.date;
-              dateCell.appendChild(dateSpan);
-              row.appendChild(dateCell);
-              
-              // Tier cell
-              const tierCell = document.createElement('td');
-              tierCell.textContent = entry.tier;
-              row.appendChild(tierCell);
-              
-              // Append the complete row
-              tbody.appendChild(row);
-            });
-          }
-          const flashLeaderboardData = [
-          { rank: 1, model: "o1-preview-2024-09-12", passRate: "38.5", institute: "openai_reasoning", date: "2025-01-30", tier: "🏆 Leading" },
-          { rank: 2, model: "o3-mini-2025-01-31", passRate: "37.0", institute: "openai_reasoning", date: "2025-02-25", tier: "🌟 Elite" },
-          { rank: 3, model: "deepseek-reasoner (r1)", passRate: "34.0", institute: "deepseek-reason", date: "2025-01-30", tier: "🌟 Elite" },
-          { rank: 4, model: "claude-3-7-sonnet-2025-02-19(thinking)", passRate: "32.0", institute: "anthropic_reason", date: "2025-02-28", tier: "🌟 Elite" },
-          { rank: 5, model: "claude-3-7-sonnet-2025-02-19", passRate: "29.0", institute: "anthropic", date: "2025-02-27", tier: "🌟 Elite" },
-          { rank: 5, model: "gpt-4o-2024-11-20", passRate: "29.0", institute: "openai", date: "2024-11-20", tier: "🌟 Elite" },
-          { rank: 7, model: "o1-mini", passRate: "28.0", institute: "openai_reasoning", date: "2025-01-30", tier: "💎 Superior" },
-          { rank: 8, model: "deepseek-V3", passRate: "27.5", institute: "deepseek", date: "2025-01-30", tier: "💎 Superior" },
-          { rank: 9, model: "phi-4", passRate: "24.5", institute: "ms", date: "2025-01-30", tier: "💎 Superior" },
-          { rank: 9, model: "QwQ-32B", passRate: "24.5", institute: "qwen-reason", date: "2025-03-10", tier: "💎 Superior" },
-          { rank: 11, model: "claude-3-5-sonnet", passRate: "24.0", institute: "anthropic", date: "2025-01-30", tier: "🔸 Advanced" },
-          { rank: 12, model: "gemini-2.0-flash-exp", passRate: "24.0", institute: "google", date: "2025-01-30", tier: "🔸 Advanced" },
-          { rank: 13, model: "Qwen2.5-Coder-32B-Instruct", passRate: "23.5", institute: "qwen", date: "2025-01-30", tier: "🔸 Advanced" },
-          { rank: 14, model: "gemini-2.0-flash-thinking-exp", passRate: "19.5", institute: "google-reason", date: "2025-01-30", tier: "🔸 Advanced" },
-          { rank: 15, model: "Meta-Llama-3.3-70B-Instruct", passRate: "18.5", institute: "meta", date: "2025-01-30", tier: "💫 Standard" },
-          { rank: 16, model: "Codestral-22B-v0.1", passRate: "18.0", institute: "mistral", date: "2025-01-30", tier: "💫 Standard" },
-          { rank: 17, model: "gemma-2-27b-it", passRate: "18.0", institute: "google", date: "2025-01-30", tier: "💫 Standard" },
-          { rank: 18, model: "QwQ-32B-Preview", passRate: "17.5", institute: "qwen-reason", date: "2025-01-30", tier: "💫 Standard" },
-          { rank: 19, model: "starcoder2-15b-instruct-v0.1", passRate: "15.5", institute: "bigcode", date: "2025-01-30", tier: "💫 Standard" },
-          { rank: 20, model: "DeepSeek-Coder-V2-Lite-Instruct", passRate: "12.5", institute: "deepseek", date: "2025-01-30", tier: "⚪ Basic" },
-          { rank: 21, model: "Mixtral-8x7B-Instruct-v0.1", passRate: "11.5", institute: "mistral", date: "2025-01-30", tier: "⚪ Basic" },
-          { rank: 22, model: "gemma-2-9b-it", passRate: "10.5", institute: "google", date: "2025-01-30", tier: "⚪ Basic" },
-          { rank: 23, model: "Yi-1.5-34B-Chat-16K", passRate: "10.5", institute: "yi", date: "2025-01-30", tier: "⚪ Basic" },
-          { rank: 24, model: "CodeLlama-34b-Instruct-hf", passRate: "10.0", institute: "meta", date: "2025-01-30", tier: "⚪ Basic" },
-          { rank: 25, model: "CodeLlama-13b-Instruct-hf", passRate: "8.5", institute: "meta", date: "2025-01-30", tier: "⚪ Basic" },
-          { rank: 26, model: "Mistral-7B-Instruct-v0.2", passRate: "3.5", institute: "mistral", date: "2025-01-30", tier: "⚪ Basic" }
-        ];
-        populateFlashTable();
-        function populateFlashTable() {
-          const flashTableBody = document.querySelector('#flash-table tbody');
-          if (!flashTableBody) return;
-          
-          flashTableBody.innerHTML = '';
-          
-          flashLeaderboardData.forEach(entry => {
-            const row = document.createElement('tr');
-            
-            // Rank cell
-            const rankCell = document.createElement('td');
-            rankCell.className = 'rank-cell';
-            rankCell.textContent = entry.rank;
-            row.appendChild(rankCell);
-            
-            // Model cell
-            const modelCell = document.createElement('td');
-            modelCell.className = 'model-cell';
-            modelCell.textContent = entry.model;
-            row.appendChild(modelCell);
-            
-            // Pass Rate cell
-            const rateCell = document.createElement('td');
-            rateCell.textContent = entry.passRate;
-            row.appendChild(rateCell);
-            
-            // Institute cell
-            const instituteCell = document.createElement('td');
-            const instituteImg = document.createElement('img');
-            instituteImg.src = `./img/institute_img/${entry.institute}.png`;
-            instituteImg.alt = entry.institute;
-            instituteImg.style.maxHeight = '20px';
-            instituteImg.style.verticalAlign = 'middle';
-            instituteCell.appendChild(instituteImg);
-            row.appendChild(instituteCell);
-            
-            // Link cell (empty)
-            const linkCell = document.createElement('td');
-            row.appendChild(linkCell);
-            
-            // Date cell
-            const dateCell = document.createElement('td');
-            const dateSpan = document.createElement('span');
-            dateSpan.className = 'date-cell';
-            dateSpan.textContent = entry.date;
-            dateCell.appendChild(dateSpan);
-            row.appendChild(dateCell);
-            
-            // Tier cell
-            const tierCell = document.createElement('td');
-            tierCell.textContent = entry.tier;
-            row.appendChild(tierCell);
-            
-            flashTableBody.appendChild(row);
-          });
-        }
+        });
+
         });
       
 
