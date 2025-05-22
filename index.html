@@ -1089,19 +1089,10 @@
           });
         }
 function isWithinPast14Days(dateString) {
-  // 当前日期
   const currentDate = new Date(); 
-  
-  // 将日期字符串转换为日期对象
   const recordDate = new Date(dateString);
-  
-  // 计算差值（毫秒）
   const diffTime = currentDate - recordDate;
-  
-  // 将毫秒转换为天数
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  
-  // 如果天数小于等于14，则返回true
   return diffDays <= 14 && diffDays >= 0;
 }
       document.addEventListener('DOMContentLoaded', function() {
@@ -1151,38 +1142,35 @@ function isWithinPast14Days(dateString) {
   
       // Function to update the leaderboard table based on selected filter
       function updateLeaderboardTable(dialect) {
-        // 获取所有表格行
+
         const tbody = document.querySelector('#ex-table tbody');
         if (!tbody) return;
         
-        // 清空当前表格行
+
         tbody.innerHTML = '';
-        
-        // 获取选定方言的数据
+
         const data = leaderboardData[dialect];
         
-        // 创建并附加选定方言的新行
+
         data.forEach(entry => {
           const row = document.createElement('tr');
           
-          // 排名单元格
+
           const rankCell = document.createElement('td');
           rankCell.className = 'rank-cell';
           rankCell.textContent = entry.rank;
           row.appendChild(rankCell);
-          
-          // 模型单元格
+
           const modelCell = document.createElement('td');
           modelCell.className = 'model-cell';
           modelCell.textContent = entry.model;
           row.appendChild(modelCell);
           
-          // 通过率单元格
+
           const rateCell = document.createElement('td');
           rateCell.textContent = entry.passRate.toFixed(1);
           row.appendChild(rateCell);
-          
-          // 机构单元格
+
           const instituteCell = document.createElement('td');
           const instituteImg = document.createElement('img');
           instituteImg.src = `./img/institute_img/${entry.institute}.png`;
@@ -1192,7 +1180,7 @@ function isWithinPast14Days(dateString) {
           instituteCell.appendChild(instituteImg);
           row.appendChild(instituteCell);
           
-          // 链接单元格（可能为空）
+
           const linkCell = document.createElement('td');
           if (entry.link) {
             const linkElement = document.createElement('a');
@@ -1203,29 +1191,23 @@ function isWithinPast14Days(dateString) {
           }
           row.appendChild(linkCell);
           
-          // 日期单元格 - 有条件地改变样式
+
           const dateCell = document.createElement('td');
           const dateSpan = document.createElement('span');
-          
-          // 检查是否在最近14天内
           if (isWithinPast14Days(entry.date)) {
-            // 新样式 - 反转颜色
             dateSpan.className = 'date-cell-new';
           } else {
-            // 原始样式
             dateSpan.className = 'date-cell';
           }
           
           dateSpan.textContent = entry.date;
           dateCell.appendChild(dateSpan);
           row.appendChild(dateCell);
-          
-          // 等级单元格
+
           const tierCell = document.createElement('td');
           tierCell.textContent = entry.tier;
           row.appendChild(tierCell);
-          
-          // 附加完整行
+
           tbody.appendChild(row);
         });
       }
@@ -1306,67 +1288,57 @@ function isWithinPast14Days(dateString) {
             const rank = idx + 1;
             const tier = getTier(rank, sorted.length);
 
-            // 构建 <tr>
             const row = document.createElement('tr');
 
-            // 排名
             row.insertCell().outerHTML =
               `<td class="rank-cell">${rank}</td>`;
 
-            // 模型
+
             row.insertCell().outerHTML =
               `<td class="model-cell">${entry.model}</td>`;
 
-            // 通过率
+
             row.insertCell().textContent = entry.passRate.toFixed(1);
 
-            // 机构图标
+
             const instituteCell = row.insertCell();
             instituteCell.innerHTML =
               `<img src="./img/institute_img/${entry.institute}.png"
                     alt="${entry.institute}"
                     style="max-height:20px;vertical-align:middle;">`;
 
-            // 链接（若提供）
             const linkCell = row.insertCell();
             if (entry.link) {
               linkCell.innerHTML =
                 `<a href="${entry.link}" target="_blank">🔗</a>`;
             }
 
-            // 日期单元格 - 有条件地改变样式
             const dateCell = row.insertCell();
             
-            // 检查是否在最近14天内
             if (isWithinPast14Days(entry.date)) {
-              // 新样式 - 反转颜色
               dateCell.innerHTML =
                 `<span class="date-cell-new">${entry.date}</span>`;
             } else {
-              // 原始样式
+
               dateCell.innerHTML =
                 `<span class="date-cell">${entry.date}</span>`;
             }
 
-            // 等级
+
             row.insertCell().textContent = tier;
 
             tbody.appendChild(row);
           });
         }
 
-        // 添加一个CSS规则到文档
         document.addEventListener('DOMContentLoaded', function() {
-          // 为反转日期单元格创建CSS样式
-          
-          // 初始化表格
+
           const filterButtons = document.querySelectorAll('.dialect-filter-btn');
           let activeFilter = 'overall';
           updateButtonStyles();
           updateLeaderboardTable(activeFilter);
           populateFlashTable();
-          
-          // 添加过滤按钮的点击事件监听器
+
           filterButtons.forEach(button => {
             button.addEventListener('click', function() {
               activeFilter = this.getAttribute('data-dialect');
