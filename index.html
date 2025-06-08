@@ -431,10 +431,10 @@
                     <strong>bird-critic-1.0-flash-exp:</strong> A lite version containing <strong style="color:#155E95">200</strong> tasks specifically for PostgreSQL. This is a good starting point for quick experimentation.
                   </li>
                   <li>
-                    <strong>bird-critic-1.0-open:</strong> The full version of BIRD-CRITIC, comprising <strong style="color:#155E95">600</strong> tasks covering open-source SQL dialects: PostgreSQL, MySQL, SQL Server, and Oracle. This allows for cross-dialect evaluation.
+                    <strong>bird-critic-1.0-open:</strong> The full version of BIRD-CRITIC, comprising <strong style="color:#155E95">570</strong> tasks covering open-source SQL dialects: PostgreSQL, MySQL, SQL Server, and Oracle. This allows for cross-dialect evaluation.
                   </li>
                   <li>
-                    <strong>bird-critic-1.0-postgresql:</strong> A full version containing <strong style="color:#155E95">600</strong> tasks, all in PostgreSQL. This allows for focused analysis within a single dialect.
+                    <strong>bird-critic-1.0-postgresql:</strong> A full version containing <strong style="color:#155E95">530</strong> tasks, all in PostgreSQL. This allows for focused analysis within a single dialect.
                   </li>
                   <li>
                     <strong>bird-critic-1.0-bigquery:</strong> A full version containing <strong style="color:#155E95">200</strong> tasks in BigQuery.
@@ -453,8 +453,8 @@
               <div id="button-group">
                 <!-- Only keep the Mini-Dev (500) button -->
                 <div class="button-row">
-                  <a href="https://huggingface.co/datasets/birdsql/bird-critic-1.0-flash-exp" target="_blank">
-                    <button type="button" class="btn btn-d">BIRD-Critic-1.0 Flash</button>
+                  <a href="https://huggingface.co/datasets/birdsql/bird-critic-1.0-open" target="_blank">
+                    <button type="button" class="btn btn-d">BIRD-Critic-1.0 Open</button>
                   </a>
                 </div>
                 <!-- Removed Train/Dev buttons -->
@@ -462,8 +462,17 @@
               <div id="button-group">
                 <!-- Only keep the Mini-Dev (500) button -->
                 <div class="button-row">
-                  <a href="https://huggingface.co/datasets/birdsql/bird-critic-1.0-open" target="_blank">
-                    <button type="button" class="btn btn-d">BIRD-Critic-1.0 Open</button>
+                  <a href="https://huggingface.co/datasets/birdsql/bird-critic-1.0-postgresql" target="_blank">
+                    <button type="button" class="btn btn-d">BIRD-Critic-1.0 PG</button>
+                  </a>
+                </div>
+                <!-- Removed Train/Dev buttons -->
+              </div>
+              <div id="button-group">
+                <!-- Only keep the Mini-Dev (500) button -->
+                <div class="button-row">
+                  <a href="https://huggingface.co/datasets/birdsql/bird-critic-1.0-flash-exp" target="_blank">
+                    <button type="button" class="btn btn-d">BIRD-Critic-1.0 Flash</button>
                   </a>
                 </div>
                 <!-- Removed Train/Dev buttons -->
@@ -486,9 +495,15 @@
                     <ul style="padding-left: 0">
                       <li style="list-style-type: none">
                         <span style="background-color: #B03052; color: white; padding: 2px 4px; border-radius: 5px;">
+                          <strong style="color: #ffe7ce">June 8, 2025:</strong>
+                        </span>
+                        We have released bird-critic-1.0-pg (530 tasks focus on PostgreSQL). Check out the data in <a href="https://huggingface.co/datasets/birdsql/bird-critic-1.0-postgresql" target="_blank" style="color:#155E95; text-decoration: none;">Hugging Face</a>. Our next release will include a new set of 300 efficiency-focused tasks across 4 SQL dialects, stay tuned!
+                      </li>
+                      <li style="list-style-type: none">
+                        <span style="background-color: #B03052; color: white; padding: 2px 4px; border-radius: 5px;">
                           <strong style="color: #ffe7ce">Apr. 23, 2025:</strong>
                         </span>
-                        We have released bird-critic-1.0-open (600 tasks by 4 dialects). Check out the data in <a href="https://huggingface.co/datasets/birdsql/bird-critic-1.0-open" target="_blank" style="color:#155E95; text-decoration: none;">Hugging Face</a> and the newest code in <a href="https://github.com/bird-bench/BIRD-CRITIC-1/tree/main" target="_blank" style="color:#155E95; text-decoration: none;">GitHub</a>. The full set of PostgreSQL will be released 1 week later. It seems that bird-critic is a challenging reasoning tasks for text-to-SQL since all top-performing models are reasoning-based models. Have fun! Thanks!
+                        We have released bird-critic-1.0-open (570 tasks by 4 dialects). Check out the data in <a href="https://huggingface.co/datasets/birdsql/bird-critic-1.0-open" target="_blank" style="color:#155E95; text-decoration: none;">Hugging Face</a> and the newest code in <a href="https://github.com/bird-bench/BIRD-CRITIC-1/tree/main" target="_blank" style="color:#155E95; text-decoration: none;">GitHub</a>. The full set of PostgreSQL will be released 1 week later. It seems that bird-critic is a challenging reasoning tasks for text-to-SQL since all top-performing models are reasoning-based models. Have fun! Thanks!
                       </li>
                       <li style="list-style-type: none">
                         <span style="background-color: #B03052; color: white; padding: 2px 4px; border-radius: 5px;">
