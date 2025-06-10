@@ -101,6 +101,7 @@
         font-family: 'Lato', sans-serif;
         font-weight: 300;
         font-size: 0.75rem;
+        color: #666666;
       }
       
       .paperlink {
@@ -626,7 +627,7 @@
 <div style="flex: 1;">
   <!-- Only keeping the first Leaderboard: BIRD-CRITIC-1.0-Open with 10 entries -->
   <div class="card card-outline-secondary mb-4">
-    <div class="card-header">Leaderboard - BIRD-CRITIC-1.0-Open</div>
+    <div class="card-header">Leaderboard - BIRD-CRITIC-1.0-Open (570)</div>
     <!-- SQL Dialect Filter Tags - INTERACTIVE BUTTONS -->
     <div style="text-align: center; margin: 10px 0;">
       <button class="btn btn-sm dialect-filter-btn" 
@@ -841,7 +842,7 @@
   </div>
 
   <div class="card card-outline-secondary mb-4">
-    <div class="card-header">Leaderboard - BIRD-CRITIC-PG</div>
+    <div class="card-header">Leaderboard - BIRD-CRITIC-PG (530)</div>
     <div class="table-wrapper">
       <table id="pg-table" class="table">
         <thead class="thead-light">
@@ -964,9 +965,10 @@
         // Define the mock data for different dialects in the first leaderboard
         const rawLeaderboardData = {
           'overall': [
-            { rank: 1, model: 'deepseek-r1', passRate: 33.51, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
-            { rank: 1, model: 'BIRD-Fixer-14B', passRate: 29.65, institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
-            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 21.58, institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
+          { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 43.33, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' },  
+          { rank: 1, model: 'deepseek-r1', passRate: 33.51, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
+            { rank: 1, model: 'BIRD-Fixer-14B', passRate: 29.65,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
+            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 21.58,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
             { rank: 2, model: 'o3-mini-2025-01-31', passRate: 33.33, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'o1-preview-2024-09-12', passRate: 33.33, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 4, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: 30.00, institute: 'anthropic_reason', date: '2025-04-20', tier: '🌟 Elite' },
@@ -998,8 +1000,9 @@
             { rank: 30, model: 'Mistral-7B-Instruct-v0.2', passRate: 6.49, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'postgresql': [
-            { rank: 1, model: 'BIRD-Fixer-14B', passRate: 30.07, institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
-            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 22.1, institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
+                    { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 47.46, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' },  
+            { rank: 1, model: 'BIRD-Fixer-14B', passRate: 30.07,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
+            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 22.1,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
             { rank: 1, model: 'o3-mini-2025-01-31', passRate: 41.30, institute: 'openai_reasoning', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 2, model: 'o1-preview-2024-09-12', passRate: 40.94, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'o1-mini', passRate: 36.23, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
@@ -1032,8 +1035,9 @@
             { rank: 30, model: 'Mistral-7B-Instruct-v0.2', passRate: 6.88, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'mysql': [
-            { rank: 1, model: 'BIRD-Fixer-14B', passRate: 40.82, institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
-            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 26.53, institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
+                    { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 42.86, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' },  
+            { rank: 1, model: 'BIRD-Fixer-14B', passRate: 40.82,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
+            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 26.53,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
             { rank: 1, model: 'deepseek-r1', passRate: 38.78, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 2, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 35.71, institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'gemini-2.5-pro-preview-03-25', passRate: 34.69, institute: 'google', date: '2025-04-20', tier: '🌟 Elite' },
@@ -1066,8 +1070,9 @@
             { rank: 30, model: 'Mistral-7B-Instruct-v0.2', passRate: 8.16, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'sqlserver': [
-            { rank: 1, model: 'BIRD-Fixer-14B', passRate: 30.61, institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
-            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 29.59, institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
+            { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 44.9, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' }, 
+            { rank: 1, model: 'BIRD-Fixer-14B', passRate: 30.61,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
+            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 29.59,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
             { rank: 1, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 37.76, institute: 'google-reason', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 2, model: 'o1-preview-2024-09-12', passRate: 33.67, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'o3-mini-2025-01-31', passRate: 32.65, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
@@ -1100,8 +1105,9 @@
             { rank: 30, model: 'grok-3-mini-beta', passRate: 9.18, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'oracle': [
-          { rank: 1, model: 'BIRD-Fixer-14B', passRate: 16.33, institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
-            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 7.14, institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
+                              { rank: 1, model: 'ByteBrain-Agent + deepseek-r1', passRate: 30.62, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' }, 
+          { rank: 1, model: 'BIRD-Fixer-14B', passRate: 16.33,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
+            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 7.14,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
             { rank: 1, model: 'deepseek-r1', passRate: 19.39, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 2, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 19.39, institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'grok-3-beta', passRate: 18.37, institute: 'grok', date: '2025-04-20', tier: '🌟 Elite' },
@@ -1155,6 +1161,7 @@
             const rank = index + 1;
             return {
               rank: rank,
+              affiliation: entry.affiliation,
               model: entry.model,
               passRate: entry.passRate,
               institute: entry.institute,
@@ -1239,7 +1246,16 @@ function isWithinPast14Days(dateString) {
 
           const modelCell = document.createElement('td');
           modelCell.className = 'model-cell';
-          modelCell.textContent = entry.model;
+          const modelDiv = document.createElement('div');
+          modelDiv.textContent = entry.model;
+          modelCell.appendChild(modelDiv);
+
+          if (entry.affiliation) {
+            const affiliationDiv = document.createElement('div');
+            affiliationDiv.className = 'affiliation';
+            affiliationDiv.textContent = entry.affiliation;
+            modelCell.appendChild(affiliationDiv);
+          }
           row.appendChild(modelCell);
           
 
@@ -1303,14 +1319,14 @@ function isWithinPast14Days(dateString) {
           const pgLeaderboardData = [
             { model: "deepseek-r1", passRate: 39.62, institute: "deepseek-reason", date: "2025-06-09" },
             { model: "o3-mini-2025-01-31", passRate: 38.87, institute: "openai_reasoning", date: "2025-06-09" },
-            { model: "BIRD-Fixer-14B", passRate: 38.11, institute: ["hku", "google_cloud"], date: "2025-06-09" },
+            { model: "BIRD-Fixer-14B",affiliation: 'HKU × Google Cloud', passRate: 38.11, institute: ["hku", "google_cloud"], date: "2025-06-09" },
             { model: "gpt-4.1", passRate: 37.36, institute: "openai", date: "2025-06-09" },
             { model: "o1-preview-2024-09-12", passRate: 35.85, institute: "openai_reasoning", date: "2025-06-09" },
             { model: "claude-3-7-sonnet-20250219(thinking)", passRate: 33.96, institute: "anthropic_reason", date: "2025-06-09" },
             { model: "gemini-2.0-flash-thinking-exp-01-21", passRate: 33.21, institute: "google-reason", date: "2025-06-09" },
             { model: "claude-3-7-sonnet-20250219", passRate: 32.08, institute: "anthropic", date: "2025-06-09" },
             { model: "QwQ-32B", passRate: 31.51, institute: "qwen-reason", date: "2025-06-09" },
-            { model: "BIRD-Fixer-7B", passRate: 31.32, institute: ["hku", "google_cloud"], date: "2025-06-09" },
+            { model: "BIRD-Fixer-7B",affiliation: 'HKU × Google Cloud', passRate: 31.32, institute: ["hku", "google_cloud"], date: "2025-06-09" },
             { model: "Qwen2.5-Coder-14B-Instruct", passRate: 31.32, institute: "qwen", date: "2025-06-09" },
             { model: "gemini-2.0-flash", passRate: 30.94, institute: "google", date: "2025-06-09" },
             { model: "Qwen2.5-Coder-32B-Instruct", passRate: 30.75, institute: "qwen", date: "2025-06-09" },
@@ -1321,8 +1337,8 @@ function isWithinPast14Days(dateString) {
             { model: "Meta-Llama-3.1-8B-Instruct", passRate: 16.98, institute: "meta", date: "2025-06-09" }
           ];
           const flashLeaderboardData = [
-          { model: "Query-Schema-Linking + deepseek-r1-250120", passRate: 41.5, institute: "soochow_university", date: "2025-06-09" },
-          { model: "XiYan-SQL", passRate: 41.0, institute: "alibabacloud", date: "2025-05-22", link: "https://github.com/XGenerationLab/XiYan-SQL" },
+          { model: "Query-Schema-Linking + deepseek-r1-250120", passRate: 41.5,affiliation:"Soochow University", institute: "soochow_university", date: "2025-06-09" },
+          { model: "XiYan-SQL", passRate: 41.0, institute: "alibabacloud",affiliation:"Alibaba Cloud", date: "2025-05-22", link: "https://github.com/XGenerationLab/XiYan-SQL" },
           {  model: "o1-preview-2024-09-12", passRate: 38.5, institute: "openai_reasoning", date: "2025-01-30" },
           { model: "o3-mini-2025-01-31", passRate: 37.0, institute: "openai_reasoning", date: "2025-02-25" },
           {  model: "deepseek-reasoner (r1)", passRate: 34.0, institute: "deepseek-reason", date: "2025-01-30" },
@@ -1398,99 +1414,40 @@ function isWithinPast14Days(dateString) {
 
             const row = document.createElement('tr');
 
-            row.insertCell().outerHTML =
-              `<td class="rank-cell">${rank}</td>`;
+            // Rank cell
+            const rankCell = row.insertCell();
+            rankCell.className = 'rank-cell';
+            rankCell.textContent = rank;
 
-
-            row.insertCell().outerHTML =
-              `<td class="model-cell">${entry.model}</td>`;
-
-
-            row.insertCell().textContent = entry.passRate.toFixed(1);
-
-
-            const instituteCell = row.insertCell();
-            instituteCell.innerHTML =
-              `<img src="./img/institute_img/${entry.institute}.png"
-                    alt="${entry.institute}"
-                    style="max-height:20px;vertical-align:middle;">`;
-
-            const linkCell = row.insertCell();
-            if (entry.link) {
-              linkCell.innerHTML =
-                `<a href="${entry.link}" target="_blank">🔗</a>`;
-            }
-
-            const dateCell = row.insertCell();
+            // Model cell with affiliation
+            const modelCell = row.insertCell();
+            modelCell.className = 'model-cell';
+            const modelDiv = document.createElement('div');
+            modelDiv.textContent = entry.model;
+            modelCell.appendChild(modelDiv);
             
-            if (isWithinPast14Days(entry.date)) {
-              dateCell.innerHTML =
-                `<span class="date-cell-new">${entry.date}</span>`;
-            } else {
-
-              dateCell.innerHTML =
-                `<span class="date-cell">${entry.date}</span>`;
+            if (entry.affiliation) {
+              const affiliationDiv = document.createElement('div');
+              affiliationDiv.className = 'affiliation';
+              affiliationDiv.textContent = entry.affiliation;
+              modelCell.appendChild(affiliationDiv);
             }
 
+            // Pass rate cell
+            const passRateCell = row.insertCell();
+            passRateCell.textContent = entry.passRate.toFixed(1);
 
-            row.insertCell().textContent = tier;
-
-            tbody.appendChild(row);
-          });
-        }
-
-        populatePGTable();
-        function populatePGTable() {
-          const tbody = document.querySelector('#pg-table tbody');
-          if (!tbody) return;
-
-          const sorted = [...pgLeaderboardData]
-                          .sort((a, b) => b.passRate - a.passRate);
-
-          const getTier = (rank, total) => {
-            if (rank === 1) return "🏆 Leading";
-            const pct = rank / total;
-            if (pct <= 0.15) return "🌟 Elite";
-            if (pct <= 0.30) return "💎 Superior";
-            if (pct <= 0.45) return "🔸 Advanced";
-            if (pct <= 0.70) return "💫 Standard";
-            return "⚪ Basic";
-          };
-
-          tbody.innerHTML = '';
-          sorted.forEach((entry, idx) => {
-            const rank = idx + 1;
-            const tier = getTier(rank, sorted.length);
-
-            const row = document.createElement('tr');
-
-            row.insertCell().outerHTML = `<td class="rank-cell">${rank}</td>`;
-            row.insertCell().outerHTML = `<td class="model-cell">${entry.model}</td>`;
-            row.insertCell().textContent = entry.passRate.toFixed(1);
-
-            // 修改 institute 处理逻辑
+            // Institute cell
             const instituteCell = row.insertCell();
-            if (Array.isArray(entry.institute)) {
-              // 如果是数组，显示多个logo
-              const logoHtml = entry.institute.map(inst => 
-                `<img src="./img/institute_img/${inst}.png" 
-                      alt="${inst}" 
-                      style="max-height:20px;vertical-align:middle;margin:0 2px;">`
-              ).join('');
-              instituteCell.innerHTML = logoHtml;
-            } else {
-              // 如果是字符串，显示单个logo
-              instituteCell.innerHTML = 
-                `<img src="./img/institute_img/${entry.institute}.png"
-                      alt="${entry.institute}"
-                      style="max-height:20px;vertical-align:middle;">`;
-            }
+            instituteCell.innerHTML = `<img src="./img/institute_img/${entry.institute}.png" alt="${entry.institute}" style="max-height:20px;vertical-align:middle;">`;
 
+            // Link cell
             const linkCell = row.insertCell();
             if (entry.link) {
               linkCell.innerHTML = `<a href="${entry.link}" target="_blank">🔗</a>`;
             }
 
+            // Date cell
             const dateCell = row.insertCell();
             if (isWithinPast14Days(entry.date)) {
               dateCell.innerHTML = `<span class="date-cell-new">${entry.date}</span>`;
@@ -1498,11 +1455,102 @@ function isWithinPast14Days(dateString) {
               dateCell.innerHTML = `<span class="date-cell">${entry.date}</span>`;
             }
 
-            row.insertCell().textContent = tier;
+            // Tier cell
+            const tierCell = row.insertCell();
+            tierCell.textContent = tier;
+
             tbody.appendChild(row);
           });
         }
 
+
+        populatePGTable();
+        function populatePGTable() {
+  const tbody = document.querySelector('#pg-table tbody');
+  if (!tbody) return;
+
+  const sorted = [...pgLeaderboardData]
+                  .sort((a, b) => b.passRate - a.passRate);
+
+  const getTier = (rank, total) => {
+    if (rank === 1) return "🏆 Leading";
+    const pct = rank / total;
+    if (pct <= 0.15) return "🌟 Elite";
+    if (pct <= 0.30) return "💎 Superior";
+    if (pct <= 0.45) return "🔸 Advanced";
+    if (pct <= 0.70) return "💫 Standard";
+    return "⚪ Basic";
+  };
+
+  tbody.innerHTML = '';
+  sorted.forEach((entry, idx) => {
+    const rank = idx + 1;
+    const tier = getTier(rank, sorted.length);
+
+    const row = document.createElement('tr');
+
+    // Rank cell
+    const rankCell = row.insertCell();
+    rankCell.className = 'rank-cell';
+    rankCell.textContent = rank;
+
+    // Model cell with affiliation
+    const modelCell = row.insertCell();
+    modelCell.className = 'model-cell';
+    const modelDiv = document.createElement('div');
+    modelDiv.textContent = entry.model;
+    modelCell.appendChild(modelDiv);
+    
+    if (entry.affiliation) {
+      const affiliationDiv = document.createElement('div');
+      affiliationDiv.className = 'affiliation';
+      affiliationDiv.textContent = entry.affiliation;
+      modelCell.appendChild(affiliationDiv);
+    }
+
+    // Pass rate cell
+    const passRateCell = row.insertCell();
+    passRateCell.textContent = entry.passRate.toFixed(1);
+
+    // Institute cell
+    const instituteCell = row.insertCell();
+    if (Array.isArray(entry.institute)) {
+      // 如果是数组，显示多个logo
+      const logoHtml = entry.institute.map(inst => 
+        `<img src="./img/institute_img/${inst}.png" 
+              alt="${inst}" 
+              style="max-height:20px;vertical-align:middle;margin:0 2px;">`
+      ).join('');
+      instituteCell.innerHTML = logoHtml;
+    } else {
+      // 如果是字符串，显示单个logo
+      instituteCell.innerHTML = 
+        `<img src="./img/institute_img/${entry.institute}.png"
+              alt="${entry.institute}"
+              style="max-height:20px;vertical-align:middle;">`;
+    }
+
+    // Link cell
+    const linkCell = row.insertCell();
+    if (entry.link) {
+      linkCell.innerHTML = `<a href="${entry.link}" target="_blank">🔗</a>`;
+    }
+
+    // Date cell
+    const dateCell = row.insertCell();
+    if (isWithinPast14Days(entry.date)) {
+      dateCell.innerHTML = `<span class="date-cell-new">${entry.date}</span>`;
+    } else {
+      dateCell.innerHTML = `<span class="date-cell">${entry.date}</span>`;
+    }
+
+    // Tier cell
+    const tierCell = row.insertCell();
+    tierCell.textContent = tier;
+    
+    tbody.appendChild(row);
+  });
+}
 
         });
       
