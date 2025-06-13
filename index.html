@@ -667,7 +667,7 @@
             <tr>
                 <th scope="col">Rank</th>
                 <th scope="col">Model</th>
-                <th scope="col">Pass Rate (%)</th>
+                <th scope="col">SR (%)</th>
                 <th scope="col">Institute</th>
                 <th scope="col">Link</th>
                 <th scope="col">Date</th>
@@ -849,7 +849,7 @@
           <tr>
             <th scope="col">Rank</th>
             <th scope="col">Model</th>
-            <th scope="col">Pass Rate (%)</th>
+            <th scope="col">SR (%)</th>
             <th scope="col">Institute</th>
             <th scope="col">Link</th>
             <th scope="col">Date</th>
@@ -884,7 +884,7 @@
           <tr>
             <th scope="col">Rank</th>
             <th scope="col">Model</th>
-            <th scope="col">Pass Rate (%)</th>
+            <th scope="col">SR (%)</th>
             <th scope="col">Institute</th>
             <th scope="col">Link</th>
             <th scope="col">Date</th>
@@ -1140,6 +1140,52 @@
             { rank: 30, model: 'Mixtral-8x7B-Instruct-v0.1', passRate: 0.00, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ]
         };
+        // 添加这个函数来自动加粗所有leaderboard的第一名success rate
+        function boldFirstPlaceSuccessRates() {
+          // 获取所有leaderboard表格
+          const tables = ['#ex-table', '#pg-table', '#flash-table'];
+          
+          tables.forEach(tableSelector => {
+            const table = document.querySelector(tableSelector);
+            if (!table) return;
+            
+            const tbody = table.querySelector('tbody');
+            if (!tbody) return;
+            
+            const rows = tbody.querySelectorAll('tr');
+            if (rows.length === 0) return;
+            
+            // 找到success rate最高的值（第一行）
+            let highestRate = -1;
+            let firstPlaceRows = [];
+            
+            // 遍历所有行，找到最高分数
+            rows.forEach(row => {
+              const cells = row.querySelectorAll('td');
+              if (cells.length >= 3) {
+                const successRateCell = cells[2]; // Success Rate在第3列 (index 2)
+                const rateText = successRateCell.textContent.trim();
+                const rate = parseFloat(rateText);
+                
+                if (rate > highestRate) {
+                  highestRate = rate;
+                  firstPlaceRows = [row];
+                } else if (rate === highestRate) {
+                  firstPlaceRows.push(row);
+                }
+              }
+            });
+            
+            // 为所有第一名的success rate加粗
+            firstPlaceRows.forEach(row => {
+              const cells = row.querySelectorAll('td');
+              if (cells.length >= 3) {
+                const successRateCell = cells[2];
+                successRateCell.style.fontWeight = 'bold';
+              }
+            });
+          });
+}
         // Function to calculate tiers based on rank and total entries
         function getTier(rank, total) {
           if (rank === 1) return "🏆 Leading";
@@ -1313,6 +1359,7 @@ function isWithinPast14Days(dateString) {
           row.appendChild(tierCell);
 
           tbody.appendChild(row);
+          boldFirstPlaceSuccessRates();
         });
       }
 
@@ -1460,6 +1507,7 @@ function isWithinPast14Days(dateString) {
             tierCell.textContent = tier;
 
             tbody.appendChild(row);
+            boldFirstPlaceSuccessRates();
           });
         }
 
@@ -1549,6 +1597,7 @@ function isWithinPast14Days(dateString) {
     tierCell.textContent = tier;
     
     tbody.appendChild(row);
+    boldFirstPlaceSuccessRates();
   });
 }
 
