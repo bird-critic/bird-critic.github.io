@@ -512,6 +512,13 @@
                 <div class="card card-outline-secondary mb-4" style="text-align: left">
                   <div class="card-body" style="background-color: #f1f6f9">
                     <ul style="padding-left: 0">
+
+                      <li style="list-style-type: none">
+                        <span style="background-color: #B03052; color: white; padding: 2px 4px; border-radius: 5px;">
+                          <strong style="color: #ffe7ce">July 9, 2025:</strong>
+                        </span>
+                        We have released human performance scores on the BIRD-CRITIC datasets! The scores displayed across all three leaderboards reflect human evaluators (database experts) who were allowed to use standard tools (database textbooks, official documentation, or IDEs) but not AI assistants. When another group with the same expertise was permitted to use AI tools (ChatGPT, Claude, or Gemini), the performance increased to 83.33 on Open, 87.90 on PG, and 90.00 on Flash, demonstrating the significant potential of human-AI collaboration in SQL problem-solving.
+                      </li>
                       <li style="list-style-type: none">
                         <span style="background-color: #B03052; color: white; padding: 2px 4px; border-radius: 5px;">
                           <strong style="color: #ffe7ce">June 8, 2025:</strong>
@@ -867,6 +874,18 @@
         </thead>
         <tbody>
           <!-- Data will be populated by JavaScript -->
+          <tr class="table-success">
+            <td class="rank-cell">-</td>
+            <td class="model-cell">
+              Human Performance<br>
+              <span class="affiliation"></span>
+            </td>
+            <td><b>78.87</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>🤣</td>
+          </tr>
         </tbody>
       </table>
         
@@ -901,6 +920,18 @@
           </tr>
         </thead>
         <tbody>
+          <tr class="table-success">
+            <td class="rank-cell">-</td>
+            <td class="model-cell">
+              Human Performance<br>
+              <span class="affiliation"></span>
+            </td>
+            <td><b>80.00</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>🤣</td>
+          </tr>
           <tr>
             <td class="rank-cell">1</td>
             <td class="model-cell">o1-preview-2024-09-12</td>
@@ -971,6 +1002,13 @@
       
       <!-- Add the SQL dialect filtering JavaScript -->
       <script>
+        const humanPerformanceData = {
+        'overall': { passRate: 76.67, affiliation: '' },
+        'postgresql': { passRate: 79.71, affiliation: '' },
+        'mysql': { passRate: 79.59, affiliation: '' },
+        'sqlserver': { passRate: 71.43, affiliation: '' },
+        'oracle': { passRate: 70.41, affiliation: '' }
+      };
         // Define the mock data for different dialects in the first leaderboard
         const rawLeaderboardData = {
           'overall': [
@@ -1151,7 +1189,6 @@
         };
         // 添加这个函数来自动加粗所有leaderboard的第一名success rate
         function boldFirstPlaceSuccessRates() {
-          // 获取所有leaderboard表格
           const tables = ['#ex-table', '#pg-table', '#flash-table'];
           
           tables.forEach(tableSelector => {
@@ -1162,17 +1199,18 @@
             if (!tbody) return;
             
             const rows = tbody.querySelectorAll('tr');
-            if (rows.length === 0) return;
+            if (rows.length <= 1) return; // Skip if only human performance row
             
-            // 找到success rate最高的值（第一行）
+            // Skip first row (Human Performance) and find highest among actual models
             let highestRate = -1;
             let firstPlaceRows = [];
             
-            // 遍历所有行，找到最高分数
-            rows.forEach(row => {
+            // Start from index 1 to skip Human Performance row
+            for (let i = 1; i < rows.length; i++) {
+              const row = rows[i];
               const cells = row.querySelectorAll('td');
               if (cells.length >= 3) {
-                const successRateCell = cells[2]; // Success Rate在第3列 (index 2)
+                const successRateCell = cells[2];
                 const rateText = successRateCell.textContent.trim();
                 const rate = parseFloat(rateText);
                 
@@ -1183,9 +1221,9 @@
                   firstPlaceRows.push(row);
                 }
               }
-            });
+            }
             
-            // 为所有第一名的success rate加粗
+            // Bold the highest scoring model(s)
             firstPlaceRows.forEach(row => {
               const cells = row.querySelectorAll('td');
               if (cells.length >= 3) {
@@ -1194,7 +1232,7 @@
               }
             });
           });
-}
+        }
         // Function to calculate tiers based on rank and total entries
         function getTier(rank, total) {
           if (rank === 1) return "🏆 Leading";
@@ -1286,6 +1324,61 @@ function isWithinPast14Days(dateString) {
         
 
         tbody.innerHTML = '';
+        // Add Human Performance row first with dialect-specific data
+        const humanData = humanPerformanceData[dialect];
+        const humanRow = document.createElement('tr');
+        humanRow.className = 'table-success';
+
+        const humanRankCell = document.createElement('td');
+        humanRankCell.className = 'rank-cell';
+        humanRankCell.textContent = '';
+        humanRow.appendChild(humanRankCell);
+
+        const humanModelCell = document.createElement('td');
+        humanModelCell.className = 'model-cell';
+        const humanModelDiv = document.createElement('div');
+        humanModelDiv.textContent = 'Human Performance';
+        humanModelCell.appendChild(humanModelDiv);
+        const humanAffiliationDiv = document.createElement('div');
+        humanAffiliationDiv.className = 'affiliation';
+        humanAffiliationDiv.textContent = humanData.affiliation;
+        humanModelCell.appendChild(humanAffiliationDiv);
+        humanRow.appendChild(humanModelCell);
+
+        const humanRateCell = document.createElement('td');
+        humanRateCell.innerHTML = `<b>${humanData.passRate.toFixed(2)}</b>`;
+        humanRow.appendChild(humanRateCell);
+
+        // Institute cell (empty)
+        // const humanInstituteCell = document.createElement('td');
+        // humanRow.appendChild(humanInstituteCell);
+
+        // Institute cell with HKU + Google Cloud logos
+        const humanInstituteCell = document.createElement('td');
+        const logoHtml = ['human'].map(inst => 
+          `<img src="./img/institute_img/${inst}.png" 
+                alt="${inst}" 
+                style="max-height:20px;vertical-align:middle;margin:0 2px;">`
+        ).join('');
+        humanInstituteCell.innerHTML = logoHtml;
+        humanRow.appendChild(humanInstituteCell);
+        // Link cell (empty)
+        const humanLinkCell = document.createElement('td');
+        humanRow.appendChild(humanLinkCell);
+
+        // Date cell with specific date
+        const humanDateCell = document.createElement('td');
+        const humanDateSpan = document.createElement('span');
+        humanDateSpan.className = 'date-cell';
+        humanDateSpan.textContent = '2025-07-03';
+        humanDateCell.appendChild(humanDateSpan);
+        humanRow.appendChild(humanDateCell);
+
+        const humanTierCell = document.createElement('td');
+        humanTierCell.textContent = '🤣';
+        humanRow.appendChild(humanTierCell);
+
+        tbody.appendChild(humanRow);
 
         const data = leaderboardData[dialect];
         
@@ -1315,7 +1408,7 @@ function isWithinPast14Days(dateString) {
           
 
           const rateCell = document.createElement('td');
-          rateCell.textContent = entry.passRate.toFixed(1);
+          rateCell.textContent = entry.passRate.toFixed(2);
           row.appendChild(rateCell);
 
           const instituteCell = document.createElement('td');
@@ -1464,6 +1557,61 @@ function isWithinPast14Days(dateString) {
           };
 
           tbody.innerHTML = '';
+          // Add Human Performance row first
+          const humanRow = document.createElement('tr');
+          humanRow.className = 'table-success';
+
+          const humanRankCell = document.createElement('td');
+          humanRankCell.className = 'rank-cell';
+          humanRankCell.textContent = '';
+          humanRow.appendChild(humanRankCell);
+
+          const humanModelCell = document.createElement('td');
+          humanModelCell.className = 'model-cell';
+          const humanModelDiv = document.createElement('div');
+          humanModelDiv.textContent = 'Human Performance';
+          humanModelCell.appendChild(humanModelDiv);
+          const humanAffiliationDiv = document.createElement('div');
+          humanAffiliationDiv.className = 'affiliation';
+          humanAffiliationDiv.textContent = '';
+          humanModelCell.appendChild(humanAffiliationDiv);
+          humanRow.appendChild(humanModelCell);
+
+          const humanRateCell = document.createElement('td');
+          humanRateCell.innerHTML = '<b>80.00</b>';
+          humanRow.appendChild(humanRateCell);
+
+          // Institute cell (empty)
+          // const humanInstituteCell = document.createElement('td');
+          // humanRow.appendChild(humanInstituteCell);
+
+          // Institute cell with HKU + Google Cloud logos
+          const humanInstituteCell = document.createElement('td');
+          const logoHtml = ['human'].map(inst => 
+            `<img src="./img/institute_img/${inst}.png" 
+                  alt="${inst}" 
+                  style="max-height:20px;vertical-align:middle;margin:0 2px;">`
+          ).join('');
+          humanInstituteCell.innerHTML = logoHtml;
+          humanRow.appendChild(humanInstituteCell);
+
+          // Link cell (empty)
+          const humanLinkCell = document.createElement('td');
+          humanRow.appendChild(humanLinkCell);
+
+          // Date cell with specific date
+          const humanDateCell = document.createElement('td');
+          const humanDateSpan = document.createElement('span');
+          humanDateSpan.className = 'date-cell';
+          humanDateSpan.textContent = '2025-07-03';
+          humanDateCell.appendChild(humanDateSpan);
+          humanRow.appendChild(humanDateCell);
+
+          const humanTierCell = document.createElement('td');
+          humanTierCell.textContent = '🤣';
+          humanRow.appendChild(humanTierCell);
+
+          tbody.appendChild(humanRow);
           sorted.forEach((entry, idx) => {
             const rank = idx + 1;
             const tier = getTier(rank, sorted.length);
@@ -1491,7 +1639,7 @@ function isWithinPast14Days(dateString) {
 
             // Pass rate cell
             const passRateCell = row.insertCell();
-            passRateCell.textContent = entry.passRate.toFixed(1);
+            passRateCell.textContent = entry.passRate.toFixed(2);
 
             // Institute cell
             const instituteCell = row.insertCell();
@@ -1540,6 +1688,62 @@ function isWithinPast14Days(dateString) {
   };
 
   tbody.innerHTML = '';
+
+    // Add Human Performance row first
+  const humanRow = document.createElement('tr');
+  humanRow.className = 'table-success';
+
+  const humanRankCell = document.createElement('td');
+  humanRankCell.className = 'rank-cell';
+  humanRankCell.textContent = '';
+  humanRow.appendChild(humanRankCell);
+
+  const humanModelCell = document.createElement('td');
+  humanModelCell.className = 'model-cell';
+  const humanModelDiv = document.createElement('div');
+  humanModelDiv.textContent = 'Human Performance';
+  humanModelCell.appendChild(humanModelDiv);
+  const humanAffiliationDiv = document.createElement('div');
+  humanAffiliationDiv.className = 'affiliation';
+  humanAffiliationDiv.textContent = '';
+  humanModelCell.appendChild(humanAffiliationDiv);
+  humanRow.appendChild(humanModelCell);
+
+  const humanRateCell = document.createElement('td');
+  humanRateCell.innerHTML = '<b>78.87</b>';
+  humanRow.appendChild(humanRateCell);
+
+  // Institute cell (empty)
+  // const humanInstituteCell = document.createElement('td');
+  // humanRow.appendChild(humanInstituteCell);
+
+  // Institute cell with HKU + Google Cloud logos
+  const humanInstituteCell = document.createElement('td');
+  const logoHtml = ['human'].map(inst => 
+    `<img src="./img/institute_img/${inst}.png" 
+          alt="${inst}" 
+          style="max-height:20px;vertical-align:middle;margin:0 2px;">`
+  ).join('');
+  humanInstituteCell.innerHTML = logoHtml;
+  humanRow.appendChild(humanInstituteCell);
+
+  // Link cell (empty)
+  const humanLinkCell = document.createElement('td');
+  humanRow.appendChild(humanLinkCell);
+
+  // Date cell with specific date
+  const humanDateCell = document.createElement('td');
+  const humanDateSpan = document.createElement('span');
+  humanDateSpan.className = 'date-cell';
+  humanDateSpan.textContent = '2025-07-03';
+  humanDateCell.appendChild(humanDateSpan);
+  humanRow.appendChild(humanDateCell);
+
+  const humanTierCell = document.createElement('td');
+  humanTierCell.textContent = '🤣';
+  humanRow.appendChild(humanTierCell);
+
+  tbody.appendChild(humanRow);
   sorted.forEach((entry, idx) => {
     const rank = idx + 1;
     const tier = getTier(rank, sorted.length);
@@ -1567,7 +1771,7 @@ function isWithinPast14Days(dateString) {
 
     // Pass rate cell
     const passRateCell = row.insertCell();
-    passRateCell.textContent = entry.passRate.toFixed(1);
+    passRateCell.textContent = entry.passRate.toFixed(2);
 
     // Institute cell
     const instituteCell = row.insertCell();
