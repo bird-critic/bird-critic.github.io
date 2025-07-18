@@ -1014,6 +1014,7 @@
         const rawLeaderboardData = {
           'overall': [
           { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 43.33, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' },  
+          { rank: 1, model: 'grok-4', passRate: 33.68, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
           { rank: 1, model: 'deepseek-r1', passRate: 33.51, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 1, model: 'BIRD-Fixer-14B', passRate: 29.65,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
             { rank: 1, model: 'BIRD-Fixer-7B', passRate: 21.58,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
@@ -1049,6 +1050,7 @@
           ],
           'postgresql': [
                     { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 47.46, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' },  
+                    { rank: 1, model: 'grok-4', passRate: 39.49, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
             { rank: 1, model: 'BIRD-Fixer-14B', passRate: 30.07,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
             { rank: 1, model: 'BIRD-Fixer-7B', passRate: 22.1,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
             { rank: 1, model: 'o3-mini-2025-01-31', passRate: 41.30, institute: 'openai_reasoning', date: '2025-04-20', tier: '🏆 Leading' },
@@ -1084,6 +1086,7 @@
           ],
           'mysql': [
                     { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 42.86, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' },  
+                    { rank: 1, model: 'grok-4', passRate: 35.71, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
             { rank: 1, model: 'BIRD-Fixer-14B', passRate: 40.82,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
             { rank: 1, model: 'BIRD-Fixer-7B', passRate: 26.53,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
             { rank: 1, model: 'deepseek-r1', passRate: 38.78, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
@@ -1119,6 +1122,7 @@
           ],
           'sqlserver': [
             { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 44.9, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' }, 
+            { rank: 1, model: 'grok-4', passRate: 33.67, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
             { rank: 1, model: 'BIRD-Fixer-14B', passRate: 30.61,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
             { rank: 1, model: 'BIRD-Fixer-7B', passRate: 29.59,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
             { rank: 1, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 37.76, institute: 'google-reason', date: '2025-04-20', tier: '🏆 Leading' },
@@ -1154,6 +1158,7 @@
           ],
           'oracle': [
                               { rank: 1, model: 'ByteBrain-Agent + deepseek-r1', passRate: 30.62, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' }, 
+                              { rank: 1, model: 'grok-4', passRate: 15.31, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
           { rank: 1, model: 'BIRD-Fixer-14B', passRate: 16.33,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
             { rank: 1, model: 'BIRD-Fixer-7B', passRate: 7.14,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
             { rank: 1, model: 'deepseek-r1', passRate: 19.39, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
@@ -1468,6 +1473,7 @@ function isWithinPast14Days(dateString) {
 
           const pgLeaderboardData = [
             { model: "deepseek-r1", passRate: 39.62, institute: "deepseek-reason", date: "2025-06-09" },
+            { model: "grok-4", passRate: 39.06, institute: "grok", date: "2025-07-18" },
             { model: "o3-mini-2025-01-31", passRate: 38.87, institute: "openai_reasoning", date: "2025-06-09" },
             { model: "BIRD-Fixer-14B",affiliation: 'HKU × Google Cloud', passRate: 38.11, institute: ["hku", "google_cloud"], date: "2025-06-09" },
             { model: "gpt-4.1", passRate: 37.36, institute: "openai", date: "2025-06-09" },
@@ -1488,6 +1494,7 @@ function isWithinPast14Days(dateString) {
           ];
           const flashLeaderboardData = [
           { model: "Query-Schema-Linking + deepseek-r1-250120", passRate: 41.5,affiliation:"Soochow University", institute: "soochow_university", date: "2025-06-09" },
+          { model: "grok-4", passRate: 40.0, institute: "grok", date: "2025-07-18" },
           { model: "XiYan-SQL", passRate: 41.0, institute: "alibabacloud",affiliation:"Alibaba Cloud", date: "2025-05-22", link: "https://github.com/XGenerationLab/XiYan-SQL" },
           {  model: "o1-preview-2024-09-12", passRate: 38.5, institute: "openai_reasoning", date: "2025-01-30" },
           { model: "o3-mini-2025-01-31", passRate: 37.0, institute: "openai_reasoning", date: "2025-02-25" },
