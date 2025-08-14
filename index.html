@@ -854,7 +854,9 @@
         <li>💫 Standard: Top 70%</li>
         <li>⚪ Basic: Bottom 30%</li>
       </ul>
-    <span class="date-cell-example">Date background color</span> means the submission is within <strong>2 weeks</strong>
+      <p><img src="./img/medal_green.png" alt="Verified" style="max-height: 24px; vertical-align: middle; background-color: white; border-radius: 50%;"> means the submission is <strong>verified</strong> by the BIRD Team</p>
+      <p><span class="date-cell-example">Date background color</span> means the submission is within <strong>2 weeks</strong></p>
+
     </div>
   </div>
 
@@ -899,9 +901,13 @@
         <li>💫 Standard: Top 70%</li>
         <li>⚪ Basic: Bottom 30%</li>
       </ul>
+        <p>
+  <img src="./img/medal_green.png" alt="Verified" style="max-height: 24px; vertical-align: middle; background-color: white; border-radius: 50%;"> means the submission is <strong>verified</strong> by the BIRD Team
+</p>
       <p>
         <span class="date-cell-example">Date background color</span> means the submission is within <strong>2 weeks</strong>
       </p>
+
     </div>
   </div>
 
@@ -961,9 +967,13 @@
         <li>💫 Standard: Top 70%</li>
         <li>⚪ Basic: Bottom 30%</li>
       </ul>
+    <p>
+  <img src="./img/medal_green.png" alt="Verified" style="max-height: 24px; vertical-align: middle; background-color: white; border-radius: 50%;"> means the submission is <strong>verified</strong> by the BIRD Team
+</p>
           <p>
     <span class="date-cell-example">Date background color</span> means the submission is within <strong>2 weeks</strong>
     </p>
+
     </div>
 
   </div>
@@ -1014,11 +1024,11 @@
         const rawLeaderboardData = {
           'overall': [
           { rank: 1, model: 'gpt-oss-20b (high-reasoning)', passRate: 25.09, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' },  
-          { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 43.33, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' },  
+          { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 43.33, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior', verified: true  },  
           { rank: 1, model: 'grok-4', passRate: 33.68, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
           { rank: 1, model: 'deepseek-r1', passRate: 33.51, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
-            { rank: 1, model: 'BIRD-Fixer-14B', passRate: 29.65,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
-            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 21.58,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
+            { rank: 1, model: 'BIRD-Fixer-14B', passRate: 29.65,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
+            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 21.58,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
             { rank: 2, model: 'o3-mini-2025-01-31', passRate: 33.33, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'o1-preview-2024-09-12', passRate: 33.33, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 4, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: 30.00, institute: 'anthropic_reason', date: '2025-04-20', tier: '🌟 Elite' },
@@ -1051,10 +1061,10 @@
           ],
           'postgresql': [
                     { rank: 1, model: 'gpt-oss-20b (high-reasoning)', passRate: 33.7, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' },  
-                    { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 47.46, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' },  
+                    { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 47.46, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior', verified: true  },  
                     { rank: 1, model: 'grok-4', passRate: 39.49, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
-            { rank: 1, model: 'BIRD-Fixer-14B', passRate: 30.07,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
-            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 22.1,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
+            { rank: 1, model: 'BIRD-Fixer-14B', passRate: 30.07,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
+            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 22.1,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
             { rank: 1, model: 'o3-mini-2025-01-31', passRate: 41.30, institute: 'openai_reasoning', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 2, model: 'o1-preview-2024-09-12', passRate: 40.94, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'o1-mini', passRate: 36.23, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
@@ -1088,10 +1098,10 @@
           ],
           'mysql': [
               { rank: 1, model: 'gpt-oss-20b (high-reasoning)', passRate: 30.61, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' },  
-                    { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 42.86, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' },  
+                    { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 42.86, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' , verified: true },  
                     { rank: 1, model: 'grok-4', passRate: 35.71, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
-            { rank: 1, model: 'BIRD-Fixer-14B', passRate: 40.82,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
-            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 26.53,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
+            { rank: 1, model: 'BIRD-Fixer-14B', passRate: 40.82,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
+            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 26.53,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
             { rank: 1, model: 'deepseek-r1', passRate: 38.78, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 2, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 35.71, institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'gemini-2.5-pro-preview-03-25', passRate: 34.69, institute: 'google', date: '2025-04-20', tier: '🌟 Elite' },
@@ -1125,10 +1135,10 @@
           ],
           'sqlserver': [
             { rank: 1, model: 'gpt-oss-20b (high-reasoning)', passRate: 14.29, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' }, 
-            { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 44.9, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' }, 
+            { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 44.9, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' , verified: true }, 
             { rank: 1, model: 'grok-4', passRate: 33.67, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
-            { rank: 1, model: 'BIRD-Fixer-14B', passRate: 30.61,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
-            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 29.59,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
+            { rank: 1, model: 'BIRD-Fixer-14B', passRate: 30.61,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
+            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 29.59,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
             { rank: 1, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 37.76, institute: 'google-reason', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 2, model: 'o1-preview-2024-09-12', passRate: 33.67, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'o3-mini-2025-01-31', passRate: 32.65, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
@@ -1161,11 +1171,11 @@
             { rank: 30, model: 'grok-3-mini-beta', passRate: 9.18, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'oracle': [
-                      { rank: 1, model: 'gpt-oss-20b (high-reasoning)', passRate: 16.12, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' }, 
-                              { rank: 1, model: 'ByteBrain-Agent + deepseek-r1', passRate: 30.62, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' }, 
+                    { rank: 1, model: 'gpt-oss-20b (high-reasoning)', passRate: 16.12, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' }, 
+                              { rank: 1, model: 'ByteBrain-Agent + deepseek-r1', passRate: 30.62, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior', verified: true  }, 
                               { rank: 1, model: 'grok-4', passRate: 15.31, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
-          { rank: 1, model: 'BIRD-Fixer-14B', passRate: 16.33,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
-            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 7.14,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' },
+          { rank: 1, model: 'BIRD-Fixer-14B', passRate: 16.33,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior', verified: true  },
+            { rank: 1, model: 'BIRD-Fixer-7B', passRate: 7.14,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior', verified: true  },
             { rank: 1, model: 'deepseek-r1', passRate: 19.39, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 2, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 19.39, institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'grok-3-beta', passRate: 18.37, institute: 'grok', date: '2025-04-20', tier: '🌟 Elite' },
@@ -1271,7 +1281,8 @@
               institute: entry.institute,
               date: entry.date,
               link: entry.link,
-              tier: getTier(rank, sorted.length)
+              tier: getTier(rank, sorted.length),
+               verified: entry.verified
             };
           });
         }
@@ -1406,7 +1417,22 @@ function isWithinPast14Days(dateString) {
           const modelCell = document.createElement('td');
           modelCell.className = 'model-cell';
           const modelDiv = document.createElement('div');
-          modelDiv.textContent = entry.model;
+
+          // 添加verified图标
+          if (entry.verified) {
+            const verifiedImg = document.createElement('img');
+            verifiedImg.src = './img/medal_green.png';
+            verifiedImg.alt = 'Verified';
+            verifiedImg.style.maxHeight = '22px';
+            verifiedImg.style.verticalAlign = 'middle';
+            verifiedImg.style.marginRight = '5px';
+            verifiedImg.style.backgroundColor = 'white';
+            verifiedImg.style.borderRadius = '50%';
+            modelDiv.appendChild(verifiedImg);
+          }
+
+          const modelText = document.createTextNode(entry.model);
+          modelDiv.appendChild(modelText);
           modelCell.appendChild(modelDiv);
 
           if (entry.affiliation) {
@@ -1477,11 +1503,11 @@ function isWithinPast14Days(dateString) {
       }
 
           const pgLeaderboardData = [
-            { model: 'gpt-oss-20b (high-reasoning)', passRate: 28.02, institute: ['openai_reasoning'], date: '2025-08-12' }, 
+            { model: 'gpt-oss-20b (high-reasoning)', passRate: 28.02, institute: ['openai_reasoning'], date: '2025-08-12'}, 
             { model: "deepseek-r1", passRate: 39.62, institute: "deepseek-reason", date: "2025-06-09" },
             { model: "grok-4", passRate: 39.06, institute: "grok", date: "2025-07-18" },
             { model: "o3-mini-2025-01-31", passRate: 38.87, institute: "openai_reasoning", date: "2025-06-09" },
-            { model: "BIRD-Fixer-14B",affiliation: 'HKU × Google Cloud', passRate: 38.11, institute: ["hku", "google_cloud"], date: "2025-06-09" },
+            { model: "BIRD-Fixer-14B",affiliation: 'HKU × Google Cloud', passRate: 38.11, institute: ["hku", "google_cloud"], date: "2025-06-09" , verified: true },
             { model: "gpt-4.1", passRate: 37.36, institute: "openai", date: "2025-06-09" },
             { model: "o1-preview-2024-09-12", passRate: 35.85, institute: "openai_reasoning", date: "2025-06-09" },
             { model: "claude-3-7-sonnet-20250219(thinking)", passRate: 33.96, institute: "anthropic_reason", date: "2025-06-09" },
@@ -1499,10 +1525,10 @@ function isWithinPast14Days(dateString) {
             { model: "Meta-Llama-3.1-8B-Instruct", passRate: 16.98, institute: "meta", date: "2025-06-09" }
           ];
           const flashLeaderboardData = [
-                      { model: 'gpt-oss-20b (high-reasoning)', passRate: 31.5, institute: ['openai_reasoning'], date: '2025-08-12' }, 
-          { model: "Query-Schema-Linking + deepseek-r1-250120", passRate: 41.5,affiliation:"Soochow University", institute: "soochow_university", date: "2025-06-09" },
+            { model: 'gpt-oss-20b (high-reasoning)', passRate: 31.5, institute: ['openai_reasoning'], date: '2025-08-12' }, 
+          { model: "Query-Schema-Linking + deepseek-r1-250120", passRate: 41.5,affiliation:"Soochow University", institute: "soochow_university", date: "2025-06-09" , verified: true},
           { model: "grok-4", passRate: 40.0, institute: "grok", date: "2025-07-18" },
-          { model: "XiYan-SQL", passRate: 41.0, institute: "alibabacloud",affiliation:"Alibaba Cloud", date: "2025-05-22", link: "https://github.com/XGenerationLab/XiYan-SQL" },
+          { model: "XiYan-SQL", passRate: 41.0, institute: "alibabacloud",affiliation:"Alibaba Cloud", date: "2025-05-22", link: "https://github.com/XGenerationLab/XiYan-SQL"  , verified: true},
           {  model: "o1-preview-2024-09-12", passRate: 38.5, institute: "openai_reasoning", date: "2025-01-30" },
           { model: "o3-mini-2025-01-31", passRate: 37.0, institute: "openai_reasoning", date: "2025-02-25" },
           {  model: "deepseek-reasoner (r1)", passRate: 34.0, institute: "deepseek-reason", date: "2025-01-30" },
@@ -1642,7 +1668,22 @@ function isWithinPast14Days(dateString) {
             const modelCell = row.insertCell();
             modelCell.className = 'model-cell';
             const modelDiv = document.createElement('div');
-            modelDiv.textContent = entry.model;
+
+            // 添加verified图标
+            if (entry.verified) {
+              const verifiedImg = document.createElement('img');
+              verifiedImg.src = './img/medal_green.png';
+              verifiedImg.alt = 'Verified';
+              verifiedImg.style.maxHeight = '22px';
+              verifiedImg.style.verticalAlign = 'middle';
+              verifiedImg.style.marginRight = '5px';
+              verifiedImg.style.backgroundColor = 'white'; // 强制白色背景
+              verifiedImg.style.borderRadius = '50%'; // 可选：圆形背景
+              modelDiv.appendChild(verifiedImg);
+            }
+
+            const modelText = document.createTextNode(entry.model);
+            modelDiv.appendChild(modelText);
             modelCell.appendChild(modelDiv);
             
             if (entry.affiliation) {
@@ -1774,7 +1815,22 @@ function isWithinPast14Days(dateString) {
     const modelCell = row.insertCell();
     modelCell.className = 'model-cell';
     const modelDiv = document.createElement('div');
-    modelDiv.textContent = entry.model;
+
+        // 添加verified图标
+    if (entry.verified) {
+      const verifiedImg = document.createElement('img');
+      verifiedImg.src = './img/medal_green.png';
+      verifiedImg.alt = 'Verified';
+      verifiedImg.style.maxHeight = '22px';
+      verifiedImg.style.verticalAlign = 'middle';
+      verifiedImg.style.marginRight = '5px';
+      verifiedImg.style.backgroundColor = 'white';
+      verifiedImg.style.borderRadius = '50%';
+      modelDiv.appendChild(verifiedImg);
+    }
+
+    const modelText = document.createTextNode(entry.model);
+    modelDiv.appendChild(modelText);
     modelCell.appendChild(modelDiv);
     
     if (entry.affiliation) {
