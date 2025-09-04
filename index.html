@@ -1024,6 +1024,7 @@
         // Define the mock data for different dialects in the first leaderboard
         const rawLeaderboardData = {
           'overall': [
+          { model: 'GPT-5-High', passRate: 34.96, institute: ['openai'], date: '2025-09-04' }, 
           { model: 'GPT-5', passRate: 33.02, institute: ['openai'], date: '2025-08-15' }, 
           { rank: 1, model: 'gpt-oss-20b (high-reasoning)', passRate: 25.09, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' },  
           { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 43.33, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior', verified: true  },  
@@ -1062,6 +1063,7 @@
             { rank: 30, model: 'Mistral-7B-Instruct-v0.2', passRate: 6.49, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'postgresql': [
+          { model: 'GPT-5-High', passRate: 38.77, institute: ['openai'], date: '2025-09-04' },
           { model: 'GPT-5', passRate: 39.13, institute: ['openai'], date: '2025-08-15' }, 
                     { rank: 1, model: 'gpt-oss-20b (high-reasoning)', passRate: 33.7, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' },  
                     { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 47.46, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior', verified: true  },  
@@ -1100,6 +1102,7 @@
             { rank: 30, model: 'Mistral-7B-Instruct-v0.2', passRate: 6.88, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'mysql': [
+          { model: 'GPT-5-High', passRate: 39.8, institute: ['openai'], date: '2025-09-04' }, 
           { model: 'GPT-5', passRate: 28.57, institute: ['openai'], date: '2025-08-15' }, 
               { rank: 1, model: 'gpt-oss-20b (high-reasoning)', passRate: 30.61, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' },  
                     { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 42.86, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' , verified: true },  
@@ -1138,6 +1141,7 @@
             { rank: 30, model: 'Mistral-7B-Instruct-v0.2', passRate: 8.16, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'sqlserver': [
+          { model: 'GPT-5-High', passRate: 27.55, institute: ['openai'], date: '2025-09-04' }, 
           { model: 'GPT-5', passRate: 29.59, institute: ['openai'], date: '2025-08-15' }, 
             { rank: 1, model: 'gpt-oss-20b (high-reasoning)', passRate: 14.29, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' }, 
             { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 44.9, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' , verified: true }, 
@@ -1176,6 +1180,7 @@
             { rank: 30, model: 'grok-3-mini-beta', passRate: 9.18, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'oracle': [
+          { model: 'GPT-5-High', passRate: 26.80, institute: ['openai'], date: '2025-09-04' }, 
           { model: 'GPT-5', passRate: 23.71, institute: ['openai'], date: '2025-08-15' }, 
                     { rank: 1, model: 'gpt-oss-20b (high-reasoning)', passRate: 16.12, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' }, 
                               { rank: 1, model: 'ByteBrain-Agent + deepseek-r1', passRate: 30.62, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior', verified: true  }, 
@@ -1509,6 +1514,7 @@ function isWithinPast14Days(dateString) {
       }
 
           const pgLeaderboardData = [
+          { model: 'GPT-5-High', passRate: 37.36, institute: ['openai'], date: '2025-09-04' }, 
           { model: 'GPT-5', passRate: 35.85, institute: ['openai'], date: '2025-08-16' }, 
             { model: 'gpt-oss-20b (high-reasoning)', passRate: 28.02, institute: ['openai_reasoning'], date: '2025-08-12'}, 
             { model: "deepseek-r1", passRate: 39.62, institute: "deepseek-reason", date: "2025-06-09" },
@@ -1532,6 +1538,7 @@ function isWithinPast14Days(dateString) {
             { model: "Meta-Llama-3.1-8B-Instruct", passRate: 16.98, institute: "meta", date: "2025-06-09" }
           ];
           const flashLeaderboardData = [
+          { model: 'GPT-5-High', passRate: 40.00, institute: ['openai'], date: '2025-09-04' },
           { model: 'GPT-5', passRate: 41.0, institute: ['openai'], date: '2025-08-15' }, 
             { model: 'gpt-oss-20b (high-reasoning)', passRate: 31.5, institute: ['openai_reasoning'], date: '2025-08-12' }, 
           { model: "Query-Schema-Linking + deepseek-r1-250120", passRate: 41.5,affiliation:"Soochow University", institute: "soochow_university", date: "2025-06-09" , verified: true},
