@@ -1408,6 +1408,7 @@ function isWithinPast14Days(dateString) {
         tbody.innerHTML = '';
         // Add Human Performance row first with dialect-specific data
         const humanData = humanPerformanceData[dialect];
+
         const humanRow = document.createElement('tr');
         humanRow.className = 'table-success';
 
@@ -1457,7 +1458,11 @@ function isWithinPast14Days(dateString) {
         humanRow.appendChild(humanDateCell);
 
         const humanTierCell = document.createElement('td');
-        humanTierCell.textContent = '🤣';
+        if (dialect === 'oracle') {
+           humanTierCell.textContent = '🤣';
+        } else {
+           humanTierCell.textContent = '🤔';
+        } 
         humanRow.appendChild(humanTierCell);
 
         tbody.appendChild(humanRow);
