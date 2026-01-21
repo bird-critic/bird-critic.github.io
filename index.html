@@ -1048,6 +1048,7 @@
         // Define the mock data for different dialects in the first leaderboard
         const rawLeaderboardData = {
           'overall': [
+          { model: "DMS-DataAgent", passRate: 56.14, institute:['alibabacloud'],affiliation:'Alibaba Cloud DMS Team', date: "2026-01-22"},
           { model: "ByteBrain-Agent", passRate: 54.39, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-14"},
           { model: "AlphaData+deepseek-r1", passRate: 43.15, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
           { model: 'XiYan-SQL-CRITIC', passRate: 44.37, institute: ['alibabacloud'], date: '2025-11-20' ,link: "https://github.com/XGenerationLab/XiYan-SQL", verified: true}, 
@@ -1092,6 +1093,7 @@
             { rank: 30, model: 'Mistral-7B-Instruct-v0.2', passRate: 6.49, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'postgresql': [
+          { model: "DMS-DataAgent", passRate: 57.97, institute:['alibabacloud'],affiliation:'Alibaba Cloud DMS Team', date: "2026-01-22"},
           { model: "ByteBrain-Agent", passRate: 58.70, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-14"},
           { model: "AlphaData+deepseek-r1", passRate: 46.37, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
           { model: 'XiYan-SQL-CRITIC', passRate: 49.28, institute: ['alibabacloud'], date: '2025-11-20' ,link: "https://github.com/XGenerationLab/XiYan-SQL", verified: true}, 
@@ -1136,6 +1138,7 @@
             { rank: 30, model: 'Mistral-7B-Instruct-v0.2', passRate: 6.88, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'mysql': [
+          { model: "DMS-DataAgent", passRate: 62.24, institute:['alibabacloud'],affiliation:'Alibaba Cloud DMS Team', date: "2026-01-22"},
           { model: "ByteBrain-Agent", passRate: 64.29, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-14"},
           { model: "AlphaData+deepseek-r1", passRate: 42.86, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
           { model: 'XiYan-SQL-CRITIC', passRate: 45.92, institute: ['alibabacloud'], date: '2025-11-20' ,link: "https://github.com/XGenerationLab/XiYan-SQL", verified: true}, 
@@ -1180,6 +1183,7 @@
             { rank: 30, model: 'Mistral-7B-Instruct-v0.2', passRate: 8.16, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'sqlserver': [
+          { model: "DMS-DataAgent", passRate: 60.2, institute:['alibabacloud'],affiliation:'Alibaba Cloud DMS Team', date: "2026-01-22"},
           { model: "ByteBrain-Agent", passRate: 53.06, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-14"},
           { model: "AlphaData+deepseek-r1", passRate: 44.90, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
           { model: 'XiYan-SQL-CRITIC', passRate: 43.88, institute: ['alibabacloud'], date: '2025-11-20' ,link: "https://github.com/XGenerationLab/XiYan-SQL", verified: true}, 
@@ -1224,6 +1228,7 @@
             { rank: 30, model: 'grok-3-mini-beta', passRate: 9.18, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'oracle': [
+          { model: "DMS-DataAgent", passRate: 40.82, institute:['alibabacloud'],affiliation:'Alibaba Cloud DMS Team', date: "2026-01-22"},
           { model: "ByteBrain-Agent", passRate: 33.67, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-14"},
           { model: "AlphaData+deepseek-r1", passRate: 32.65, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
           { model: 'XiYan-SQL-CRITIC', passRate: 28.57, institute: ['alibabacloud'], date: '2025-11-20' ,link: "https://github.com/XGenerationLab/XiYan-SQL", verified: true}, 
@@ -1571,7 +1576,7 @@ function isWithinPast14Days(dateString) {
           { model: "ByteBrain-Agent", passRate: 50.57, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-19"},
           { model: "AlphaData+deepseek-r1", passRate: 43.96, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
           { model: "Sophon-Agent", passRate: 45.85, institute: "bytedance",affiliation:"ByteDance DataPlatform LLM", date: "2025-11-18"},
-          { model: "DeCoTE-sql", passRate: 42.83, institute: "hdu",affiliation:"Hangzhou Dianzi University", date: "2026-01-09"},
+          { model: "DeCoTE-sql", passRate: 53.40, institute: "hdu",affiliation:"Hangzhou Dianzi University", date: "2026-01-22"},
           { model: "XiYan-SQL-CRITIC", passRate: 44.53, institute: "alibabacloud",affiliation:"Alibaba Cloud", date: "2025-10-20", link: "https://github.com/XGenerationLab/XiYan-SQL"  , verified: true},
           { model: 'claude-sonnet-4-5-20250929', passRate: 33.96, institute: ['anthropic'], date: '2025-10-14' }, 
           { model: 'GPT-5-High', passRate: 37.36, institute: ['openai'], date: '2025-09-04' }, 
