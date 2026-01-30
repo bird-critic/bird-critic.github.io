@@ -490,6 +490,35 @@
         margin-bottom: 12px;
         font-size: 0.9rem;
         text-align: center;
+        cursor: pointer;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .leaderboard-legend-title:hover {
+        color: #28a745;
+      }
+
+      .legend-toggle-icon {
+        transition: transform 0.3s ease;
+        font-size: 0.8rem;
+      }
+
+      .legend-toggle-icon.collapsed {
+        transform: rotate(-90deg);
+      }
+
+      .legend-content {
+        max-height: 500px;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .legend-content.collapsed {
+        max-height: 0;
       }
 
       .legend-item {
@@ -641,7 +670,13 @@
                   <div class="card-body" style="background-color: #f1f6f9">
                     <ul style="padding-left: 0">
 
-                  
+                  <li style="list-style-type: none">
+                    <span style="background-color: #634687; color: white; padding: 2px 4px; border-radius: 5px;">
+                      <strong style="color: #ffe7ce">🔥 Jan. 26, 2026:</strong>
+                    </span>
+                    Thrilled to have our <strong><a href="https://arxiv.org/abs/2510.05318" target="_blank" style="color:#155E95; text-decoration: none;">BIRD-Interact</a></strong> paper accepted at <strong>ICLR 2026</strong>!
+                  </li>
+
                  <li style="list-style-type: none">
             <span style="background-color: #B03052; color: white; padding: 2px 4px; border-radius: 5px;">
               <strong style="color: #ffe7ce">Jan. 08, 2026:</strong>
@@ -797,33 +832,38 @@
 <div style="flex: 1;">
   <!-- Leaderboard Legend -->
   <div class="leaderboard-legend">
-    <div class="leaderboard-legend-title">📋 Leaderboard Guide</div>
-
-    <div class="legend-item">
-      <div class="legend-item-title">
-        <img src="./img/medal_green.png" alt="Verified" style="max-height: 20px; background-color: white; border-radius: 50%;"> Verified Submission
-      </div>
-      <div class="legend-item-content">
-        Submissions marked with the badge are <strong>verified</strong> by the BIRD Team.
-        To get verified, please submit your codebase for pipeline evaluation.
-      </div>
+    <div class="leaderboard-legend-title" onclick="toggleLegend()">
+      <span>📋 Leaderboard Guide</span>
+      <span class="legend-toggle-icon collapsed">▼</span>
     </div>
 
-    <div class="legend-item">
-      <div class="legend-item-title">
-        🏆 Tier Classification
+    <div class="legend-content collapsed">
+      <div class="legend-item">
+        <div class="legend-item-title">
+          <img src="./img/medal_green.png" alt="Verified" style="max-height: 20px; background-color: white; border-radius: 50%;"> Verified Submission
+        </div>
+        <div class="legend-item-content">
+          Submissions marked with the badge are <strong>verified</strong> by the BIRD Team.
+          To get verified, please submit your codebase for pipeline evaluation.
+        </div>
       </div>
-      <div class="legend-item-content">
-        Leading (Best) → Elite (Top 15%) → Superior (Top 30%) → Advanced (Top 45%) → Standard (Top 70%) → Basic (Bottom 30%)
-      </div>
-    </div>
 
-    <div class="legend-item">
-      <div class="legend-item-title">
-        ⚡️ Recent Activity
+      <div class="legend-item">
+        <div class="legend-item-title">
+          🏆 Tier Classification
+        </div>
+        <div class="legend-item-content">
+          Leading (Best) → Elite (Top 15%) → Superior (Top 30%) → Advanced (Top 45%) → Standard (Top 70%) → Basic (Bottom 30%)
+        </div>
       </div>
-      <div class="legend-item-content">
-        Submissions within the last 2 weeks are highlighted by date.
+
+      <div class="legend-item">
+        <div class="legend-item-title">
+          ⚡️ Recent Activity
+        </div>
+        <div class="legend-item-content">
+          Submissions within the last 2 weeks are highlighted by date.
+        </div>
       </div>
     </div>
   </div>
@@ -1505,12 +1545,37 @@
           });
         }
 function isWithinPast14Days(dateString) {
-  const currentDate = new Date(); 
+  const currentDate = new Date();
   const recordDate = new Date(dateString);
   const diffTime = currentDate - recordDate;
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   return diffDays <= 14 && diffDays >= 0;
 }
+
+// Toggle legend visibility
+function toggleLegend() {
+  const content = document.querySelector('.legend-content');
+  const icon = document.querySelector('.legend-toggle-icon');
+  content.classList.toggle('collapsed');
+  icon.classList.toggle('collapsed');
+}
+
+// Baseline model dates - these models should always be shown
+const baselineDates = [
+  '2025-04-20',
+  '2025-08-15',
+  '2025-09-04',
+  '2025-07-18',
+  '2025-06-09',
+  '2025-01-30',
+  '2025-02-27',
+  '2025-08-12'
+];
+
+function isBaselineModel(entry) {
+  return baselineDates.includes(entry.date);
+}
+
       document.addEventListener('DOMContentLoaded', function() {
         // Set up filter buttons for the first leaderboard
         const filterButtons = document.querySelectorAll('.dialect-filter-btn');
@@ -1610,9 +1675,9 @@ function isWithinPast14Days(dateString) {
 
         let data = leaderboardData[dialect];
 
-        // Filter for verified only if enabled
+        // Filter for verified only if enabled, but always show baseline models
         if (showVerifiedOnlyOpen) {
-          data = data.filter(entry => entry.verified === true);
+          data = data.filter(entry => entry.verified === true || isBaselineModel(entry));
           // Only update display rank, keep original tier
           data = data.map((entry, index) => ({
             ...entry,
@@ -1827,9 +1892,9 @@ function isWithinPast14Days(dateString) {
           {  model: "o1-preview-2024-09-12", passRate: 38.5, institute: "openai_reasoning", date: "2025-01-30" },
           { model: "o3-mini-2025-01-31", passRate: 37.0, institute: "openai_reasoning", date: "2025-02-25" },
           {  model: "deepseek-reasoner (r1)", passRate: 34.0, institute: "deepseek-reason", date: "2025-01-30" },
-          {  model: "claude-3-7-sonnet-2025-02-19(thinking)", passRate: 32.0, institute: "anthropic_reason", date: "2025-02-28"},
+          {  model: "claude-3-7-sonnet-2025-02-19(thinking)", passRate: 32.0, institute: "anthropic_reason", date: "2025-01-30"},
           { model: "claude-3-7-sonnet-2025-02-19", passRate: 29.0, institute: "anthropic", date: "2025-02-27"},
-          {model: "gpt-4o-2024-11-20", passRate: 29.0, institute: "openai", date: "2024-11-20"},
+          {model: "gpt-4o-2024-11-20", passRate: 29.0, institute: "openai", date: "2025-01-30"},
           { model: "o1-mini", passRate: 28.0, institute: "openai_reasoning", date: "2025-01-30"},
           { model: "deepseek-V3", passRate: 27.5, institute: "deepseek", date: "2025-01-30" },
           { model: "phi-4", passRate: 24.5, institute: "ms", date: "2025-01-30" },
@@ -1912,9 +1977,9 @@ function isWithinPast14Days(dateString) {
             };
           });
 
-          // Filter for verified only if enabled
+          // Filter for verified only if enabled, but always show baseline models
           if (showVerifiedOnlyFlash) {
-            sorted = sorted.filter(entry => entry.verified === true);
+            sorted = sorted.filter(entry => entry.verified === true || isBaselineModel(entry));
           }
 
           tbody.innerHTML = '';
@@ -2091,9 +2156,9 @@ function isWithinPast14Days(dateString) {
     };
   });
 
-  // Filter for verified only if enabled
+  // Filter for verified only if enabled, but always show baseline models
   if (showVerifiedOnlyPG) {
-    sorted = sorted.filter(entry => entry.verified === true);
+    sorted = sorted.filter(entry => entry.verified === true || isBaselineModel(entry));
   }
 
   tbody.innerHTML = '';
