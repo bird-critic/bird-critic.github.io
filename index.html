@@ -69,6 +69,9 @@
         font-weight: 300;
         font-size: 1.25rem;
         background: #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
       
       .badge {
@@ -342,6 +345,80 @@
         display: inline-block;
       }
 
+      /* Verified filter toggle switch styles */
+      .verified-filter-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .verified-filter-container label {
+        cursor: pointer;
+        font-size: 0.85rem;
+        color: #495057;
+        user-select: none;
+        margin: 0;
+        font-weight: 500;
+        white-space: nowrap;
+        transition: color 0.3s ease;
+      }
+
+      .verified-filter-container:hover label {
+        color: #28a745;
+      }
+
+      /* Hide default checkbox */
+      .verified-filter-container input[type="checkbox"] {
+        display: none;
+      }
+
+      /* Toggle switch */
+      .toggle-switch {
+        position: relative;
+        width: 42px;
+        height: 22px;
+        background-color: #ccc;
+        border-radius: 22px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+      }
+
+      .toggle-switch:hover {
+        background-color: #bbb;
+      }
+
+      /* Toggle circle */
+      .toggle-switch::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 18px;
+        height: 18px;
+        background-color: white;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      }
+
+      /* Checked state */
+      .verified-filter-container input[type="checkbox"]:checked + .toggle-switch {
+        background-color: #28a745;
+      }
+
+      .verified-filter-container input[type="checkbox"]:checked + .toggle-switch::after {
+        transform: translateX(20px);
+      }
+
+      /* Label color when checked */
+      .verified-filter-container.checked label {
+        color: #28a745;
+        font-weight: 600;
+      }
+
       #flash-table .model-cell {
         width: auto;     
         max-width: 30%;  
@@ -393,7 +470,58 @@
 
       #ex-table, #flash-table, #pg-table {
         width: 100%;
-        table-layout: fixed; 
+        table-layout: fixed;
+      }
+
+      /* Leaderboard legend styles */
+      .leaderboard-legend {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-left: 4px solid #28a745;
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin-bottom: 20px;
+        font-size: 0.85rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      }
+
+      .leaderboard-legend-title {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 12px;
+        font-size: 0.9rem;
+        text-align: center;
+      }
+
+      .legend-item {
+        margin: 12px 0;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #dee2e6;
+        color: #555;
+      }
+
+      .legend-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .legend-item-title {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 4px;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .legend-item-content {
+        color: #555;
+        line-height: 1.5;
+        margin-left: 28px;
+      }
+
+      .legend-item img {
+        vertical-align: middle;
       }
     </style>
   </head>
@@ -667,38 +795,79 @@
         
         <!-- Right column with one leaderboard -->
 <div style="flex: 1;">
+  <!-- Leaderboard Legend -->
+  <div class="leaderboard-legend">
+    <div class="leaderboard-legend-title">📋 Leaderboard Guide</div>
+
+    <div class="legend-item">
+      <div class="legend-item-title">
+        <img src="./img/medal_green.png" alt="Verified" style="max-height: 20px; background-color: white; border-radius: 50%;"> Verified Submission
+      </div>
+      <div class="legend-item-content">
+        Submissions marked with the badge are <strong>verified</strong> by the BIRD Team.
+        To get verified, please submit your codebase for pipeline evaluation.
+      </div>
+    </div>
+
+    <div class="legend-item">
+      <div class="legend-item-title">
+        🏆 Tier Classification
+      </div>
+      <div class="legend-item-content">
+        Leading (Best) → Elite (Top 15%) → Superior (Top 30%) → Advanced (Top 45%) → Standard (Top 70%) → Basic (Bottom 30%)
+      </div>
+    </div>
+
+    <div class="legend-item">
+      <div class="legend-item-title">
+        ⚡️ Recent Activity
+      </div>
+      <div class="legend-item-content">
+        Submissions within the last 2 weeks are highlighted by date.
+      </div>
+    </div>
+  </div>
+
   <!-- Only keeping the first Leaderboard: BIRD-CRITIC-1.0-Open with 10 entries -->
   <div class="card card-outline-secondary mb-4">
-    <div class="card-header">Leaderboard - BIRD-CRITIC-1.0-Open (570)</div>
+    <div class="card-header">
+      <span>Leaderboard - BIRD-CRITIC-1.0-Open (570)</span>
+      <!-- Verified Filter Toggle -->
+      <div class="verified-filter-container checked">
+        <label for="verified-filter-open">Verified</label>
+        <input type="checkbox" id="verified-filter-open" checked />
+        <span class="toggle-switch" onclick="document.getElementById('verified-filter-open').click()"></span>
+      </div>
+    </div>
     <!-- SQL Dialect Filter Tags - INTERACTIVE BUTTONS -->
     <div style="text-align: center; margin: 10px 0;">
-      <button class="btn btn-sm dialect-filter-btn" 
-              data-dialect="overall" 
-              data-color="#574964" 
+      <button class="btn btn-sm dialect-filter-btn"
+              data-dialect="overall"
+              data-color="#574964"
               style="background-color: #574964; color: white; border-radius: 20px; margin: 5px; padding: 5px 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease; border: none;">
         🌐 Overall
       </button>
-      <button class="btn btn-sm dialect-filter-btn" 
-              data-dialect="postgresql" 
-              data-color="#3F83B4" 
+      <button class="btn btn-sm dialect-filter-btn"
+              data-dialect="postgresql"
+              data-color="#3F83B4"
               style="background-color: #e0e0e0; color: #666; border-radius: 20px; margin: 5px; padding: 5px 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s ease; border: none;">
         PostgreSQL
       </button>
-      <button class="btn btn-sm dialect-filter-btn" 
-              data-dialect="mysql" 
-              data-color="#E97E03" 
+      <button class="btn btn-sm dialect-filter-btn"
+              data-dialect="mysql"
+              data-color="#E97E03"
               style="background-color: #e0e0e0; color: #666; border-radius: 20px; margin: 5px; padding: 5px 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s ease; border: none;">
         MySQL
       </button>
-      <button class="btn btn-sm dialect-filter-btn" 
-              data-dialect="sqlserver" 
-              data-color="#BA2639" 
+      <button class="btn btn-sm dialect-filter-btn"
+              data-dialect="sqlserver"
+              data-color="#BA2639"
               style="background-color: #e0e0e0; color: #666; border-radius: 20px; margin: 5px; padding: 5px 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s ease; border: none;">
         SQL Server
       </button>
-      <button class="btn btn-sm dialect-filter-btn" 
-              data-dialect="oracle" 
-              data-color="#C74634" 
+      <button class="btn btn-sm dialect-filter-btn"
+              data-dialect="oracle"
+              data-color="#C74634"
               style="background-color: #e0e0e0; color: #666; border-radius: 20px; margin: 5px; padding: 5px 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s ease; border: none;">
         Oracle
       </button>
@@ -869,24 +1038,19 @@
             </tr>
         </tbody>
       </table>
-      
-      <p><strong>Tier Classification (By Ranking):</strong></p>
-      <ul>
-        <li>🏆 Leading: The Best!</li>
-        <li>🌟 Elite: Top 15%</li>
-        <li>💎 Superior: Top 30%</li>
-        <li>🔸 Advanced: Top 45%</li>
-        <li>💫 Standard: Top 70%</li>
-        <li>⚪ Basic: Bottom 30%</li>
-      </ul>
-      <p><img src="./img/medal_green.png" alt="Verified" style="max-height: 24px; vertical-align: middle; background-color: white; border-radius: 50%;"> means the submission is <strong>verified</strong> by the BIRD Team. For verification, please submit your <strong>codebase</strong> and we will evaluate the pipeline.</p>
-      <p><span class="date-cell-example">Date background color</span> means the submission is within <strong>2 weeks</strong></p>
-
     </div>
   </div>
 
   <div class="card card-outline-secondary mb-4">
-    <div class="card-header">Leaderboard - BIRD-CRITIC-PG (530)</div>
+    <div class="card-header">
+      <span>Leaderboard - BIRD-CRITIC-PG (530)</span>
+      <!-- Verified Filter Toggle -->
+      <div class="verified-filter-container checked">
+        <label for="verified-filter-pg">Verified</label>
+        <input type="checkbox" id="verified-filter-pg" checked />
+        <span class="toggle-switch" onclick="document.getElementById('verified-filter-pg').click()"></span>
+      </div>
+    </div>
     <div class="table-wrapper">
       <table id="pg-table" class="table">
         <thead class="thead-light">
@@ -916,28 +1080,19 @@
           </tr>
         </tbody>
       </table>
-        
-      <p><strong>Tier Classification (By Ranking):</strong></p>
-      <ul>
-        <li>🏆 Leading: The Best!</li>
-        <li>🌟 Elite: Top 15%</li>
-        <li>💎 Superior: Top 30%</li>
-        <li>🔸 Advanced: Top 45%</li>
-        <li>💫 Standard: Top 70%</li>
-        <li>⚪ Basic: Bottom 30%</li>
-      </ul>
-        <p>
-  <img src="./img/medal_green.png" alt="Verified" style="max-height: 24px; vertical-align: middle; background-color: white; border-radius: 50%;"> means the submission is <strong>verified</strong> by the BIRD Team. For verification, please submit your <strong>codebase</strong> and we will evaluate the pipeline.
-</p>
-      <p>
-        <span class="date-cell-example">Date background color</span> means the submission is within <strong>2 weeks</strong>
-      </p>
-
     </div>
   </div>
 
   <div class="card card-outline-secondary mb-4">
-    <div class="card-header">Leaderboard - BIRD-CRITIC-Flash</div>
+    <div class="card-header">
+      <span>Leaderboard - BIRD-CRITIC-Flash (200)</span>
+      <!-- Verified Filter Toggle -->
+      <div class="verified-filter-container checked">
+        <label for="verified-filter-flash">Verified</label>
+        <input type="checkbox" id="verified-filter-flash" checked />
+        <span class="toggle-switch" onclick="document.getElementById('verified-filter-flash').click()"></span>
+      </div>
+    </div>
     <div class="table-wrapper">
       <table id="flash-table" class="table">
         <thead class="thead-light">
@@ -979,28 +1134,10 @@
             <td><span class="date-cell">2025-01-30</span></td>
             <td>🏆 Leading</td>
         </tr>
-        
+
         </tbody>
       </table>
-        
-      <p><strong>Tier Classification (By Ranking):</strong></p>
-      <ul>
-        <li>🏆 Leading: The Best!</li>
-        <li>🌟 Elite: Top 15%</li>
-        <li>💎 Superior: Top 30%</li>
-        <li>🔸 Advanced: Top 45%</li>
-        <li>💫 Standard: Top 70%</li>
-        <li>⚪ Basic: Bottom 30%</li>
-      </ul>
-    <p>
-  <img src="./img/medal_green.png" alt="Verified" style="max-height: 24px; vertical-align: middle; background-color: white; border-radius: 50%;"> means the submission is <strong>verified</strong> by the BIRD Team. For verification, please submit your <strong>codebase</strong> and we will evaluate the pipeline.
-</p>
-          <p>
-    <span class="date-cell-example">Date background color</span> means the submission is within <strong>2 weeks</strong>
-    </p>
-
     </div>
-
   </div>
   
 
@@ -1050,6 +1187,7 @@
           'overall': [
           { model: "DMS-DataAgent", passRate: 56.14, institute:['alibabacloud'],affiliation:'Alibaba Cloud DMS Team', date: "2026-01-22"},
           { model: "ByteBrain-Agent", passRate: 54.39, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-14"},
+          { model: "AlphaData+GLM-4.7", passRate: 56.49, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-30"},
           { model: "AlphaData+deepseek-r1", passRate: 43.15, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
           { model: 'XiYan-SQL-CRITIC', passRate: 44.37, institute: ['alibabacloud'], date: '2025-11-20' ,link: "https://github.com/XGenerationLab/XiYan-SQL", verified: true}, 
           { model: 'claude-sonnet-4-5-20250929', passRate: 32.11, institute: ['anthropic'], date: '2025-10-14' }, 
@@ -1093,6 +1231,7 @@
             { rank: 30, model: 'Mistral-7B-Instruct-v0.2', passRate: 6.49, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'postgresql': [
+          { model: "AlphaData+GLM-4.7", passRate: 58.33, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-30"},
           { model: "DMS-DataAgent", passRate: 57.97, institute:['alibabacloud'],affiliation:'Alibaba Cloud DMS Team', date: "2026-01-22"},
           { model: "ByteBrain-Agent", passRate: 58.70, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-14"},
           { model: "AlphaData+deepseek-r1", passRate: 46.37, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
@@ -1138,6 +1277,7 @@
             { rank: 30, model: 'Mistral-7B-Instruct-v0.2', passRate: 6.88, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'mysql': [
+          { model: "AlphaData+GLM-4.7", passRate: 62.24, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-30"},
           { model: "DMS-DataAgent", passRate: 62.24, institute:['alibabacloud'],affiliation:'Alibaba Cloud DMS Team', date: "2026-01-22"},
           { model: "ByteBrain-Agent", passRate: 64.29, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-14"},
           { model: "AlphaData+deepseek-r1", passRate: 42.86, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
@@ -1183,6 +1323,7 @@
             { rank: 30, model: 'Mistral-7B-Instruct-v0.2', passRate: 8.16, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'sqlserver': [
+          { model: "AlphaData+GLM-4.7", passRate: 60.2, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-30"},
           { model: "DMS-DataAgent", passRate: 60.2, institute:['alibabacloud'],affiliation:'Alibaba Cloud DMS Team', date: "2026-01-22"},
           { model: "ByteBrain-Agent", passRate: 53.06, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-14"},
           { model: "AlphaData+deepseek-r1", passRate: 44.90, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
@@ -1228,6 +1369,7 @@
             { rank: 30, model: 'grok-3-mini-beta', passRate: 9.18, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'oracle': [
+          { model: "AlphaData+GLM-4.7", passRate: 41.83, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-30"},
           { model: "DMS-DataAgent", passRate: 40.82, institute:['alibabacloud'],affiliation:'Alibaba Cloud DMS Team', date: "2026-01-22"},
           { model: "ByteBrain-Agent", passRate: 33.67, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-14"},
           { model: "AlphaData+deepseek-r1", passRate: 32.65, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
@@ -1334,10 +1476,21 @@
         for (const dialect in rawLeaderboardData) {
           // Sort by pass rate (descending)
           const sorted = [...rawLeaderboardData[dialect]].sort((a, b) => b.passRate - a.passRate);
-          
+
+          // Find the highest pass rate
+          const highestPassRate = sorted.length > 0 ? sorted[0].passRate : 0;
+
           // Add rank and tier
           leaderboardData[dialect] = sorted.map((entry, index) => {
             const rank = index + 1;
+            // If pass rate equals highest, give Leading tier
+            let tier;
+            if (entry.passRate === highestPassRate) {
+              tier = "🏆 Leading";
+            } else {
+              tier = getTier(rank, sorted.length);
+            }
+
             return {
               rank: rank,
               affiliation: entry.affiliation,
@@ -1346,7 +1499,7 @@
               institute: entry.institute,
               date: entry.date,
               link: entry.link,
-              tier: getTier(rank, sorted.length),
+              tier: tier,
                verified: entry.verified
             };
           });
@@ -1361,26 +1514,69 @@ function isWithinPast14Days(dateString) {
       document.addEventListener('DOMContentLoaded', function() {
         // Set up filter buttons for the first leaderboard
         const filterButtons = document.querySelectorAll('.dialect-filter-btn');
-        
+
         // Initialize with Overall selected by default
         let activeFilter = 'overall';
+        let showVerifiedOnlyOpen = true;
+        let showVerifiedOnlyPG = true;
+        let showVerifiedOnlyFlash = true;
+
         updateButtonStyles();
-        
+
         // Call updateLeaderboardTable once at startup to ensure proper initialization
         updateLeaderboardTable(activeFilter);
-        
+
         // Add click event listeners to each filter button
         filterButtons.forEach(button => {
           button.addEventListener('click', function() {
             // Update active filter
             activeFilter = this.getAttribute('data-dialect');
-            
+
             // Update button styles
             updateButtonStyles();
-            
+
             // Update the table with filtered data
             updateLeaderboardTable(activeFilter);
           });
+        });
+
+        // Verified filter for Open leaderboard
+        const verifiedCheckboxOpen = document.getElementById('verified-filter-open');
+        const verifiedContainerOpen = verifiedCheckboxOpen.closest('.verified-filter-container');
+        verifiedCheckboxOpen.addEventListener('change', function() {
+          showVerifiedOnlyOpen = this.checked;
+          if (this.checked) {
+            verifiedContainerOpen.classList.add('checked');
+          } else {
+            verifiedContainerOpen.classList.remove('checked');
+          }
+          updateLeaderboardTable(activeFilter);
+        });
+
+        // Verified filter for PG leaderboard
+        const verifiedCheckboxPG = document.getElementById('verified-filter-pg');
+        const verifiedContainerPG = verifiedCheckboxPG.closest('.verified-filter-container');
+        verifiedCheckboxPG.addEventListener('change', function() {
+          showVerifiedOnlyPG = this.checked;
+          if (this.checked) {
+            verifiedContainerPG.classList.add('checked');
+          } else {
+            verifiedContainerPG.classList.remove('checked');
+          }
+          populatePGTable();
+        });
+
+        // Verified filter for Flash leaderboard
+        const verifiedCheckboxFlash = document.getElementById('verified-filter-flash');
+        const verifiedContainerFlash = verifiedCheckboxFlash.closest('.verified-filter-container');
+        verifiedCheckboxFlash.addEventListener('change', function() {
+          showVerifiedOnlyFlash = this.checked;
+          if (this.checked) {
+            verifiedContainerFlash.classList.add('checked');
+          } else {
+            verifiedContainerFlash.classList.remove('checked');
+          }
+          populateFlashTable();
         });
         
         // Function to update button styles based on active filter
@@ -1408,11 +1604,29 @@ function isWithinPast14Days(dateString) {
 
         const tbody = document.querySelector('#ex-table tbody');
         if (!tbody) return;
-        
+
 
         tbody.innerHTML = '';
+
+        let data = leaderboardData[dialect];
+
+        // Filter for verified only if enabled
+        if (showVerifiedOnlyOpen) {
+          data = data.filter(entry => entry.verified === true);
+          // Only update display rank, keep original tier
+          data = data.map((entry, index) => ({
+            ...entry,
+            displayRank: index + 1  // rank in filtered list
+            // Keep original entry.rank and entry.tier from full leaderboard
+          }));
+        }
+
+        // Get first place pass rate (after filtering if applicable)
+        const firstPlacePassRate = data.length > 0 ? data[0].passRate : 0;
+
         // Add Human Performance row first with dialect-specific data
         const humanData = humanPerformanceData[dialect];
+        const gap = humanData.passRate - firstPlacePassRate;
 
         const humanRow = document.createElement('tr');
         humanRow.className = 'table-success';
@@ -1437,15 +1651,11 @@ function isWithinPast14Days(dateString) {
         humanRateCell.innerHTML = `<b>${humanData.passRate.toFixed(2)}</b>`;
         humanRow.appendChild(humanRateCell);
 
-        // Institute cell (empty)
-        // const humanInstituteCell = document.createElement('td');
-        // humanRow.appendChild(humanInstituteCell);
-
         // Institute cell with HKU + Google Cloud logos
         const humanInstituteCell = document.createElement('td');
-        const logoHtml = ['human'].map(inst => 
-          `<img src="./img/institute_img/${inst}.png" 
-                alt="${inst}" 
+        const logoHtml = ['human'].map(inst =>
+          `<img src="./img/institute_img/${inst}.png"
+                alt="${inst}"
                 style="max-height:20px;vertical-align:middle;margin:0 2px;">`
         ).join('');
         humanInstituteCell.innerHTML = logoHtml;
@@ -1462,26 +1672,24 @@ function isWithinPast14Days(dateString) {
         humanDateCell.appendChild(humanDateSpan);
         humanRow.appendChild(humanDateCell);
 
+        // Dynamic tier based on gap
         const humanTierCell = document.createElement('td');
-        if (dialect === 'oracle') {
+        if (gap > 25) {
            humanTierCell.textContent = '🤣';
         } else {
            humanTierCell.textContent = '🤔';
-        } 
+        }
         humanRow.appendChild(humanTierCell);
 
         tbody.appendChild(humanRow);
 
-        const data = leaderboardData[dialect];
-        
-
         data.forEach(entry => {
           const row = document.createElement('tr');
-          
+
 
           const rankCell = document.createElement('td');
           rankCell.className = 'rank-cell';
-          rankCell.textContent = entry.rank;
+          rankCell.textContent = entry.displayRank || entry.rank;
           row.appendChild(rankCell);
 
           const modelCell = document.createElement('td');
@@ -1489,7 +1697,7 @@ function isWithinPast14Days(dateString) {
           const modelDiv = document.createElement('div');
 
           // 添加verified图标
-          if (entry.verified) {
+          if (entry.verified === true) {
             const verifiedImg = document.createElement('img');
             verifiedImg.src = './img/medal_green.png';
             verifiedImg.alt = 'Verified';
@@ -1573,6 +1781,7 @@ function isWithinPast14Days(dateString) {
       }
 
           const pgLeaderboardData = [
+          { model: "AlphaData+GLM-4.7", passRate: 56.79, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-30"},
           { model: "ByteBrain-Agent", passRate: 50.57, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-19"},
           { model: "AlphaData+deepseek-r1", passRate: 43.96, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
           { model: "Sophon-Agent", passRate: 45.85, institute: "bytedance",affiliation:"ByteDance DataPlatform LLM", date: "2025-11-18"},
@@ -1603,6 +1812,7 @@ function isWithinPast14Days(dateString) {
             { model: "Meta-Llama-3.1-8B-Instruct", passRate: 16.98, institute: "meta", date: "2025-06-09" }
           ];
           const flashLeaderboardData = [
+          { model: "AlphaData+GLM-4.7", passRate: 61, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-30"},
           { model: "AlphaData+deepseek-r1", passRate: 48.00, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
           { model: "Sophon-Agent", passRate: 52.0, institute: "bytedance",affiliation:"ByteDance DataPlatform LLM", date: "2025-11-18"},
           
@@ -1667,10 +1877,6 @@ function isWithinPast14Days(dateString) {
           const tbody = document.querySelector('#flash-table tbody');
           if (!tbody) return;
 
-          // 按得分降序排序
-          const sorted = [...flashLeaderboardData]
-                          .sort((a, b) => b.passRate - a.passRate);
-
           // 计算等级的辅助函数
           const getTier = (rank, total) => {
             if (rank === 1) return "🏆 Leading";
@@ -1682,7 +1888,42 @@ function isWithinPast14Days(dateString) {
             return "⚪ Basic";
           };
 
+          // First sort all data and calculate tiers based on full list
+          let sorted = [...flashLeaderboardData].sort((a, b) => b.passRate - a.passRate);
+
+          // Find the highest pass rate
+          const highestPassRate = sorted.length > 0 ? sorted[0].passRate : 0;
+
+          // Add tiers based on full list
+          sorted = sorted.map((entry, idx) => {
+            const rank = idx + 1;
+            // If pass rate equals highest, give Leading tier
+            let tier;
+            if (entry.passRate === highestPassRate) {
+              tier = "🏆 Leading";
+            } else {
+              tier = getTier(rank, sorted.length);
+            }
+
+            return {
+              ...entry,
+              originalRank: rank,
+              tier: tier
+            };
+          });
+
+          // Filter for verified only if enabled
+          if (showVerifiedOnlyFlash) {
+            sorted = sorted.filter(entry => entry.verified === true);
+          }
+
           tbody.innerHTML = '';
+
+          // Get first place pass rate (after filtering if applicable)
+          const firstPlacePassRate = sorted.length > 0 ? sorted[0].passRate : 0;
+          const humanPassRate = 80.00;
+          const gap = humanPassRate - firstPlacePassRate;
+
           // Add Human Performance row first
           const humanRow = document.createElement('tr');
           humanRow.className = 'table-success';
@@ -1707,15 +1948,11 @@ function isWithinPast14Days(dateString) {
           humanRateCell.innerHTML = '<b>80.00</b>';
           humanRow.appendChild(humanRateCell);
 
-          // Institute cell (empty)
-          // const humanInstituteCell = document.createElement('td');
-          // humanRow.appendChild(humanInstituteCell);
-
           // Institute cell with HKU + Google Cloud logos
           const humanInstituteCell = document.createElement('td');
-          const logoHtml = ['human'].map(inst => 
-            `<img src="./img/institute_img/${inst}.png" 
-                  alt="${inst}" 
+          const logoHtml = ['human'].map(inst =>
+            `<img src="./img/institute_img/${inst}.png"
+                  alt="${inst}"
                   style="max-height:20px;vertical-align:middle;margin:0 2px;">`
           ).join('');
           humanInstituteCell.innerHTML = logoHtml;
@@ -1733,14 +1970,19 @@ function isWithinPast14Days(dateString) {
           humanDateCell.appendChild(humanDateSpan);
           humanRow.appendChild(humanDateCell);
 
+          // Dynamic tier based on gap
           const humanTierCell = document.createElement('td');
-          humanTierCell.textContent = '🤔';
+          if (gap > 25) {
+            humanTierCell.textContent = '🤣';
+          } else {
+            humanTierCell.textContent = '🤔';
+          }
           humanRow.appendChild(humanTierCell);
 
           tbody.appendChild(humanRow);
           sorted.forEach((entry, idx) => {
             const rank = idx + 1;
-            const tier = getTier(rank, sorted.length);
+            const tier = entry.tier;
 
             const row = document.createElement('tr');
 
@@ -1755,15 +1997,15 @@ function isWithinPast14Days(dateString) {
             const modelDiv = document.createElement('div');
 
             // 添加verified图标
-            if (entry.verified) {
+            if (entry.verified === true) {
               const verifiedImg = document.createElement('img');
               verifiedImg.src = './img/medal_green.png';
               verifiedImg.alt = 'Verified';
               verifiedImg.style.maxHeight = '22px';
               verifiedImg.style.verticalAlign = 'middle';
               verifiedImg.style.marginRight = '5px';
-              verifiedImg.style.backgroundColor = 'white'; // 强制白色背景
-              verifiedImg.style.borderRadius = '50%'; // 可选：圆形背景
+              verifiedImg.style.backgroundColor = 'white';
+              verifiedImg.style.borderRadius = '50%';
               modelDiv.appendChild(verifiedImg);
             }
 
@@ -1815,8 +2057,8 @@ function isWithinPast14Days(dateString) {
   const tbody = document.querySelector('#pg-table tbody');
   if (!tbody) return;
 
-  const sorted = [...pgLeaderboardData]
-                  .sort((a, b) => b.passRate - a.passRate);
+  // First sort all data and calculate tiers based on full list
+  let sorted = [...pgLeaderboardData].sort((a, b) => b.passRate - a.passRate);
 
   const getTier = (rank, total) => {
     if (rank === 1) return "🏆 Leading";
@@ -1828,9 +2070,40 @@ function isWithinPast14Days(dateString) {
     return "⚪ Basic";
   };
 
+  // Find the highest pass rate
+  const highestPassRate = sorted.length > 0 ? sorted[0].passRate : 0;
+
+  // Add tiers based on full list
+  sorted = sorted.map((entry, idx) => {
+    const rank = idx + 1;
+    // If pass rate equals highest, give Leading tier
+    let tier;
+    if (entry.passRate === highestPassRate) {
+      tier = "🏆 Leading";
+    } else {
+      tier = getTier(rank, sorted.length);
+    }
+
+    return {
+      ...entry,
+      originalRank: rank,
+      tier: tier
+    };
+  });
+
+  // Filter for verified only if enabled
+  if (showVerifiedOnlyPG) {
+    sorted = sorted.filter(entry => entry.verified === true);
+  }
+
   tbody.innerHTML = '';
 
-    // Add Human Performance row first
+  // Get first place pass rate (after filtering if applicable)
+  const firstPlacePassRate = sorted.length > 0 ? sorted[0].passRate : 0;
+  const humanPassRate = 78.87;
+  const gap = humanPassRate - firstPlacePassRate;
+
+  // Add Human Performance row first
   const humanRow = document.createElement('tr');
   humanRow.className = 'table-success';
 
@@ -1854,15 +2127,11 @@ function isWithinPast14Days(dateString) {
   humanRateCell.innerHTML = '<b>78.87</b>';
   humanRow.appendChild(humanRateCell);
 
-  // Institute cell (empty)
-  // const humanInstituteCell = document.createElement('td');
-  // humanRow.appendChild(humanInstituteCell);
-
   // Institute cell with HKU + Google Cloud logos
   const humanInstituteCell = document.createElement('td');
-  const logoHtml = ['human'].map(inst => 
-    `<img src="./img/institute_img/${inst}.png" 
-          alt="${inst}" 
+  const logoHtml = ['human'].map(inst =>
+    `<img src="./img/institute_img/${inst}.png"
+          alt="${inst}"
           style="max-height:20px;vertical-align:middle;margin:0 2px;">`
   ).join('');
   humanInstituteCell.innerHTML = logoHtml;
@@ -1880,14 +2149,20 @@ function isWithinPast14Days(dateString) {
   humanDateCell.appendChild(humanDateSpan);
   humanRow.appendChild(humanDateCell);
 
+  // Dynamic tier based on gap
   const humanTierCell = document.createElement('td');
-  humanTierCell.textContent = '🤣';
+  if (gap > 25) {
+    humanTierCell.textContent = '🤣';
+  } else {
+    humanTierCell.textContent = '🤔';
+  }
   humanRow.appendChild(humanTierCell);
 
   tbody.appendChild(humanRow);
+
   sorted.forEach((entry, idx) => {
     const rank = idx + 1;
-    const tier = getTier(rank, sorted.length);
+    const tier = entry.tier;
 
     const row = document.createElement('tr');
 
@@ -1902,7 +2177,7 @@ function isWithinPast14Days(dateString) {
     const modelDiv = document.createElement('div');
 
         // 添加verified图标
-    if (entry.verified) {
+    if (entry.verified === true) {
       const verifiedImg = document.createElement('img');
       verifiedImg.src = './img/medal_green.png';
       verifiedImg.alt = 'Verified';
