@@ -1678,12 +1678,22 @@ function isBaselineModel(entry) {
         // Filter for verified only if enabled, but always show baseline models
         if (showVerifiedOnlyOpen) {
           data = data.filter(entry => entry.verified === true || isBaselineModel(entry));
-          // Only update display rank, keep original tier
-          data = data.map((entry, index) => ({
-            ...entry,
-            displayRank: index + 1  // rank in filtered list
-            // Keep original entry.rank and entry.tier from full leaderboard
-          }));
+          // Recalculate ranks and tiers for filtered list
+          const highestPassRate = data.length > 0 ? data[0].passRate : 0;
+          data = data.map((entry, index) => {
+            const rank = index + 1;
+            let tier;
+            if (entry.passRate === highestPassRate) {
+              tier = "🏆 Leading";
+            } else {
+              tier = getTier(rank, data.length);
+            }
+            return {
+              ...entry,
+              displayRank: rank,
+              tier: tier
+            };
+          });
         }
 
         // Get first place pass rate (after filtering if applicable)
@@ -1739,10 +1749,14 @@ function isBaselineModel(entry) {
 
         // Dynamic tier based on gap
         const humanTierCell = document.createElement('td');
-        if (gap > 25) {
-           humanTierCell.textContent = '🤣';
+        if (gap < 10) {
+          humanTierCell.textContent = '😱';
+        } else if (gap < 20) {
+          humanTierCell.textContent = '🤯';
+        } else if (gap < 25) {
+          humanTierCell.textContent = '🤔';
         } else {
-           humanTierCell.textContent = '🤔';
+          humanTierCell.textContent = '🤣';
         }
         humanRow.appendChild(humanTierCell);
 
@@ -1980,6 +1994,22 @@ function isBaselineModel(entry) {
           // Filter for verified only if enabled, but always show baseline models
           if (showVerifiedOnlyFlash) {
             sorted = sorted.filter(entry => entry.verified === true || isBaselineModel(entry));
+            // Recalculate ranks and tiers for filtered list
+            const highestPassRate = sorted.length > 0 ? sorted[0].passRate : 0;
+            sorted = sorted.map((entry, idx) => {
+              const rank = idx + 1;
+              let tier;
+              if (entry.passRate === highestPassRate) {
+                tier = "🏆 Leading";
+              } else {
+                tier = getTier(rank, sorted.length);
+              }
+              return {
+                ...entry,
+                originalRank: rank,
+                tier: tier
+              };
+            });
           }
 
           tbody.innerHTML = '';
@@ -2037,10 +2067,14 @@ function isBaselineModel(entry) {
 
           // Dynamic tier based on gap
           const humanTierCell = document.createElement('td');
-          if (gap > 25) {
-            humanTierCell.textContent = '🤣';
-          } else {
+          if (gap < 10) {
+            humanTierCell.textContent = '😱';
+          } else if (gap < 20) {
+            humanTierCell.textContent = '🤯';
+          } else if (gap < 25) {
             humanTierCell.textContent = '🤔';
+          } else {
+            humanTierCell.textContent = '🤣';
           }
           humanRow.appendChild(humanTierCell);
 
@@ -2159,6 +2193,22 @@ function isBaselineModel(entry) {
   // Filter for verified only if enabled, but always show baseline models
   if (showVerifiedOnlyPG) {
     sorted = sorted.filter(entry => entry.verified === true || isBaselineModel(entry));
+    // Recalculate ranks and tiers for filtered list
+    const highestPassRate = sorted.length > 0 ? sorted[0].passRate : 0;
+    sorted = sorted.map((entry, idx) => {
+      const rank = idx + 1;
+      let tier;
+      if (entry.passRate === highestPassRate) {
+        tier = "🏆 Leading";
+      } else {
+        tier = getTier(rank, sorted.length);
+      }
+      return {
+        ...entry,
+        originalRank: rank,
+        tier: tier
+      };
+    });
   }
 
   tbody.innerHTML = '';
@@ -2216,10 +2266,14 @@ function isBaselineModel(entry) {
 
   // Dynamic tier based on gap
   const humanTierCell = document.createElement('td');
-  if (gap > 25) {
-    humanTierCell.textContent = '🤣';
-  } else {
+  if (gap < 10) {
+    humanTierCell.textContent = '😱';
+  } else if (gap < 20) {
+    humanTierCell.textContent = '🤯';
+  } else if (gap < 25) {
     humanTierCell.textContent = '🤔';
+  } else {
+    humanTierCell.textContent = '🤣';
   }
   humanRow.appendChild(humanTierCell);
 
