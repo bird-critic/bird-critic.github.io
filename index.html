@@ -93,6 +93,17 @@
       .table {
         margin-top: 8px;
       }
+
+      .table tbody tr {
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      }
+      .table tbody tr:hover {
+        transform: translateY(-2px) scale(1.01);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        background-color: rgba(240, 244, 255, 0.7);
+        position: relative;
+        z-index: 1;
+      }
       
       .far,
       .fas {
@@ -329,20 +340,44 @@
       .date-cell-new {
         font-size: 0.75em;
         font-weight: bold;
-        color: #0a4f78;
-        background-color: #e1eacd;
-        padding: 1px 4px;
+        color: #f8c8d8;
+        background: linear-gradient(135deg, #1a1a2e 0%, #2d1b3d 40%, #3a1434 70%, #1a1a2e 100%);
+        background-size: 200% 200%;
+        padding: 2px 8px;
         border-radius: 5px;
         display: inline-block;
+        border: 1px solid rgba(219, 112, 147, 0.3);
+        box-shadow: 0 0 6px rgba(199, 62, 110, 0.4), inset 0 0 4px rgba(199, 62, 110, 0.15);
+        animation: darkPulse 3s ease-in-out infinite;
+        text-shadow: 0 0 4px rgba(248, 200, 216, 0.5);
+        letter-spacing: 0.5px;
+      }
+      @keyframes darkPulse {
+        0%, 100% {
+          background-position: 0% 50%;
+          box-shadow: 0 0 6px rgba(199, 62, 110, 0.4), inset 0 0 4px rgba(199, 62, 110, 0.15);
+        }
+        50% {
+          background-position: 100% 50%;
+          box-shadow: 0 0 10px rgba(199, 62, 110, 0.6), inset 0 0 6px rgba(199, 62, 110, 0.25);
+        }
       }
       .date-cell-example {
         font-size: 1.0em;
         font-weight: bold;
-        color: #0a4f78;
-        background-color: #e1eacd;
-        padding: 1px 4px;
+        color: #f8c8d8;
+        background: linear-gradient(135deg, #1a1a2e 0%, #2d1b3d 40%, #3a1434 70%, #1a1a2e 100%);
+        background-size: 200% 200%;
+        padding: 2px 8px;
         border-radius: 5px;
         display: inline-block;
+        border: 1px solid rgba(219, 112, 147, 0.3);
+        box-shadow: 0 0 6px rgba(199, 62, 110, 0.4), inset 0 0 4px rgba(199, 62, 110, 0.15);
+        animation: darkPulse 3s ease-in-out infinite;
+        text-shadow: 0 0 4px rgba(248, 200, 216, 0.5);
+        letter-spacing: 0.8px;
+        position: relative;
+        overflow: hidden;
       }
 
       /* Verified filter toggle switch styles */
@@ -1228,110 +1263,110 @@
           { model: "DMS-DataAgent", passRate: 56.14, institute:['alibabacloud'],affiliation:'Alibaba Cloud DMS Team', date: "2026-01-22"},
           { model: "ByteBrain-Agent", passRate: 54.39, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-14"},
           { model: "AlphaData+GLM-4.7", passRate: 56.49, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-30"},
-          { model: "AlphaData+deepseek-r1", passRate: 43.15, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
+          { model: "AlphaData+Deepseek-r1", passRate: 43.15, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
           { model: 'XiYan-SQL-CRITIC', passRate: 44.37, institute: ['alibabacloud'], date: '2025-11-20' ,link: "https://github.com/XGenerationLab/XiYan-SQL", verified: true}, 
           { model: 'claude-sonnet-4-5-20250929', passRate: 32.11, institute: ['anthropic'], date: '2025-10-14' }, 
           { model: 'ARKA-1-Preview',affiliation: 'Arka Analytics', passRate: 30.00, institute: ['Aruna_Labs'], date: '2025-09-27' ,link: "https://arka.so"}, 
           { model: 'GPT-5-High', passRate: 34.96, institute: ['openai'], date: '2025-09-04' }, 
           { model: 'GPT-5', passRate: 33.02, institute: ['openai'], date: '2025-08-15' }, 
-          { rank: 1, model: 'gpt-oss-20b (high-reasoning)', passRate: 25.09, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' },  
-          { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 43.33, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior', verified: true  },  
-          { rank: 1, model: 'grok-4', passRate: 33.68, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
-          { rank: 1, model: 'deepseek-r1', passRate: 33.51, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
+          { rank: 1, model: 'gpt-oss-20B (High-Reasoning)', passRate: 25.09, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' },  
+          { rank: 1, model: 'ByteBrain-Agent + Deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 43.33, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior', verified: true  },  
+          { rank: 1, model: 'Grok-4', passRate: 33.68, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
+          { rank: 1, model: 'DeepSeek-R1', passRate: 33.51, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 1, model: 'BIRD-Fixer-14B', passRate: 29.65,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
             { rank: 1, model: 'BIRD-Fixer-7B', passRate: 21.58,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
             { rank: 2, model: 'o3-mini-2025-01-31', passRate: 33.33, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'o1-preview-2024-09-12', passRate: 33.33, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 4, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: 30.00, institute: 'anthropic_reason', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 4, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 30.00, institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 6, model: 'grok-3-beta', passRate: 29.30, institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 7, model: 'gpt-4.1', passRate: 29.12, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 8, model: 'o1-mini', passRate: 28.95, institute: 'openai_reasoning', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 6, model: 'Grok-3-Beta', passRate: 29.30, institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 7, model: 'GPT-4.1', passRate: 29.12, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 8, model: 'O1-Mini', passRate: 28.95, institute: 'openai_reasoning', date: '2025-04-20', tier: '💎 Superior' },
             { rank: 9, model: 'claude-3-7-sonnet-20250219', passRate: 27.89, institute: 'anthropic', date: '2025-04-20', tier: '💎 Superior' },
             { rank: 10, model: 'gemini-2.5-pro-preview-03-25', passRate: 27.89, institute: 'google', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 11, model: 'gpt-4.1-mini', passRate: 27.19, institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 11, model: 'GPT-4.1-Mini', passRate: 27.19, institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
             { rank: 12, model: 'gpt-4o-2024-11-20', passRate: 27.02, institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
             { rank: 13, model: 'QwQ-32B', passRate: 25.09, institute: 'qwen-reason', date: '2025-04-20', tier: '🔸 Advanced' },
             { rank: 14, model: 'Qwen2.5-Coder-32B-Instruct', passRate: 24.74, institute: 'qwen', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 15, model: 'claude-3-5-sonnet', passRate: 24.56, institute: 'anthropic', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 15, model: 'Claude-3-5-Sonnet', passRate: 24.56, institute: 'anthropic', date: '2025-04-20', tier: '🔸 Advanced' },
             { rank: 16, model: 'Llama-3.3-70B-Instruct', passRate: 24.21, institute: 'meta', date: '2025-04-20', tier: '💫 Standard' },
             { rank: 17, model: 'Qwen2.5-Coder-14B-Instruct', passRate: 24.04, institute: 'qwen', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 18, model: 'o4-mini', passRate: 24.04, institute: 'openai_reasoning', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 19, model: 'gemini-2.0-flash', passRate: 23.86, institute: 'google', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 19, model: 'deepseek-v3', passRate: 23.86, institute: 'deepseek', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 21, model: 'phi-4', passRate: 22.63, institute: 'ms', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 22, model: 'gpt-4.1-nano', passRate: 21.23, institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 23, model: 'gemma-3-27b-it', passRate: 21.05, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 24, model: 'llama-4-maverick', passRate: 20.88, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 18, model: 'O4-Mini', passRate: 24.04, institute: 'openai_reasoning', date: '2025-04-20', tier: '💫 Standard' },
+            { rank: 19, model: 'Gemini-2.0-Flash', passRate: 23.86, institute: 'google', date: '2025-04-20', tier: '💫 Standard' },
+            { rank: 19, model: 'DeepSeek-V3', passRate: 23.86, institute: 'deepseek', date: '2025-04-20', tier: '💫 Standard' },
+            { rank: 21, model: 'Phi-4', passRate: 22.63, institute: 'ms', date: '2025-04-20', tier: '💫 Standard' },
+            { rank: 22, model: 'GPT-4.1-Nano', passRate: 21.23, institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 23, model: 'Gemma-3-27B-It', passRate: 21.05, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 24, model: 'Llama-4-Maverick', passRate: 20.88, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 25, model: 'Codestral-22B-v0.1', passRate: 19.30, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 26, model: 'Qwen2.5-Coder-7B-Instruct', passRate: 17.89, institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 27, model: 'Mixtral-8x7B-Instruct-v0.1', passRate: 15.26, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 28, model: 'llama-4-scout', passRate: 10.18, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 29, model: 'grok-3-mini-beta', passRate: 9.12, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'Llama-4-Scout', passRate: 10.18, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 29, model: 'Grok-3-Mini-Beta', passRate: 9.12, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 30, model: 'Mistral-7B-Instruct-v0.2', passRate: 6.49, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'postgresql': [
           { model: "AlphaData+GLM-4.7", passRate: 58.33, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-30"},
           { model: "DMS-DataAgent", passRate: 57.97, institute:['alibabacloud'],affiliation:'Alibaba Cloud DMS Team', date: "2026-01-22"},
           { model: "ByteBrain-Agent", passRate: 58.70, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-14"},
-          { model: "AlphaData+deepseek-r1", passRate: 46.37, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
+          { model: "AlphaData+Deepseek-r1", passRate: 46.37, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
           { model: 'XiYan-SQL-CRITIC', passRate: 49.28, institute: ['alibabacloud'], date: '2025-11-20' ,link: "https://github.com/XGenerationLab/XiYan-SQL", verified: true}, 
           { model: 'claude-sonnet-4-5-20250929', passRate: 34.42, institute: ['anthropic'], date: '2025-10-14' }, 
           { model: 'ARKA-1-Preview',affiliation: 'Arka Analytics', passRate: 34.42, institute: ['Aruna_Labs'], date: '2025-09-27' ,link: "https://arka.so"}, 
           { model: 'GPT-5-High', passRate: 38.77, institute: ['openai'], date: '2025-09-04' },
           { model: 'GPT-5', passRate: 39.13, institute: ['openai'], date: '2025-08-15' }, 
-                    { rank: 1, model: 'gpt-oss-20b (high-reasoning)', passRate: 33.7, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' },  
-                    { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 47.46, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior', verified: true  },  
-                    { rank: 1, model: 'grok-4', passRate: 39.49, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
+                    { rank: 1, model: 'gpt-oss-20B (High-Reasoning)', passRate: 33.7, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' },  
+                    { rank: 1, model: 'ByteBrain-Agent + Deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 47.46, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior', verified: true  },  
+                    { rank: 1, model: 'Grok-4', passRate: 39.49, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
             { rank: 1, model: 'BIRD-Fixer-14B', passRate: 30.07,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
             { rank: 1, model: 'BIRD-Fixer-7B', passRate: 22.1,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
             { rank: 1, model: 'o3-mini-2025-01-31', passRate: 41.30, institute: 'openai_reasoning', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 2, model: 'o1-preview-2024-09-12', passRate: 40.94, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 3, model: 'o1-mini', passRate: 36.23, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 3, model: 'gpt-4.1', passRate: 36.23, institute: 'openai', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 5, model: 'deepseek-r1', passRate: 36.96, institute: 'deepseek-reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 3, model: 'O1-Mini', passRate: 36.23, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 3, model: 'GPT-4.1', passRate: 36.23, institute: 'openai', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 5, model: 'DeepSeek-R1', passRate: 36.96, institute: 'deepseek-reason', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 6, model: 'claude-3-7-sonnet-20250219(thinking)', passRate: 35.51, institute: 'anthropic_reason', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 7, model: 'grok-3-beta', passRate: 32.97, institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 7, model: 'Grok-3-Beta', passRate: 32.97, institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
             { rank: 8, model: 'gemini-2.5-pro-preview-03-25', passRate: 34.42, institute: 'google', date: '2025-04-20', tier: '💎 Superior' },
             { rank: 9, model: 'claude-3-7-sonnet-20250219', passRate: 32.61, institute: 'anthropic', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 10, model: 'gpt-4.1-mini', passRate: 31.52, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 10, model: 'o4-mini', passRate: 31.52, institute: 'openai_reasoning', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 10, model: 'GPT-4.1-Mini', passRate: 31.52, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 10, model: 'O4-Mini', passRate: 31.52, institute: 'openai_reasoning', date: '2025-04-20', tier: '🔸 Advanced' },
             { rank: 12, model: 'gpt-4o-2024-11-20', passRate: 30.80, institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
             { rank: 13, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 28.99, institute: 'google-reason', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 14, model: 'gemini-2.0-flash', passRate: 27.54, institute: 'google', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 14, model: 'Gemini-2.0-Flash', passRate: 27.54, institute: 'google', date: '2025-04-20', tier: '🔸 Advanced' },
             { rank: 15, model: 'Qwen2.5-Coder-32B-Instruct', passRate: 28.26, institute: 'qwen', date: '2025-04-20', tier: '🔸 Advanced' },
             { rank: 15, model: 'QwQ-32B', passRate: 28.26, institute: 'qwen-reason', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 17, model: 'claude-3-5-sonnet', passRate: 27.90, institute: 'anthropic', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 18, model: 'deepseek-v3', passRate: 27.17, institute: 'deepseek', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 17, model: 'Claude-3-5-Sonnet', passRate: 27.90, institute: 'anthropic', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 18, model: 'DeepSeek-V3', passRate: 27.17, institute: 'deepseek', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 19, model: 'Llama-3.3-70B-Instruct', passRate: 26.81, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 21, model: 'Qwen2.5-Coder-14B-Instruct', passRate: 26.09, institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 20, model: 'phi-4', passRate: 25.72, institute: 'ms', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 22, model: 'gpt-4.1-nano', passRate: 24.64, institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 23, model: 'gemma-3-27b-it', passRate: 23.55, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 25, model: 'llama-4-maverick', passRate: 22.10, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 20, model: 'Phi-4', passRate: 25.72, institute: 'ms', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 22, model: 'GPT-4.1-Nano', passRate: 24.64, institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 23, model: 'Gemma-3-27B-It', passRate: 23.55, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 25, model: 'Llama-4-Maverick', passRate: 22.10, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 24, model: 'Codestral-22B-v0.1', passRate: 21.38, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 26, model: 'Qwen2.5-Coder-7B-Instruct', passRate: 20.65, institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 27, model: 'Mixtral-8x7B-Instruct-v0.1', passRate: 17.39, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 28, model: 'grok-3-mini-beta', passRate: 11.23, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 29, model: 'llama-4-scout', passRate: 9.42, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'Grok-3-Mini-Beta', passRate: 11.23, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 29, model: 'Llama-4-Scout', passRate: 9.42, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 30, model: 'Mistral-7B-Instruct-v0.2', passRate: 6.88, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'mysql': [
           { model: "AlphaData+GLM-4.7", passRate: 62.24, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-30"},
           { model: "DMS-DataAgent", passRate: 62.24, institute:['alibabacloud'],affiliation:'Alibaba Cloud DMS Team', date: "2026-01-22"},
           { model: "ByteBrain-Agent", passRate: 64.29, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-14"},
-          { model: "AlphaData+deepseek-r1", passRate: 42.86, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
+          { model: "AlphaData+Deepseek-r1", passRate: 42.86, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
           { model: 'XiYan-SQL-CRITIC', passRate: 45.92, institute: ['alibabacloud'], date: '2025-11-20' ,link: "https://github.com/XGenerationLab/XiYan-SQL", verified: true}, 
           { model: 'claude-sonnet-4-5-20250929', passRate: 37.76, institute: ['anthropic'], date: '2025-10-14' }, 
           { model: 'ARKA-1-Preview',affiliation: 'Arka Analytics', passRate: 34.69, institute: ['Aruna_Labs'], date: '2025-09-27' ,link: "https://arka.so"}, 
           { model: 'GPT-5-High', passRate: 39.8, institute: ['openai'], date: '2025-09-04' }, 
           { model: 'GPT-5', passRate: 28.57, institute: ['openai'], date: '2025-08-15' }, 
-              { rank: 1, model: 'gpt-oss-20b (high-reasoning)', passRate: 30.61, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' },  
-                    { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 42.86, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' , verified: true },  
-                    { rank: 1, model: 'grok-4', passRate: 35.71, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
+              { rank: 1, model: 'gpt-oss-20B (High-Reasoning)', passRate: 30.61, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' },  
+                    { rank: 1, model: 'ByteBrain-Agent + Deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 42.86, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' , verified: true },  
+                    { rank: 1, model: 'Grok-4', passRate: 35.71, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
             { rank: 1, model: 'BIRD-Fixer-14B', passRate: 40.82,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
             { rank: 1, model: 'BIRD-Fixer-7B', passRate: 26.53,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
-            { rank: 1, model: 'deepseek-r1', passRate: 38.78, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
+            { rank: 1, model: 'DeepSeek-R1', passRate: 38.78, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 2, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 35.71, institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'gemini-2.5-pro-preview-03-25', passRate: 34.69, institute: 'google', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 4, model: 'o1-preview-2024-09-12', passRate: 33.67, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
@@ -1339,118 +1374,118 @@
             { rank: 5, model: 'Qwen2.5-Coder-14B-Instruct', passRate: 31.63, institute: 'qwen', date: '2025-04-20', tier: '💎 Superior' },
             { rank: 6, model: 'claude-3-7-sonnet-20250219', passRate: 30.61, institute: 'anthropic', date: '2025-04-20', tier: '💎 Superior' },
             { rank: 6, model: 'gpt-4o-2024-11-20', passRate: 30.61, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 6, model: 'grok-3-beta', passRate: 30.61, institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 10, model: 'o1-mini', passRate: 29.59, institute: 'openai_reasoning', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 11, model: 'claude-3-5-sonnet', passRate: 28.57, institute: 'anthropic', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 11, model: 'gpt-4.1', passRate: 28.57, institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 13, model: 'phi-4', passRate: 27.55, institute: 'ms', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 14, model: 'deepseek-v3', passRate: 26.53, institute: 'deepseek', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 6, model: 'Grok-3-Beta', passRate: 30.61, institute: 'grok', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 10, model: 'O1-Mini', passRate: 29.59, institute: 'openai_reasoning', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 11, model: 'Claude-3-5-Sonnet', passRate: 28.57, institute: 'anthropic', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 11, model: 'GPT-4.1', passRate: 28.57, institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'Phi-4', passRate: 27.55, institute: 'ms', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 14, model: 'DeepSeek-V3', passRate: 26.53, institute: 'deepseek', date: '2025-04-20', tier: '🔸 Advanced' },
             { rank: 14, model: 'QwQ-32B', passRate: 26.53, institute: 'qwen-reason', date: '2025-04-20', tier: '🔸 Advanced' },
             { rank: 14, model: 'o3-mini-2025-01-31', passRate: 26.53, institute: 'openai_reasoning', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 17, model: 'llama-4-maverick', passRate: 25.51, institute: 'meta', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 17, model: 'gpt-4.1-mini', passRate: 25.51, institute: 'openai', date: '2025-04-20', tier: '💫 Standard' },
+            { rank: 17, model: 'Llama-4-Maverick', passRate: 25.51, institute: 'meta', date: '2025-04-20', tier: '💫 Standard' },
+            { rank: 17, model: 'GPT-4.1-Mini', passRate: 25.51, institute: 'openai', date: '2025-04-20', tier: '💫 Standard' },
             { rank: 19, model: 'Qwen2.5-Coder-32B-Instruct', passRate: 24.49, institute: 'qwen', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 20, model: 'o4-mini', passRate: 24.49, institute: 'openai_reasoning', date: '2025-04-20', tier: '💫 Standard' },
+            { rank: 20, model: 'O4-Mini', passRate: 24.49, institute: 'openai_reasoning', date: '2025-04-20', tier: '💫 Standard' },
             { rank: 21, model: 'Llama-3.3-70B-Instruct', passRate: 22.45, institute: 'meta', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 22, model: 'gemini-2.0-flash', passRate: 22.45, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 23, model: 'gpt-4.1-nano', passRate: 22.45, institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 24, model: 'gemma-3-27b-it', passRate: 22.45, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 22, model: 'Gemini-2.0-Flash', passRate: 22.45, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 23, model: 'GPT-4.1-Nano', passRate: 22.45, institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 24, model: 'Gemma-3-27B-It', passRate: 22.45, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 25, model: 'Qwen2.5-Coder-7B-Instruct', passRate: 18.37, institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 26, model: 'Codestral-22B-v0.1', passRate: 18.37, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 27, model: 'Mixtral-8x7B-Instruct-v0.1', passRate: 17.35, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 28, model: 'llama-4-scout', passRate: 11.22, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 29, model: 'grok-3-mini-beta', passRate: 10.20, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'Llama-4-Scout', passRate: 11.22, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 29, model: 'Grok-3-Mini-Beta', passRate: 10.20, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 30, model: 'Mistral-7B-Instruct-v0.2', passRate: 8.16, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'sqlserver': [
           { model: "AlphaData+GLM-4.7", passRate: 60.2, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-30"},
           { model: "DMS-DataAgent", passRate: 60.2, institute:['alibabacloud'],affiliation:'Alibaba Cloud DMS Team', date: "2026-01-22"},
           { model: "ByteBrain-Agent", passRate: 53.06, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-14"},
-          { model: "AlphaData+deepseek-r1", passRate: 44.90, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
+          { model: "AlphaData+Deepseek-r1", passRate: 44.90, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
           { model: 'XiYan-SQL-CRITIC', passRate: 43.88, institute: ['alibabacloud'], date: '2025-11-20' ,link: "https://github.com/XGenerationLab/XiYan-SQL", verified: true}, 
           { model: 'claude-sonnet-4-5-20250929', passRate: 31.63, institute: ['anthropic'], date: '2025-10-14' }, 
           { model: 'ARKA-1-Preview',affiliation: 'Arka Analytics', passRate: 27.55, institute: ['Aruna_Labs'], date: '2025-09-27' ,link: "https://arka.so"}, 
           { model: 'GPT-5-High', passRate: 27.55, institute: ['openai'], date: '2025-09-04' }, 
           { model: 'GPT-5', passRate: 29.59, institute: ['openai'], date: '2025-08-15' }, 
-            { rank: 1, model: 'gpt-oss-20b (high-reasoning)', passRate: 14.29, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' }, 
-            { rank: 1, model: 'ByteBrain-Agent + deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 44.9, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' , verified: true }, 
-            { rank: 1, model: 'grok-4', passRate: 33.67, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
+            { rank: 1, model: 'gpt-oss-20B (High-Reasoning)', passRate: 14.29, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' }, 
+            { rank: 1, model: 'ByteBrain-Agent + Deepseek-r1',affiliation: 'ByteDance Infra System Lab × Renmin University of China', passRate: 44.9, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior' , verified: true }, 
+            { rank: 1, model: 'Grok-4', passRate: 33.67, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
             { rank: 1, model: 'BIRD-Fixer-14B', passRate: 30.61,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
             { rank: 1, model: 'BIRD-Fixer-7B', passRate: 29.59,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
             { rank: 1, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 37.76, institute: 'google-reason', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 2, model: 'o1-preview-2024-09-12', passRate: 33.67, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'o3-mini-2025-01-31', passRate: 32.65, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 3, model: 'deepseek-r1', passRate: 32.65, institute: 'deepseek-reason', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 5, model: 'gemini-2.0-flash', passRate: 31.63, institute: 'google', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 3, model: 'DeepSeek-R1', passRate: 32.65, institute: 'deepseek-reason', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 5, model: 'Gemini-2.0-Flash', passRate: 31.63, institute: 'google', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 6, model: 'Qwen2.5-Coder-32B-Instruct', passRate: 30.61, institute: 'qwen', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 6, model: 'gpt-4.1-mini', passRate: 30.61, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 8, model: 'gpt-4.1', passRate: 29.59, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 6, model: 'GPT-4.1-Mini', passRate: 30.61, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 8, model: 'GPT-4.1', passRate: 29.59, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
             { rank: 8, model: 'Qwen2.5-Coder-14B-Instruct', passRate: 29.59, institute: 'qwen', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 10, model: 'gemma-3-27b-it', passRate: 28.57, institute: 'google', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 11, model: 'grok-3-beta', passRate: 28.57, institute: 'grok', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 10, model: 'Gemma-3-27B-It', passRate: 28.57, institute: 'google', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 11, model: 'Grok-3-Beta', passRate: 28.57, institute: 'grok', date: '2025-04-20', tier: '🔸 Advanced' },
             { rank: 12, model: 'Llama-3.3-70B-Instruct', passRate: 28.57, institute: 'meta', date: '2025-04-20', tier: '🔸 Advanced' },
             { rank: 13, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: 27.55, institute: 'anthropic_reason', date: '2025-04-20', tier: '🔸 Advanced' },
             { rank: 14, model: 'Codestral-22B-v0.1', passRate: 25.51, institute: 'mistral', date: '2025-04-20', tier: '🔸 Advanced' },
             { rank: 15, model: 'QwQ-32B', passRate: 25.51, institute: 'qwen-reason', date: '2025-04-20', tier: '🔸 Advanced' },
             { rank: 16, model: 'gpt-4o-2024-11-20', passRate: 25.51, institute: 'openai', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 17, model: 'claude-3-5-sonnet', passRate: 24.49, institute: 'anthropic', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 18, model: 'o1-mini', passRate: 24.49, institute: 'openai_reasoning', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 19, model: 'phi-4', passRate: 23.47, institute: 'ms', date: '2025-04-20', tier: '💫 Standard' },
+            { rank: 17, model: 'Claude-3-5-Sonnet', passRate: 24.49, institute: 'anthropic', date: '2025-04-20', tier: '💫 Standard' },
+            { rank: 18, model: 'O1-Mini', passRate: 24.49, institute: 'openai_reasoning', date: '2025-04-20', tier: '💫 Standard' },
+            { rank: 19, model: 'Phi-4', passRate: 23.47, institute: 'ms', date: '2025-04-20', tier: '💫 Standard' },
             { rank: 20, model: 'Mixtral-8x7B-Instruct-v0.1', passRate: 22.45, institute: 'mistral', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 21, model: 'deepseek-v3', passRate: 21.43, institute: 'deepseek', date: '2025-04-20', tier: '💫 Standard' },
+            { rank: 21, model: 'DeepSeek-V3', passRate: 21.43, institute: 'deepseek', date: '2025-04-20', tier: '💫 Standard' },
             { rank: 22, model: 'claude-3-7-sonnet-20250219', passRate: 21.43, institute: 'anthropic', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 23, model: 'llama-4-maverick', passRate: 21.43, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 24, model: 'gpt-4.1-nano', passRate: 21.43, institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 23, model: 'Llama-4-Maverick', passRate: 21.43, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 24, model: 'GPT-4.1-Nano', passRate: 21.43, institute: 'openai', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 25, model: 'Qwen2.5-Coder-7B-Instruct', passRate: 20.41, institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 26, model: 'o4-mini', passRate: 17.35, institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 26, model: 'O4-Mini', passRate: 17.35, institute: 'openai_reasoning', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 27, model: 'gemini-2.5-pro-preview-03-25', passRate: 17.35, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 28, model: 'llama-4-scout', passRate: 13.27, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'Llama-4-Scout', passRate: 13.27, institute: 'meta', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 29, model: 'Mistral-7B-Instruct-v0.2', passRate: 10.20, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 30, model: 'grok-3-mini-beta', passRate: 9.18, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' }
+            { rank: 30, model: 'Grok-3-Mini-Beta', passRate: 9.18, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' }
           ],
           'oracle': [
           { model: "AlphaData+GLM-4.7", passRate: 41.83, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-30"},
           { model: "DMS-DataAgent", passRate: 40.82, institute:['alibabacloud'],affiliation:'Alibaba Cloud DMS Team', date: "2026-01-22"},
           { model: "ByteBrain-Agent", passRate: 33.67, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-14"},
-          { model: "AlphaData+deepseek-r1", passRate: 32.65, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
+          { model: "AlphaData+Deepseek-r1", passRate: 32.65, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
           { model: 'XiYan-SQL-CRITIC', passRate: 28.57, institute: ['alibabacloud'], date: '2025-11-20' ,link: "https://github.com/XGenerationLab/XiYan-SQL", verified: true}, 
           { model: 'claude-sonnet-4-5-20250929', passRate: 20.41, institute: ['anthropic'], date: '2025-10-14' }, 
           { model: 'ARKA-1-Preview',affiliation: 'Arka Analytics', passRate: 15.31, institute: ['Aruna_Labs'], date: '2025-09-27' ,link: "https://arka.so"}, 
           { model: 'GPT-5-High', passRate: 26.80, institute: ['openai'], date: '2025-09-04' }, 
           { model: 'GPT-5', passRate: 23.71, institute: ['openai'], date: '2025-08-15' }, 
-                    { rank: 1, model: 'gpt-oss-20b (high-reasoning)', passRate: 16.12, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' }, 
-                              { rank: 1, model: 'ByteBrain-Agent + deepseek-r1', passRate: 30.62, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior', verified: true  }, 
-                              { rank: 1, model: 'grok-4', passRate: 15.31, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
+                    { rank: 1, model: 'gpt-oss-20B (High-Reasoning)', passRate: 16.12, institute: ['openai_reasoning'], date: '2025-08-12', tier: '🏆 Superior' }, 
+                              { rank: 1, model: 'ByteBrain-Agent + Deepseek-r1', passRate: 30.62, institute: ['bytedance','renmin_university_of_china'], date: '2025-06-10', tier: '🏆 Superior', verified: true  }, 
+                              { rank: 1, model: 'Grok-4', passRate: 15.31, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
           { rank: 1, model: 'BIRD-Fixer-14B', passRate: 16.33,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior', verified: true  },
             { rank: 1, model: 'BIRD-Fixer-7B', passRate: 7.14,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior', verified: true  },
-            { rank: 1, model: 'deepseek-r1', passRate: 19.39, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
+            { rank: 1, model: 'DeepSeek-R1', passRate: 19.39, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 2, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 19.39, institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
-            { rank: 3, model: 'grok-3-beta', passRate: 18.37, institute: 'grok', date: '2025-04-20', tier: '🌟 Elite' },
+            { rank: 3, model: 'Grok-3-Beta', passRate: 18.37, institute: 'grok', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 4, model: 'o3-mini-2025-01-31', passRate: 18.37, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 5, model: 'claude-3-7-sonnet-20250219', passRate: 18.37, institute: 'anthropic', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 6, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: 15.31, institute: 'anthropic_reason', date: '2025-04-20', tier: '💎 Superior' },
-            { rank: 7, model: 'deepseek-v3', passRate: 14.29, institute: 'deepseek', date: '2025-04-20', tier: '💎 Superior' },
+            { rank: 7, model: 'DeepSeek-V3', passRate: 14.29, institute: 'deepseek', date: '2025-04-20', tier: '💎 Superior' },
             { rank: 8, model: 'gpt-4o-2024-11-20', passRate: 14.29, institute: 'openai', date: '2025-04-20', tier: '💎 Superior' },
             { rank: 9, model: 'Llama-3.3-70B-Instruct', passRate: 14.29, institute: 'meta', date: '2025-04-20', tier: '💎 Superior' },
             { rank: 10, model: 'QwQ-32B', passRate: 14.29, institute: 'qwen-reason', date: '2025-04-20', tier: '💎 Superior' },
             { rank: 11, model: 'gemini-2.5-pro-preview-03-25', passRate: 13.27, institute: 'google', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 12, model: 'gpt-4.1-mini', passRate: 13.27, institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 13, model: 'llama-4-maverick', passRate: 12.24, institute: 'meta', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 14, model: 'o1-mini', passRate: 12.24, institute: 'openai_reasoning', date: '2025-04-20', tier: '🔸 Advanced' },
-            { rank: 15, model: 'claude-3-5-sonnet', passRate: 11.22, institute: 'anthropic', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 12, model: 'GPT-4.1-Mini', passRate: 13.27, institute: 'openai', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 13, model: 'Llama-4-Maverick', passRate: 12.24, institute: 'meta', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 14, model: 'O1-Mini', passRate: 12.24, institute: 'openai_reasoning', date: '2025-04-20', tier: '🔸 Advanced' },
+            { rank: 15, model: 'Claude-3-5-Sonnet', passRate: 11.22, institute: 'anthropic', date: '2025-04-20', tier: '🔸 Advanced' },
             { rank: 16, model: 'o1-preview-2024-09-12', passRate: 11.22, institute: 'openai_reasoning', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 17, model: 'gpt-4.1-nano', passRate: 10.20, institute: 'openai', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 18, model: 'gpt-4.1', passRate: 9.18, institute: 'openai', date: '2025-04-20', tier: '💫 Standard' },
+            { rank: 17, model: 'GPT-4.1-Nano', passRate: 10.20, institute: 'openai', date: '2025-04-20', tier: '💫 Standard' },
+            { rank: 18, model: 'GPT-4.1', passRate: 9.18, institute: 'openai', date: '2025-04-20', tier: '💫 Standard' },
             { rank: 19, model: 'Qwen2.5-Coder-32B-Instruct', passRate: 9.18, institute: 'qwen', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 20, model: 'o4-mini', passRate: 9.18, institute: 'openai_reasoning', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 21, model: 'phi-4', passRate: 8.16, institute: 'ms', date: '2025-04-20', tier: '💫 Standard' },
-            { rank: 22, model: 'llama-4-scout', passRate: 8.16, institute: 'meta', date: '2025-04-20', tier: '💫 Standard' },
+            { rank: 20, model: 'O4-Mini', passRate: 9.18, institute: 'openai_reasoning', date: '2025-04-20', tier: '💫 Standard' },
+            { rank: 21, model: 'Phi-4', passRate: 8.16, institute: 'ms', date: '2025-04-20', tier: '💫 Standard' },
+            { rank: 22, model: 'Llama-4-Scout', passRate: 8.16, institute: 'meta', date: '2025-04-20', tier: '💫 Standard' },
             { rank: 23, model: 'Codestral-22B-v0.1', passRate: 8.16, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 24, model: 'Qwen2.5-Coder-7B-Instruct', passRate: 7.14, institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 25, model: 'gemini-2.0-flash', passRate: 7.14, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 25, model: 'Gemini-2.0-Flash', passRate: 7.14, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 26, model: 'Qwen2.5-Coder-14B-Instruct', passRate: 5.11, institute: 'qwen', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 27, model: 'gemma-3-27b-it', passRate: 5.10, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
-            { rank: 28, model: 'grok-3-mini-beta', passRate: 2.04, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 27, model: 'Gemma-3-27B-It', passRate: 5.10, institute: 'google', date: '2025-04-20', tier: '⚪ Basic' },
+            { rank: 28, model: 'Grok-3-Mini-Beta', passRate: 2.04, institute: 'grok', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 29, model: 'Mistral-7B-Instruct-v0.2', passRate: 0.00, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' },
             { rank: 30, model: 'Mixtral-8x7B-Instruct-v0.1', passRate: 0.00, institute: 'mistral', date: '2025-04-20', tier: '⚪ Basic' }
           ]
@@ -1573,7 +1608,7 @@ const baselineDates = [
 ];
 
 function isBaselineModel(entry) {
-  return baselineDates.includes(entry.date);
+  return baselineDates.includes(entry.date) || entry.baseline === true;
 }
 
       document.addEventListener('DOMContentLoaded', function() {
@@ -1860,21 +1895,23 @@ function isBaselineModel(entry) {
       }
 
           const pgLeaderboardData = [
+          { model: "SQL-ACT + Claude-Opus-4-6", passRate: 45.47, institute: "anthropic", date: "2026-02-11", baseline: true},
+          { model: "Claude-Opus-4-6", passRate: 43.40, institute: "anthropic", date: "2026-02-11", baseline: true},
           { model: "AlphaData+GLM-4.7", passRate: 56.79, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-30"},
           { model: "ByteBrain-Agent", passRate: 50.57, institute:['bytedance','renmin_university_of_china'],affiliation:'ByteDance Infra System Lab × Renmin University of China', date: "2026-01-19"},
-          { model: "AlphaData+deepseek-r1", passRate: 43.96, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
+          { model: "AlphaData+Deepseek-r1", passRate: 43.96, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
           { model: "Sophon-Agent", passRate: 45.85, institute: "bytedance",affiliation:"ByteDance DataPlatform LLM", date: "2025-11-18"},
-          { model: "DeCoTE-sql", passRate: 53.40, institute: "hdu",affiliation:"Hangzhou Dianzi University", date: "2026-01-22"},
+          { model: "DeCoTE-SQL", passRate: 53.40, institute: "hdu",affiliation:"Hangzhou Dianzi University", date: "2026-01-22"},
           { model: "XiYan-SQL-CRITIC", passRate: 44.53, institute: "alibabacloud",affiliation:"Alibaba Cloud", date: "2025-10-20", link: "https://github.com/XGenerationLab/XiYan-SQL"  , verified: true},
           { model: 'claude-sonnet-4-5-20250929', passRate: 33.96, institute: ['anthropic'], date: '2025-10-14' }, 
           { model: 'GPT-5-High', passRate: 37.36, institute: ['openai'], date: '2025-09-04' }, 
           { model: 'GPT-5', passRate: 35.85, institute: ['openai'], date: '2025-08-16' }, 
-            { model: 'gpt-oss-20b (high-reasoning)', passRate: 28.02, institute: ['openai_reasoning'], date: '2025-08-12'}, 
-            { model: "deepseek-r1", passRate: 39.62, institute: "deepseek-reason", date: "2025-06-09" },
-            { model: "grok-4", passRate: 39.06, institute: "grok", date: "2025-07-18" },
+            { model: 'gpt-oss-20B (High-Reasoning)', passRate: 28.02, institute: ['openai_reasoning'], date: '2025-08-12'}, 
+            { model: "DeepSeek-R1", passRate: 39.62, institute: "deepseek-reason", date: "2025-06-09" },
+            { model: "Grok-4", passRate: 39.06, institute: "grok", date: "2025-07-18" },
             { model: "o3-mini-2025-01-31", passRate: 38.87, institute: "openai_reasoning", date: "2025-06-09" },
             { model: "BIRD-Fixer-14B",affiliation: 'HKU × Google Cloud', passRate: 38.11, institute: ["hku", "google_cloud"], date: "2025-06-09" , verified: true },
-            { model: "gpt-4.1", passRate: 37.36, institute: "openai", date: "2025-06-09" },
+            { model: "GPT-4.1", passRate: 37.36, institute: "openai", date: "2025-06-09" },
             { model: "o1-preview-2024-09-12", passRate: 35.85, institute: "openai_reasoning", date: "2025-06-09" },
             { model: "claude-3-7-sonnet-20250219(thinking)", passRate: 33.96, institute: "anthropic_reason", date: "2025-06-09" },
             { model: "gemini-2.0-flash-thinking-exp-01-21", passRate: 33.21, institute: "google-reason", date: "2025-06-09" },
@@ -1882,52 +1919,54 @@ function isBaselineModel(entry) {
             { model: "QwQ-32B", passRate: 31.51, institute: "qwen-reason", date: "2025-06-09" },
             { model: "BIRD-Fixer-7B",affiliation: 'HKU × Google Cloud', passRate: 31.32, institute: ["hku", "google_cloud"], date: "2025-06-09" },
             { model: "Qwen2.5-Coder-14B-Instruct", passRate: 31.32, institute: "qwen", date: "2025-06-09" },
-            { model: "gemini-2.0-flash", passRate: 30.94, institute: "google", date: "2025-06-09" },
+            { model: "Gemini-2.0-Flash", passRate: 30.94, institute: "google", date: "2025-06-09" },
             { model: "Qwen2.5-Coder-32B-Instruct", passRate: 30.75, institute: "qwen", date: "2025-06-09" },
-            { model: "phi-4", passRate: 30.19, institute: "ms", date: "2025-06-09" },
+            { model: "Phi-4", passRate: 30.19, institute: "ms", date: "2025-06-09" },
             { model: "Meta-Llama-3.3-70B", passRate: 28.68, institute: "meta", date: "2025-06-09" },
-            { model: "deepseek-v3", passRate: 27.74, institute: "deepseek", date: "2025-06-09" },
+            { model: "DeepSeek-V3", passRate: 27.74, institute: "deepseek", date: "2025-06-09" },
             { model: "Qwen2.5-Coder-7B-Instruct", passRate: 23.40, institute: "qwen", date: "2025-06-09" },
             { model: "Meta-Llama-3.1-8B-Instruct", passRate: 16.98, institute: "meta", date: "2025-06-09" }
           ];
           const flashLeaderboardData = [
+          { model: "SQL-ACT + Claude-Opus-4-6", passRate: 52, institute: "anthropic", date: "2026-02-11", baseline: true},
+          { model: "Claude-Opus-4-6", passRate: 49, institute: "anthropic", date: "2026-02-11", baseline: true},
           { model: "AlphaData+GLM-4.7", passRate: 61, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-30"},
-          { model: "AlphaData+deepseek-r1", passRate: 48.00, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
+          { model: "AlphaData+Deepseek-r1", passRate: 48.00, institute: "cmcc",affiliation:"CMCC-Department of Digital Intelligence", date: "2026-01-14", verified: true},
           { model: "Sophon-Agent", passRate: 52.0, institute: "bytedance",affiliation:"ByteDance DataPlatform LLM", date: "2025-11-18"},
           
            { model: "XiYan-SQL-CRITIC", passRate: 48.5, institute: "alibabacloud",affiliation:"Alibaba Cloud", date: "2025-10-20", link: "https://github.com/XGenerationLab/XiYan-SQL"  , verified: true},
           { model: 'claude-sonnet-4-5-20250929', passRate: 33, institute: ['anthropic'], date: '2025-10-14' }, 
           { model: 'GPT-5-High', passRate: 40.00, institute: ['openai'], date: '2025-09-04' },
           { model: 'GPT-5', passRate: 41.0, institute: ['openai'], date: '2025-08-15' }, 
-            { model: 'gpt-oss-20b (high-reasoning)', passRate: 31.5, institute: ['openai_reasoning'], date: '2025-08-12' }, 
+            { model: 'gpt-oss-20B (High-Reasoning)', passRate: 31.5, institute: ['openai_reasoning'], date: '2025-08-12' }, 
           { model: "Query-Schema-Linking + deepseek-r1-250120", passRate: 41.5,affiliation:"Soochow University", institute: "soochow_university", date: "2025-06-09" , verified: true},
-          { model: "grok-4", passRate: 40.0, institute: "grok", date: "2025-07-18" },
+          { model: "Grok-4", passRate: 40.0, institute: "grok", date: "2025-07-18" },
           { model: "XiYan-SQL", passRate: 41.0, institute: "alibabacloud",affiliation:"Alibaba Cloud", date: "2025-05-22", link: "https://github.com/XGenerationLab/XiYan-SQL"  , verified: true},
           {  model: "o1-preview-2024-09-12", passRate: 38.5, institute: "openai_reasoning", date: "2025-01-30" },
           { model: "o3-mini-2025-01-31", passRate: 37.0, institute: "openai_reasoning", date: "2025-02-25" },
-          {  model: "deepseek-reasoner (r1)", passRate: 34.0, institute: "deepseek-reason", date: "2025-01-30" },
+          {  model: "DeepSeek-Reasoner (R1)", passRate: 34.0, institute: "deepseek-reason", date: "2025-01-30" },
           {  model: "claude-3-7-sonnet-2025-02-19(thinking)", passRate: 32.0, institute: "anthropic_reason", date: "2025-01-30"},
           { model: "claude-3-7-sonnet-2025-02-19", passRate: 29.0, institute: "anthropic", date: "2025-02-27"},
           {model: "gpt-4o-2024-11-20", passRate: 29.0, institute: "openai", date: "2025-01-30"},
-          { model: "o1-mini", passRate: 28.0, institute: "openai_reasoning", date: "2025-01-30"},
-          { model: "deepseek-V3", passRate: 27.5, institute: "deepseek", date: "2025-01-30" },
-          { model: "phi-4", passRate: 24.5, institute: "ms", date: "2025-01-30" },
+          { model: "O1-Mini", passRate: 28.0, institute: "openai_reasoning", date: "2025-01-30"},
+          { model: "DeepSeek-V3", passRate: 27.5, institute: "deepseek", date: "2025-01-30" },
+          { model: "Phi-4", passRate: 24.5, institute: "ms", date: "2025-01-30" },
           {  model: "QwQ-32B", passRate: 24.5, institute: "qwen-reason", date: "2025-03-10" },
-          { model: "claude-3-5-sonnet", passRate: 24.0, institute: "anthropic", date: "2025-01-30" },
-          { model: "gemini-2.0-flash-exp", passRate: 24.0, institute: "google", date: "2025-01-30"},
+          { model: "Claude-3-5-Sonnet", passRate: 24.0, institute: "anthropic", date: "2025-01-30" },
+          { model: "Gemini-2.0-Flash-Exp", passRate: 24.0, institute: "google", date: "2025-01-30"},
           { model: "Qwen2.5-Coder-32B-Instruct", passRate: 23.5, institute: "qwen", date: "2025-01-30" },
-          { model: "gemini-2.0-flash-thinking-exp", passRate: 19.5, institute: "google-reason", date: "2025-01-30"},
+          { model: "Gemini-2.0-Flash-Thinking-Exp", passRate: 19.5, institute: "google-reason", date: "2025-01-30"},
           {  model: "Meta-Llama-3.3-70B-Instruct", passRate: 18.5, institute: "meta", date: "2025-01-30" },
           { model: "Codestral-22B-v0.1", passRate: 18.0, institute: "mistral", date: "2025-01-30" },
-          { model: "gemma-2-27b-it", passRate: 18.0, institute: "google", date: "2025-01-30" },
+          { model: "Gemma-2-27B-It", passRate: 18.0, institute: "google", date: "2025-01-30" },
           {  model: "QwQ-32B-Preview", passRate: 17.5, institute: "qwen-reason", date: "2025-01-30"},
-          {  model: "starcoder2-15b-instruct-v0.1", passRate: 15.5, institute: "bigcode", date: "2025-01-30"},
+          {  model: "StarCoder2-15B-Instruct-V0.1", passRate: 15.5, institute: "bigcode", date: "2025-01-30"},
           { model: "DeepSeek-Coder-V2-Lite-Instruct", passRate: 12.5, institute: "deepseek", date: "2025-01-30" },
           {  model: "Mixtral-8x7B-Instruct-v0.1", passRate: 11.5, institute: "mistral", date: "2025-01-30"},
-          {  model: "gemma-2-9b-it", passRate: 10.5, institute: "google", date: "2025-01-30" },
+          {  model: "Gemma-2-9B-It", passRate: 10.5, institute: "google", date: "2025-01-30" },
           {  model: "Yi-1.5-34B-Chat-16K", passRate: 10.5, institute: "yi", date: "2025-01-30" },
-          {  model: "CodeLlama-34b-Instruct", passRate: 10.0, institute: "meta", date: "2025-01-30"},
-          {  model: "CodeLlama-13b-Instruct", passRate: 8.5, institute: "meta", date: "2025-01-30"},
+          {  model: "CodeLlama-34B-Instruct", passRate: 10.0, institute: "meta", date: "2025-01-30"},
+          {  model: "CodeLlama-13B-Instruct", passRate: 8.5, institute: "meta", date: "2025-01-30"},
           {  model: "Mistral-7B-Instruct-v0.2", passRate: 3.5, institute: "mistral", date: "2025-01-30",}
         ];
         function getTier(rank, total) {
@@ -2125,7 +2164,9 @@ function isBaselineModel(entry) {
 
             // Institute cell
             const instituteCell = row.insertCell();
-            instituteCell.innerHTML = `<img src="./img/institute_img/${entry.institute}.png" alt="${entry.institute}" style="max-height:20px;vertical-align:middle;">`;
+            if (entry.institute) {
+              instituteCell.innerHTML = `<img src="./img/institute_img/${entry.institute}.png" alt="${entry.institute}" style="max-height:20px;vertical-align:middle;">`;
+            }
 
             // Link cell
             const linkCell = row.insertCell();
@@ -2327,15 +2368,15 @@ function isBaselineModel(entry) {
     const instituteCell = row.insertCell();
     if (Array.isArray(entry.institute)) {
       // 如果是数组，显示多个logo
-      const logoHtml = entry.institute.map(inst => 
-        `<img src="./img/institute_img/${inst}.png" 
-              alt="${inst}" 
+      const logoHtml = entry.institute.map(inst =>
+        `<img src="./img/institute_img/${inst}.png"
+              alt="${inst}"
               style="max-height:20px;vertical-align:middle;margin:0 2px;">`
       ).join('');
       instituteCell.innerHTML = logoHtml;
-    } else {
+    } else if (entry.institute) {
       // 如果是字符串，显示单个logo
-      instituteCell.innerHTML = 
+      instituteCell.innerHTML =
         `<img src="./img/institute_img/${entry.institute}.png"
               alt="${entry.institute}"
               style="max-height:20px;vertical-align:middle;">`;
