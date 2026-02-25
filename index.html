@@ -337,6 +337,31 @@
         border-radius: 5px;
         display: inline-block;
       }
+      .date-cell-first {
+        font-size: 0.75em;
+        font-weight: bold;
+        color: #fff;
+        background: linear-gradient(135deg, #8B6914 0%, #C5961A 20%, #FFD700 45%, #FFF1A8 55%, #FFD700 65%, #C5961A 80%, #8B6914 100%);
+        background-size: 400% 400%;
+        padding: 2px 8px;
+        border-radius: 5px;
+        display: inline-block;
+        border: 1px solid rgba(255, 215, 0, 0.7);
+        box-shadow: 0 0 8px rgba(212, 175, 55, 0.6), 0 0 4px rgba(255, 215, 0, 0.4), inset 0 0 4px rgba(255, 241, 168, 0.25);
+        animation: goldShimmer 3s ease-in-out infinite;
+        text-shadow: 0 1px 2px rgba(80, 50, 0, 0.7), 0 0 6px rgba(255, 215, 0, 0.3);
+        letter-spacing: 0.5px;
+      }
+      @keyframes goldShimmer {
+        0%, 100% {
+          background-position: 0% 50%;
+          box-shadow: 0 0 8px rgba(212, 175, 55, 0.6), 0 0 4px rgba(255, 215, 0, 0.4), inset 0 0 4px rgba(255, 241, 168, 0.25);
+        }
+        50% {
+          background-position: 100% 50%;
+          box-shadow: 0 0 14px rgba(212, 175, 55, 0.8), 0 0 8px rgba(255, 215, 0, 0.6), inset 0 0 6px rgba(255, 241, 168, 0.35);
+        }
+      }
       .date-cell-new {
         font-size: 0.75em;
         font-weight: bold;
@@ -1875,12 +1900,14 @@ function isBaselineModel(entry) {
 
           const dateCell = document.createElement('td');
           const dateSpan = document.createElement('span');
-          if (isWithinPast14Days(entry.date)) {
+          if (entry.passRate === firstPlacePassRate) {
+            dateSpan.className = 'date-cell-first';
+          } else if (isWithinPast14Days(entry.date)) {
             dateSpan.className = 'date-cell-new';
           } else {
             dateSpan.className = 'date-cell';
           }
-          
+
           dateSpan.textContent = entry.date;
           dateCell.appendChild(dateSpan);
           row.appendChild(dateCell);
@@ -2176,7 +2203,9 @@ function isBaselineModel(entry) {
 
             // Date cell
             const dateCell = row.insertCell();
-            if (isWithinPast14Days(entry.date)) {
+            if (entry.passRate === firstPlacePassRate) {
+              dateCell.innerHTML = `<span class="date-cell-first">${entry.date}</span>`;
+            } else if (isWithinPast14Days(entry.date)) {
               dateCell.innerHTML = `<span class="date-cell-new">${entry.date}</span>`;
             } else {
               dateCell.innerHTML = `<span class="date-cell">${entry.date}</span>`;
@@ -2390,7 +2419,9 @@ function isBaselineModel(entry) {
 
     // Date cell
     const dateCell = row.insertCell();
-    if (isWithinPast14Days(entry.date)) {
+    if (entry.passRate === firstPlacePassRate) {
+      dateCell.innerHTML = `<span class="date-cell-first">${entry.date}</span>`;
+    } else if (isWithinPast14Days(entry.date)) {
       dateCell.innerHTML = `<span class="date-cell-new">${entry.date}</span>`;
     } else {
       dateCell.innerHTML = `<span class="date-cell">${entry.date}</span>`;
@@ -2399,7 +2430,7 @@ function isBaselineModel(entry) {
     // Tier cell
     const tierCell = row.insertCell();
     tierCell.textContent = tier;
-    
+
     tbody.appendChild(row);
     boldFirstPlaceSuccessRates();
   });
