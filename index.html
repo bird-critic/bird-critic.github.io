@@ -730,6 +730,12 @@
                   <div class="card-body" style="background-color: #f1f6f9">
                     <ul style="padding-left: 0">
 <li style="list-style-type: none">
+  <span style="background-color: #2E86AB; color: white; padding: 2px 4px; border-radius: 5px;">
+    <strong style="color: #ffe7ce">🚀 Mar. 23, 2026:</strong>
+  </span>
+  We release <strong><a href="https://huggingface.co/datasets/birdsql/bird-critic-1.0-sqlite" target="_blank" style="color:#155E95; text-decoration: none;">BIRD-Critic-SQLite</a></strong>, a new single-dialect benchmark containing <strong>500</strong> high-quality user issues focused on real-world SQLite database applications. Along with the dataset, we also release three RL-trained models: <strong><a href="https://huggingface.co/birdsql/BIRD-Talon-14b" target="_blank" style="color:#155E95; text-decoration: none;">BIRD-Talon-14B</a></strong>, <strong><a href="https://huggingface.co/birdsql/BIRD-Talon-7b" target="_blank" style="color:#155E95; text-decoration: none;">BIRD-Talon-7B</a></strong>, and <strong><a href="https://huggingface.co/birdsql/BIRD-Zeno-7b" target="_blank" style="color:#155E95; text-decoration: none;">BIRD-Zeno-7B</a></strong>. Data is available on <strong><a href="https://huggingface.co/datasets/birdsql/bird-critic-1.0-sqlite" target="_blank" style="color:#155E95; text-decoration: none;">HuggingFace</a></strong> and evaluation script on <strong><a href="https://github.com/bird-bench/BIRD-CRITIC-1" target="_blank" style="color:#155E95; text-decoration: none;">GitHub</a></strong>.
+</li>
+<li style="list-style-type: none">
   <span style="background-color: #634687; color: white; padding: 2px 4px; border-radius: 5px;">
     <strong style="color: #ffe7ce">📢 Mar. 6, 2026:</strong>
   </span>
@@ -1148,13 +1154,28 @@
 
   <div class="card card-outline-secondary mb-4">
     <div class="card-header">
-      <span>Leaderboard - BIRD-CRITIC-PG (530)</span>
+      <span>Leaderboard - Single</span>
       <!-- Verified Filter Toggle -->
       <div class="verified-filter-container checked">
         <label for="verified-filter-pg">Verified</label>
         <input type="checkbox" id="verified-filter-pg" checked />
         <span class="toggle-switch" onclick="document.getElementById('verified-filter-pg').click()"></span>
       </div>
+    </div>
+    <!-- SQL Dialect Filter Tags for Single Leaderboard -->
+    <div style="text-align: center; margin: 10px 0;">
+      <button class="btn btn-sm pg-dialect-filter-btn"
+              data-dialect="postgresql"
+              data-color="#3F83B4"
+              style="background-color: #3F83B4; color: white; border-radius: 20px; margin: 5px; padding: 5px 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: all 0.3s ease; border: none; font-weight: bold;">
+        PostgreSQL
+      </button>
+      <button class="btn btn-sm pg-dialect-filter-btn"
+              data-dialect="sqlite"
+              data-color="#3AAB59"
+              style="background-color: #e0e0e0; color: #666; border-radius: 20px; margin: 5px; padding: 5px 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s ease; border: none;">
+        SQLite
+      </button>
     </div>
     <div class="table-wrapper">
       <table id="pg-table" class="table">
@@ -1312,6 +1333,8 @@
           { rank: 1, model: 'DeepSeek-R1', passRate: 33.51, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 1, model: 'BIRD-Fixer-14B', passRate: 29.65,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
             { rank: 1, model: 'BIRD-Fixer-7B', passRate: 21.58,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
+            { model: 'BIRD-Talon-14B', passRate: 28.24, affiliation: 'HKU', institute: ['hku'], date: '2026-03-23', link: 'https://huggingface.co/birdsql/BIRD-Talon-14b', verified: true },
+            { model: 'BIRD-Talon-7B', passRate: 29.47, affiliation: 'HKU', institute: ['hku'], date: '2026-03-23', link: 'https://huggingface.co/birdsql/BIRD-Talon-7b', verified: true },
             { rank: 2, model: 'o3-mini-2025-01-31', passRate: 33.33, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'o1-preview-2024-09-12', passRate: 33.33, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 4, model: 'claude-3-7-sonnet-20250219 (thinking)', passRate: 30.00, institute: 'anthropic_reason', date: '2025-04-20', tier: '🌟 Elite' },
@@ -1364,6 +1387,8 @@
                     { rank: 1, model: 'Grok-4', passRate: 39.49, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
             { rank: 1, model: 'BIRD-Fixer-14B', passRate: 30.07,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
             { rank: 1, model: 'BIRD-Fixer-7B', passRate: 22.1,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
+            { model: 'BIRD-Talon-14B', passRate: 25.72, affiliation: 'HKU', institute: ['hku'], date: '2026-03-23', link: 'https://huggingface.co/birdsql/BIRD-Talon-14b', verified: true },
+            { model: 'BIRD-Talon-7B', passRate: 28.62, affiliation: 'HKU', institute: ['hku'], date: '2026-03-23', link: 'https://huggingface.co/birdsql/BIRD-Talon-7b', verified: true },
             { rank: 1, model: 'o3-mini-2025-01-31', passRate: 41.30, institute: 'openai_reasoning', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 2, model: 'o1-preview-2024-09-12', passRate: 40.94, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'O1-Mini', passRate: 36.23, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
@@ -1417,6 +1442,8 @@
                     { rank: 1, model: 'Grok-4', passRate: 35.71, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
             { rank: 1, model: 'BIRD-Fixer-14B', passRate: 40.82,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
             { rank: 1, model: 'BIRD-Fixer-7B', passRate: 26.53,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
+            { model: 'BIRD-Talon-14B', passRate: 32.65, affiliation: 'HKU', institute: ['hku'], date: '2026-03-23', link: 'https://huggingface.co/birdsql/BIRD-Talon-14b', verified: true },
+            { model: 'BIRD-Talon-7B', passRate: 33.67, affiliation: 'HKU', institute: ['hku'], date: '2026-03-23', link: 'https://huggingface.co/birdsql/BIRD-Talon-7b', verified: true },
             { rank: 1, model: 'DeepSeek-R1', passRate: 38.78, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 2, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 35.71, institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'gemini-2.5-pro-preview-03-25', passRate: 34.69, institute: 'google', date: '2025-04-20', tier: '🌟 Elite' },
@@ -1470,6 +1497,8 @@
             { rank: 1, model: 'Grok-4', passRate: 33.67, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
             { rank: 1, model: 'BIRD-Fixer-14B', passRate: 30.61,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
             { rank: 1, model: 'BIRD-Fixer-7B', passRate: 29.59,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior' , verified: true },
+            { model: 'BIRD-Talon-14B', passRate: 38.78, affiliation: 'HKU', institute: ['hku'], date: '2026-03-23', link: 'https://huggingface.co/birdsql/BIRD-Talon-14b', verified: true },
+            { model: 'BIRD-Talon-7B', passRate: 36.73, affiliation: 'HKU', institute: ['hku'], date: '2026-03-23', link: 'https://huggingface.co/birdsql/BIRD-Talon-7b', verified: true },
             { rank: 1, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 37.76, institute: 'google-reason', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 2, model: 'o1-preview-2024-09-12', passRate: 33.67, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'o3-mini-2025-01-31', passRate: 32.65, institute: 'openai_reasoning', date: '2025-04-20', tier: '🌟 Elite' },
@@ -1523,6 +1552,8 @@
                               { rank: 1, model: 'Grok-4', passRate: 15.31, institute: 'grok', date: '2025-07-18', tier: '💎 Superior' },
           { rank: 1, model: 'BIRD-Fixer-14B', passRate: 16.33,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior', verified: true  },
             { rank: 1, model: 'BIRD-Fixer-7B', passRate: 7.14,affiliation: 'HKU × Google Cloud', institute: ['hku','google_cloud'], date: '2025-06-09', tier: '🏆 Superior', verified: true  },
+            { model: 'BIRD-Talon-14B', passRate: 20.41, affiliation: 'HKU', institute: ['hku'], date: '2026-03-23', link: 'https://huggingface.co/birdsql/BIRD-Talon-14b', verified: true },
+            { model: 'BIRD-Talon-7B', passRate: 20.41, affiliation: 'HKU', institute: ['hku'], date: '2026-03-23', link: 'https://huggingface.co/birdsql/BIRD-Talon-7b', verified: true },
             { rank: 1, model: 'DeepSeek-R1', passRate: 19.39, institute: 'deepseek-reason', date: '2025-04-20', tier: '🏆 Leading' },
             { rank: 2, model: 'gemini-2.0-flash-thinking-exp-01-21', passRate: 19.39, institute: 'google-reason', date: '2025-04-20', tier: '🌟 Elite' },
             { rank: 3, model: 'Grok-3-Beta', passRate: 18.37, institute: 'grok', date: '2025-04-20', tier: '🌟 Elite' },
@@ -1671,7 +1702,8 @@ const baselineDates = [
   '2025-01-30',
   '2025-02-27',
   '2025-08-12',
-  '2026-03-02'
+  '2026-03-02',
+  '2026-03-17'
 ];
 
 function isBaselineModel(entry) {
@@ -1687,6 +1719,7 @@ function isBaselineModel(entry) {
         let showVerifiedOnlyOpen = true;
         let showVerifiedOnlyPG = true;
         let showVerifiedOnlyFlash = true;
+        let activePGFilter = 'postgresql';
 
         updateButtonStyles();
 
@@ -1718,6 +1751,29 @@ function isBaselineModel(entry) {
             verifiedContainerOpen.classList.remove('checked');
           }
           updateLeaderboardTable(activeFilter);
+        });
+
+        // PG/Single dialect filter buttons
+        const pgFilterButtons = document.querySelectorAll('.pg-dialect-filter-btn');
+        pgFilterButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            activePGFilter = this.getAttribute('data-dialect');
+            pgFilterButtons.forEach(btn => {
+              const dialect = btn.getAttribute('data-dialect');
+              if (dialect === activePGFilter) {
+                btn.style.backgroundColor = btn.getAttribute('data-color');
+                btn.style.color = 'white';
+                btn.style.fontWeight = 'bold';
+                btn.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
+              } else {
+                btn.style.backgroundColor = '#e0e0e0';
+                btn.style.color = '#666';
+                btn.style.fontWeight = 'normal';
+                btn.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+              }
+            });
+            populatePGTable();
+          });
         });
 
         // Verified filter for PG leaderboard
@@ -1963,7 +2019,8 @@ function isBaselineModel(entry) {
         });
       }
 
-          const pgLeaderboardData = [
+          const pgLeaderboardData = {
+          'postgresql': [
           { model: "SQL-ACT + Claude-Opus-4-6", passRate: 45.47, institute: "anthropic", date: "2026-03-02", baseline: true},
           { model: "Claude-Opus-4-6", passRate: 43.40, institute: "anthropic", date: "2026-03-02", baseline: true},
           { model: "Claude-Sonnet-4.5", passRate: 37.17, institute: "anthropic", date: "2026-03-02", baseline: true},
@@ -1978,10 +2035,10 @@ function isBaselineModel(entry) {
           { model: "Sophon-Agent", passRate: 45.85, institute: "bytedance",affiliation:"ByteDance DataPlatform LLM", date: "2025-11-18"},
           { model: "DeCoTE-SQL", passRate: 53.40, institute: "hdu",affiliation:"Hangzhou Dianzi University", date: "2026-01-22"},
           { model: "XiYan-SQL-CRITIC", passRate: 44.53, institute: "alibabacloud",affiliation:"Alibaba Cloud", date: "2025-10-20", link: "https://github.com/XGenerationLab/XiYan-SQL"  , verified: true},
-          { model: 'claude-sonnet-4-5-20250929', passRate: 33.96, institute: ['anthropic'], date: '2025-10-14' }, 
-          { model: 'GPT-5-High', passRate: 37.36, institute: ['openai'], date: '2025-09-04' }, 
-          { model: 'GPT-5', passRate: 35.85, institute: ['openai'], date: '2025-08-16' }, 
-            { model: 'gpt-oss-20B (High-Reasoning)', passRate: 28.02, institute: ['openai_reasoning'], date: '2025-08-12'}, 
+          { model: 'claude-sonnet-4-5-20250929', passRate: 33.96, institute: ['anthropic'], date: '2025-10-14' },
+          { model: 'GPT-5-High', passRate: 37.36, institute: ['openai'], date: '2025-09-04' },
+          { model: 'GPT-5', passRate: 35.85, institute: ['openai'], date: '2025-08-16' },
+            { model: 'gpt-oss-20B (High-Reasoning)', passRate: 28.02, institute: ['openai_reasoning'], date: '2025-08-12'},
             { model: "DeepSeek-R1", passRate: 39.62, institute: "deepseek-reason", date: "2025-06-09" },
             { model: "Grok-4", passRate: 39.06, institute: "grok", date: "2025-07-18" },
             { model: "o3-mini-2025-01-31", passRate: 38.87, institute: "openai_reasoning", date: "2025-06-09" },
@@ -1993,6 +2050,8 @@ function isBaselineModel(entry) {
             { model: "claude-3-7-sonnet-20250219", passRate: 32.08, institute: "anthropic", date: "2025-06-09" },
             { model: "QwQ-32B", passRate: 31.51, institute: "qwen-reason", date: "2025-06-09" },
             { model: "BIRD-Fixer-7B",affiliation: 'HKU × Google Cloud', passRate: 31.32, institute: ["hku", "google_cloud"], date: "2025-06-09" },
+            { model: "BIRD-Talon-14B", passRate: 39.06, affiliation: 'HKU', institute: ["hku"], date: "2026-03-23", link: "https://huggingface.co/birdsql/BIRD-Talon-14b", verified: true },
+            { model: "BIRD-Talon-7B", passRate: 37.74, affiliation: 'HKU', institute: ["hku"], date: "2026-03-23", link: "https://huggingface.co/birdsql/BIRD-Talon-7b", verified: true },
             { model: "Qwen2.5-Coder-14B-Instruct", passRate: 31.32, institute: "qwen", date: "2025-06-09" },
             { model: "Gemini-2.0-Flash", passRate: 30.94, institute: "google", date: "2025-06-09" },
             { model: "Qwen2.5-Coder-32B-Instruct", passRate: 30.75, institute: "qwen", date: "2025-06-09" },
@@ -2001,7 +2060,23 @@ function isBaselineModel(entry) {
             { model: "DeepSeek-V3", passRate: 27.74, institute: "deepseek", date: "2025-06-09" },
             { model: "Qwen2.5-Coder-7B-Instruct", passRate: 23.40, institute: "qwen", date: "2025-06-09" },
             { model: "Meta-Llama-3.1-8B-Instruct", passRate: 16.98, institute: "meta", date: "2025-06-09" }
-          ];
+          ],
+          'sqlite': [
+          { model: "Gemini-3.1-Pro-Preview", passRate: 48.80, institute: "google", date: "2026-03-17", baseline: true},
+          { model: "Claude-Opus-4-6", passRate: 46.20, institute: "anthropic", date: "2026-03-17", baseline: true},
+          { model: "GLM-4.7", passRate: 42.80, institute: "zhipu", date: "2026-03-17", baseline: true},
+          { model: "Kimi-K2.5", passRate: 42.00, institute: "kimi", date: "2026-03-17", baseline: true},
+          { model: "Claude-Sonnet-4.5", passRate: 41.80, institute: "anthropic", date: "2026-03-17", baseline: true},
+          { model: "GPT-5.4-Pro", passRate: 42.00, institute: "openai", date: "2026-03-17", baseline: true},
+          { model: "Qwen3-Coder-480b", passRate: 41.60, institute: "qwen", date: "2026-03-17", baseline: true},
+          { model: "Minimax-M2.1", passRate: 35.40, institute: "minimax", date: "2026-03-17", baseline: true},
+          { model: "Qwen2.5-Coder-14B-Instruct", passRate: 33.60, institute: "qwen", date: "2026-03-17", baseline: true},
+          { model: "Qwen2.5-Coder-7B-Instruct", passRate: 27.40, institute: "qwen", date: "2026-03-17", baseline: true},
+          { model: "BIRD-Talon-14B", passRate: 48.00, affiliation: 'HKU', institute: ["hku"], date: "2026-03-23", link: "https://huggingface.co/birdsql/BIRD-Talon-14b", verified: true },
+          { model: "BIRD-Talon-7B", passRate: 44.40, affiliation: 'HKU', institute: ["hku"], date: "2026-03-23", link: "https://huggingface.co/birdsql/BIRD-Talon-7b", verified: true },
+          { model: "BIRD-Zeno-7B", passRate: 44.60, affiliation: 'HKU', institute: ["hku"], date: "2026-03-23", link: "https://huggingface.co/birdsql/BIRD-Zeno-7b", verified: true }
+          ]
+          };
           const flashLeaderboardData = [
           { model: "SQL-ACT + Claude-Opus-4-6", passRate: 52, institute: "anthropic", date: "2026-03-02", baseline: true},
           { model: "Claude-Opus-4-6", passRate: 49, institute: "anthropic", date: "2026-03-02", baseline: true},
@@ -2022,6 +2097,8 @@ function isBaselineModel(entry) {
           { model: 'GPT-5', passRate: 41.0, institute: ['openai'], date: '2025-08-15' }, 
             { model: 'gpt-oss-20B (High-Reasoning)', passRate: 31.5, institute: ['openai_reasoning'], date: '2025-08-12' }, 
           { model: "Query-Schema-Linking + deepseek-r1-250120", passRate: 41.5,affiliation:"Soochow University", institute: "soochow_university", date: "2025-06-09" , verified: true},
+          { model: "BIRD-Talon-14B", passRate: 25.5, affiliation: 'HKU', institute: "hku", date: "2026-03-23", link: "https://huggingface.co/birdsql/BIRD-Talon-14b", verified: true },
+          { model: "BIRD-Talon-7B", passRate: 32, affiliation: 'HKU', institute: "hku", date: "2026-03-23", link: "https://huggingface.co/birdsql/BIRD-Talon-7b", verified: true },
           { model: "Grok-4", passRate: 40.0, institute: "grok", date: "2025-07-18" },
           { model: "XiYan-SQL", passRate: 41.0, institute: "alibabacloud",affiliation:"Alibaba Cloud", date: "2025-05-22", link: "https://github.com/XGenerationLab/XiYan-SQL"  , verified: true},
           {  model: "o1-preview-2024-09-12", passRate: 38.5, institute: "openai_reasoning", date: "2025-01-30" },
@@ -2281,8 +2358,10 @@ function isBaselineModel(entry) {
   const tbody = document.querySelector('#pg-table tbody');
   if (!tbody) return;
 
+  const currentData = pgLeaderboardData[activePGFilter] || [];
+
   // First sort all data and calculate tiers based on full list
-  let sorted = [...pgLeaderboardData].sort((a, b) => b.passRate - a.passRate);
+  let sorted = [...currentData].sort((a, b) => b.passRate - a.passRate);
 
   const getTier = (rank, total) => {
     if (rank === 1) return "🏆 Leading";
@@ -2340,69 +2419,71 @@ function isBaselineModel(entry) {
 
   // Get first place pass rate (after filtering if applicable)
   const firstPlacePassRate = sorted.length > 0 ? sorted[0].passRate : 0;
-  const humanPassRate = 78.87;
-  const gap = humanPassRate - firstPlacePassRate;
 
-  // Add Human Performance row first
-  const humanRow = document.createElement('tr');
-  humanRow.className = 'table-success';
+  // Human performance data per dialect
+  const singleHumanData = { 'postgresql': 78.87, 'sqlite': 83.13 };
+  const humanPassRate = singleHumanData[activePGFilter];
 
-  const humanRankCell = document.createElement('td');
-  humanRankCell.className = 'rank-cell';
-  humanRankCell.textContent = '';
-  humanRow.appendChild(humanRankCell);
+  // Add Human Performance row only if data exists
+  if (humanPassRate !== null) {
+    const gap = humanPassRate - firstPlacePassRate;
 
-  const humanModelCell = document.createElement('td');
-  humanModelCell.className = 'model-cell';
-  const humanModelDiv = document.createElement('div');
-  humanModelDiv.textContent = 'Human Performance';
-  humanModelCell.appendChild(humanModelDiv);
-  const humanAffiliationDiv = document.createElement('div');
-  humanAffiliationDiv.className = 'affiliation';
-  humanAffiliationDiv.textContent = '';
-  humanModelCell.appendChild(humanAffiliationDiv);
-  humanRow.appendChild(humanModelCell);
+    const humanRow = document.createElement('tr');
+    humanRow.className = 'table-success';
 
-  const humanRateCell = document.createElement('td');
-  humanRateCell.innerHTML = '<b>78.87</b>';
-  humanRow.appendChild(humanRateCell);
+    const humanRankCell = document.createElement('td');
+    humanRankCell.className = 'rank-cell';
+    humanRankCell.textContent = '';
+    humanRow.appendChild(humanRankCell);
 
-  // Institute cell with HKU + Google Cloud logos
-  const humanInstituteCell = document.createElement('td');
-  const logoHtml = ['human'].map(inst =>
-    `<img src="./img/institute_img/${inst}.png"
-          alt="${inst}"
-          style="max-height:20px;vertical-align:middle;margin:0 2px;">`
-  ).join('');
-  humanInstituteCell.innerHTML = logoHtml;
-  humanRow.appendChild(humanInstituteCell);
+    const humanModelCell = document.createElement('td');
+    humanModelCell.className = 'model-cell';
+    const humanModelDiv = document.createElement('div');
+    humanModelDiv.textContent = 'Human Performance';
+    humanModelCell.appendChild(humanModelDiv);
+    const humanAffiliationDiv = document.createElement('div');
+    humanAffiliationDiv.className = 'affiliation';
+    humanAffiliationDiv.textContent = '';
+    humanModelCell.appendChild(humanAffiliationDiv);
+    humanRow.appendChild(humanModelCell);
 
-  // Link cell (empty)
-  const humanLinkCell = document.createElement('td');
-  humanRow.appendChild(humanLinkCell);
+    const humanRateCell = document.createElement('td');
+    humanRateCell.innerHTML = `<b>${humanPassRate.toFixed(2)}</b>`;
+    humanRow.appendChild(humanRateCell);
 
-  // Date cell with specific date
-  const humanDateCell = document.createElement('td');
-  const humanDateSpan = document.createElement('span');
-  humanDateSpan.className = 'date-cell';
-  humanDateSpan.textContent = '2025-07-03';
-  humanDateCell.appendChild(humanDateSpan);
-  humanRow.appendChild(humanDateCell);
+    const humanInstituteCell = document.createElement('td');
+    const logoHtml = ['human'].map(inst =>
+      `<img src="./img/institute_img/${inst}.png"
+            alt="${inst}"
+            style="max-height:20px;vertical-align:middle;margin:0 2px;">`
+    ).join('');
+    humanInstituteCell.innerHTML = logoHtml;
+    humanRow.appendChild(humanInstituteCell);
 
-  // Dynamic tier based on gap
-  const humanTierCell = document.createElement('td');
-  if (gap < 10) {
-    humanTierCell.textContent = '😱';
-  } else if (gap < 20) {
-    humanTierCell.textContent = '🤯';
-  } else if (gap < 25) {
-    humanTierCell.textContent = '🤔';
-  } else {
-    humanTierCell.textContent = '🤣';
+    const humanLinkCell = document.createElement('td');
+    humanRow.appendChild(humanLinkCell);
+
+    const humanDateCell = document.createElement('td');
+    const humanDateSpan = document.createElement('span');
+    humanDateSpan.className = 'date-cell';
+    humanDateSpan.textContent = '2025-07-03';
+    humanDateCell.appendChild(humanDateSpan);
+    humanRow.appendChild(humanDateCell);
+
+    const humanTierCell = document.createElement('td');
+    if (gap < 10) {
+      humanTierCell.textContent = '😱';
+    } else if (gap < 20) {
+      humanTierCell.textContent = '🤯';
+    } else if (gap < 25) {
+      humanTierCell.textContent = '🤔';
+    } else {
+      humanTierCell.textContent = '🤣';
+    }
+    humanRow.appendChild(humanTierCell);
+
+    tbody.appendChild(humanRow);
   }
-  humanRow.appendChild(humanTierCell);
-
-  tbody.appendChild(humanRow);
 
   sorted.forEach((entry, idx) => {
     const rank = idx + 1;
