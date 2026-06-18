@@ -22,6 +22,18 @@
     <!-- Custom styles for this template -->
     <link href="./style/clean-blog.min.css" rel="stylesheet" />
     <link href="./style/bird.css" rel="stylesheet" />
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['\\(', '\\)']],
+          displayMath: [['\\[', '\\]']]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <style>
       /* All fonts changed to Lato */
       header.masthead .page-heading,
@@ -116,6 +128,109 @@
         font-weight: 300;
         font-size: 0.75rem;
         color: #666666;
+      }
+
+      .metric-definition {
+        display: grid;
+        grid-template-columns: 140px minmax(0, 1fr);
+        gap: 16px;
+        align-items: start;
+        margin-top: 10px;
+        padding: 12px 0;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      .metric-definition:first-of-type {
+        margin-top: 0;
+        border-top: none;
+      }
+
+      .metric-definition p {
+        margin: 0 0 6px;
+      }
+
+      .metric-definition .metric-copy {
+        color: #4b5563;
+        font-size: 0.82rem;
+        line-height: 1.45;
+      }
+
+      .metric-name {
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr);
+        align-items: center;
+        align-content: start;
+        column-gap: 8px;
+        row-gap: 4px;
+        margin-bottom: 6px;
+        font-weight: 900;
+        color: #155E95;
+      }
+
+      .metric-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        flex: 0 0 44px;
+        border-radius: 50%;
+        background: #eef7ff;
+        color: #155E95;
+        font-size: 1.2rem;
+        font-weight: 900;
+      }
+
+      .metric-icon svg {
+        width: 25px;
+        height: 25px;
+        stroke: currentColor;
+      }
+
+      .metric-name span {
+        display: block;
+        grid-column: 1 / -1;
+        margin-top: 2px;
+        font-size: 0.78rem;
+        font-weight: 400;
+        line-height: 1.25;
+        color: #6b7280;
+      }
+
+      .metric-formula {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: 4px 0 8px;
+        padding: 5px 10px;
+        border-radius: 4px;
+        background: #eef7ff;
+        border: 1px solid #d8ecff;
+        color: #24496b;
+        font-family: 'Lato', sans-serif;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 1.5;
+        text-align: center;
+        white-space: nowrap;
+        overflow-x: auto;
+      }
+
+      .metric-formula mjx-container {
+        display: inline-block !important;
+      }
+
+      .metric-content {
+        padding-top: 7px;
+      }
+
+      @media (max-width: 768px) {
+        .metric-definition {
+          grid-template-columns: 1fr;
+          gap: 6px;
+          padding: 10px 0;
+        }
       }
       
       .paperlink {
@@ -510,6 +625,43 @@
       #flash-table th:nth-child(6), #flash-table td:nth-child(6) { width: 12%; } /* Date */
       #flash-table th:nth-child(7), #flash-table td:nth-child(7) { width: 10%; } /* Tier */
 
+      #effi-table th, #effi-table td {
+        text-align: center;
+        vertical-align: middle;
+        padding: 0.42em;
+      }
+
+      #effi-table th {
+        white-space: nowrap;
+        overflow-wrap: normal;
+        word-break: keep-all;
+        line-height: 1.2;
+      }
+
+      #effi-table th .wrap-header {
+        white-space: normal;
+        display: inline-block;
+      }
+
+      #effi-table {
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      #effi-table th:nth-child(1), #effi-table td:nth-child(1) { width: 5%; }  /* Rank */
+      #effi-table th:nth-child(2), #effi-table td:nth-child(2) { width: 22%; } /* Model */
+      #effi-table th:nth-child(3), #effi-table td:nth-child(3) { width: 10%; } /* R-VES */
+      #effi-table th:nth-child(4), #effi-table td:nth-child(4) { width: 10%; } /* Coverage@2x */
+      #effi-table th:nth-child(5), #effi-table td:nth-child(5) { width: 9%; } /* GMS */
+      #effi-table th:nth-child(6), #effi-table td:nth-child(6) { width: 8%; }  /* Institute */
+      #effi-table th:nth-child(7), #effi-table td:nth-child(7) { width: 5%; }  /* Link */
+      #effi-table th:nth-child(8), #effi-table td:nth-child(8) { width: 10%; } /* Date */
+      #effi-table th:nth-child(9), #effi-table td:nth-child(9) { width: 12%; } /* Tier */
+
+      #effi-table th:nth-child(9), #effi-table td:nth-child(9) {
+        white-space: nowrap;
+      }
+
 
       #ex-table th:nth-child(1), #ex-table td:nth-child(1) { width: 5%; }  /* Rank */
       #ex-table th:nth-child(2), #ex-table td:nth-child(2) { width: 30%; } /* Model */
@@ -731,6 +883,12 @@
                     <ul style="padding-left: 0">
 <li style="list-style-type: none">
   <span style="background-color: #B03052; color: white; padding: 2px 4px; border-radius: 5px;">
+    <strong style="color: #ffe7ce">🚀 Jun. 18, 2026:</strong>
+  </span>
+  We release <strong><a href="https://huggingface.co/datasets/birdsql/Effi-SQL" target="_blank" style="color:#155E95; text-decoration: none;">Effi-SQL</a></strong>, a new benchmark containing <strong>300</strong> high-quality Slow-Fast SQL pairs for evaluating SQL execution efficiency. Along with the dataset, we also release the training data of Diff-SQL on <strong><a href="https://huggingface.co/datasets/birdsql/effi-sql-training" target="_blank" style="color:#155E95; text-decoration: none;">HuggingFace</a></strong> and evaluation script on <strong><a href="https://github.com/L-nshpp/Diff-SQL" target="_blank" style="color:#155E95; text-decoration: none;">GitHub</a></strong>.
+</li>
+<li style="list-style-type: none">
+  <span style="background-color: #B03052; color: white; padding: 2px 4px; border-radius: 5px;">
     <strong style="color: #ffe7ce">🚀 Mar. 23, 2026:</strong>
   </span>
   We release <strong><a href="https://huggingface.co/datasets/birdsql/bird-critic-1.0-sqlite" target="_blank" style="color:#155E95; text-decoration: none;">BIRD-Critic-SQLite</a></strong>, a new single-dialect benchmark containing <strong>500</strong> high-quality user issues focused on real-world SQLite database applications. Along with the dataset, we also release 3 RL-trained models: <strong><a href="https://huggingface.co/birdsql/BIRD-Talon-14b" target="_blank" style="color:#155E95; text-decoration: none;">BIRD-Talon-14B</a></strong>, <strong><a href="https://huggingface.co/birdsql/BIRD-Talon-7b" target="_blank" style="color:#155E95; text-decoration: none;">BIRD-Talon-7B</a></strong>, and <strong><a href="https://huggingface.co/birdsql/BIRD-Zeno-7b" target="_blank" style="color:#155E95; text-decoration: none;">BIRD-Zeno-7B</a></strong>. Data is available on <strong><a href="https://huggingface.co/datasets/birdsql/bird-critic-1.0-sqlite" target="_blank" style="color:#155E95; text-decoration: none;">HuggingFace</a></strong> and evaluation script on <strong><a href="https://github.com/bird-bench/BIRD-CRITIC-1" target="_blank" style="color:#155E95; text-decoration: none;">GitHub</a></strong>.
@@ -823,6 +981,63 @@
                 id="example-2"
                 style="margin: 0 auto"
               />
+            </div>
+            <div class="list-group-item">
+              <h4>Effi-SQL Metrics</h4>
+              <p>
+                Effi-SQL reports three metrics over <strong>300</strong> PostgreSQL tasks. For task \(i\), \(m_i\) indicates whether the predicted SQL is executable and semantically equivalent to the original SQL, \(\tau_i\) denotes its execution speedup over the original SQL, and \(C\) is the set of correctly solved tasks.
+              </p>
+
+              <div class="metric-definition">
+                <div class="metric-name">
+                  <div class="metric-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 14a8 8 0 0 1 16 0" />
+                      <path d="M7 14h1" />
+                      <path d="M16 14h1" />
+                      <path d="M8.5 9.5l.7.7" />
+                      <path d="M15.5 9.5l-.7.7" />
+                      <path d="M12 8v1" />
+                      <path d="M12 14l4-4" />
+                    </svg>
+                  </div>
+                  R-VES
+                  <span>Reward-based Valid<br>Efficiency Score</span>
+                </div>
+                <div class="metric-content">
+                  <p class="metric-copy">R-VES rewards execution speedup by weighting each predicted SQL with a discretized gain function over the speedup ratio: full credit for \(\tau \ge 2\), partial credit for speedups between \(0.5\) and \(2\), and no credit for \(\tau < 0.5\).</p>
+                  <div class="metric-formula">\( \displaystyle \mathrm{R\text{-}VES}=\frac{100}{N}\sum_{i=1}^{N}m_i\cdot g(\tau_i) \)</div>
+                </div>
+              </div>
+
+              <div class="metric-definition">
+                <div class="metric-name">
+                  <div class="metric-icon" aria-hidden="true">2×</div>
+                  Coverage@2x
+                </div>
+                <div class="metric-content">
+                  <p class="metric-copy">Coverage@2x measures the percentage of predicted SQL queries that are at least twice as fast as the original SQL.</p>
+                  <div class="metric-formula">\( \displaystyle \mathrm{Coverage@2x}=\frac{100}{N}\sum_{i=1}^{N}\mathbf{1}[m_i=1\land\tau_i\ge2] \)</div>
+                </div>
+              </div>
+
+              <div class="metric-definition">
+                <div class="metric-name">
+                  <div class="metric-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <rect x="4" y="13" width="4" height="7" rx="1" />
+                      <rect x="10" y="9" width="4" height="11" rx="1" />
+                      <rect x="16" y="4" width="4" height="16" rx="1" />
+                    </svg>
+                  </div>
+                  GMS
+                  <span>Geometric Mean Speedup</span>
+                </div>
+                <div class="metric-content">
+                  <p class="metric-copy">GMS measures the geometric mean of speedups over valid predicted SQL queries.</p>
+                  <div class="metric-formula">\( \displaystyle \mathrm{GMS}=\exp\left(\frac{1}{|C|}\sum_{i\in C}\log(\tau_i)\right) \)</div>
+                </div>
+              </div>
             </div>
             <div class="list-group-item">
               <h4>Submission</h4>
@@ -1204,6 +1419,37 @@
             <td></td>
             <td>🤣</td>
           </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card card-outline-secondary mb-4">
+    <div class="card-header">
+      <span>Leaderboard - Effi-SQL (300)</span>
+      <div class="verified-filter-container checked">
+        <label for="verified-filter-effi">Verified</label>
+        <input type="checkbox" id="verified-filter-effi" checked />
+        <span class="toggle-switch" onclick="document.getElementById('verified-filter-effi').click()"></span>
+      </div>
+    </div>
+    <div class="table-wrapper">
+      <table id="effi-table" class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">Model</th>
+            <th scope="col">R-VES (%)</th>
+            <th scope="col">Coverage@2x</th>
+            <th scope="col" title="Geometric Mean Speedup">GMS</th>
+            <th scope="col">Institute</th>
+            <th scope="col">Link</th>
+            <th scope="col">Date</th>
+            <th scope="col">Tier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data will be populated by JavaScript -->
         </tbody>
       </table>
     </div>
@@ -1729,6 +1975,7 @@ function isBaselineModel(entry) {
         let showVerifiedOnlyOpen = true;
         let showVerifiedOnlyPG = true;
         let showVerifiedOnlyFlash = true;
+        let showVerifiedOnlyEffi = true;
         let activePGFilter = 'postgresql';
 
         updateButtonStyles();
@@ -1810,6 +2057,19 @@ function isBaselineModel(entry) {
             verifiedContainerFlash.classList.remove('checked');
           }
           populateFlashTable();
+        });
+
+        // Verified filter for Effi-SQL leaderboard
+        const verifiedCheckboxEffi = document.getElementById('verified-filter-effi');
+        const verifiedContainerEffi = verifiedCheckboxEffi.closest('.verified-filter-container');
+        verifiedCheckboxEffi.addEventListener('change', function() {
+          showVerifiedOnlyEffi = this.checked;
+          if (this.checked) {
+            verifiedContainerEffi.classList.add('checked');
+          } else {
+            verifiedContainerEffi.classList.remove('checked');
+          }
+          populateEffiTable();
         });
         
         // Function to update button styles based on active filter
@@ -2143,6 +2403,25 @@ function isBaselineModel(entry) {
           {  model: "CodeLlama-13B-Instruct", passRate: 8.5, institute: "meta", date: "2025-01-30"},
           {  model: "Mistral-7B-Instruct-v0.2", passRate: 3.5, institute: "mistral", date: "2025-01-30",}
         ];
+
+        const effiLeaderboardData = [
+          { model: "GPT-5.5-Xhigh", rves: 82.42, speedup300: 61.00, matchedGMS: 3.5977, institute: "openai_reasoning", date: "2026-06-14", verified: true },
+          { model: "GPT-5.5-Low", rves: 78.08, speedup300: 53.67, matchedGMS: 3.1096, institute: "openai_reasoning", date: "2026-06-14", verified: true },
+          { model: "Gemini-3.5-Flash", rves: 75.33, speedup300: 55.33, matchedGMS: 3.4672, institute: "google", date: "2026-06-14", verified: true },
+          { model: "Claude-Opus-4.7", rves: 72.42, speedup300: 49.67, matchedGMS: 3.0162, institute: "anthropic", date: "2026-06-14", verified: true },
+          { model: "Gemini-3.1-pro", rves: 71.42, speedup300: 51.00, matchedGMS: 3.2281, institute: "google", date: "2026-06-14", verified: true },
+          { model: "Kimi-K2.6", rves: 68.83, speedup300: 49.00, matchedGMS: 3.2506, institute: "moonshot", date: "2026-06-14", verified: true },
+          { model: "Claude-Opus-4.6", rves: 65.50, speedup300: 40.00, matchedGMS: 2.3803, institute: "anthropic", date: "2026-06-14", verified: true },
+          { model: "GLM-5.1", rves: 64.42, speedup300: 45.00, matchedGMS: 2.9897, institute: "zhipu", date: "2026-06-14", verified: true },
+          { model: "Qwen3-Coder", rves: 55.17, speedup300: 35.00, matchedGMS: 2.4556, institute: "alibabacloud", date: "2026-06-14", verified: true },
+          { model: "Qwen-2.5-7B + Diff-SQL", rves: 46.83, speedup300: 26.33, matchedGMS: 1.8965, institute: ["cuhksz", "hku"], affiliation: "CUHKSZ & HKU", date: "2026-06-14", verified: true },
+          { model: "Qwen-2.5-7B-Instruct", rves: 33.42, speedup300: 16.67, matchedGMS: 1.6735, institute: "alibabacloud", date: "2026-06-14", verified: true }
+        ];
+
+        function getInstituteLogoKey(institute) {
+          return institute === "moonshot" ? "kimi" : institute;
+        }
+
         function getTier(rank, total) {
           if (rank === 1) return "🏆 Leading";
           if (rank <= total * 0.15) return "🌟 Elite";
@@ -2364,6 +2643,140 @@ function isBaselineModel(entry) {
 
             tbody.appendChild(row);
             boldFirstPlaceSuccessRates();
+          });
+        }
+
+
+        populateEffiTable();
+        function populateEffiTable() {
+          const tbody = document.querySelector('#effi-table tbody');
+          if (!tbody) return;
+
+          let sorted = [...effiLeaderboardData].sort((a, b) => b.rves - a.rves);
+          const highestRVES = sorted.length > 0 ? sorted[0].rves : 0;
+
+          sorted = sorted.map((entry, idx) => {
+            const rank = idx + 1;
+            let tier;
+            if (entry.rves === highestRVES) {
+              tier = "🏆 Leading";
+            } else {
+              tier = getTier(rank, sorted.length);
+            }
+            return {
+              ...entry,
+              rank,
+              tier
+            };
+          });
+
+          if (showVerifiedOnlyEffi) {
+            sorted = sorted.filter(entry => entry.verified === true || isBaselineModel(entry));
+            const filteredHighestRVES = sorted.length > 0 ? sorted[0].rves : 0;
+            sorted = sorted.map((entry, idx) => {
+              const rank = idx + 1;
+              let tier;
+              if (entry.rves === filteredHighestRVES) {
+                tier = "🏆 Leading";
+              } else {
+                tier = getTier(rank, sorted.length);
+              }
+              return {
+                ...entry,
+                rank,
+                tier
+              };
+            });
+          }
+
+          tbody.innerHTML = '';
+
+          const highestDisplayedRVES = sorted.length > 0 ? Math.max(...sorted.map(entry => entry.rves)) : 0;
+          const highestDisplayedCoverage = sorted.length > 0 ? Math.max(...sorted.map(entry => entry.speedup300)) : 0;
+          const highestDisplayedGMS = sorted.length > 0 ? Math.max(...sorted.map(entry => entry.matchedGMS)) : 0;
+
+          sorted.forEach(entry => {
+            const row = document.createElement('tr');
+
+            const rankCell = row.insertCell();
+            rankCell.className = 'rank-cell';
+            rankCell.textContent = entry.rank;
+
+            const modelCell = row.insertCell();
+            modelCell.className = 'model-cell';
+            const modelDiv = document.createElement('div');
+
+            if (entry.verified === true && entry.model.includes('Diff-SQL')) {
+              const verifiedImg = document.createElement('img');
+              verifiedImg.src = './img/medal_green.png';
+              verifiedImg.alt = 'Verified';
+              verifiedImg.style.maxHeight = '22px';
+              verifiedImg.style.verticalAlign = 'middle';
+              verifiedImg.style.marginRight = '5px';
+              verifiedImg.style.backgroundColor = 'white';
+              verifiedImg.style.borderRadius = '50%';
+              modelDiv.appendChild(verifiedImg);
+            }
+
+            modelDiv.appendChild(document.createTextNode(entry.model));
+            modelCell.appendChild(modelDiv);
+
+            if (entry.affiliation) {
+              const affiliationDiv = document.createElement('div');
+              affiliationDiv.className = 'affiliation';
+              affiliationDiv.textContent = entry.affiliation;
+              modelCell.appendChild(affiliationDiv);
+            }
+            const rvesCell = row.insertCell();
+            rvesCell.textContent = entry.rves.toFixed(2);
+            if (entry.rves === highestDisplayedRVES) {
+              rvesCell.style.fontWeight = 'bold';
+            }
+            const speedup300Cell = row.insertCell();
+            speedup300Cell.textContent = entry.speedup300.toFixed(2);
+            if (entry.speedup300 === highestDisplayedCoverage) {
+              speedup300Cell.style.fontWeight = 'bold';
+            }
+            const gmsCell = row.insertCell();
+            gmsCell.textContent = entry.matchedGMS.toFixed(4);
+            if (entry.matchedGMS === highestDisplayedGMS) {
+              gmsCell.style.fontWeight = 'bold';
+            }
+
+            const instituteCell = row.insertCell();
+            if (Array.isArray(entry.institute)) {
+              instituteCell.innerHTML = entry.institute.map(inst => {
+                const logoKey = getInstituteLogoKey(inst);
+                return `<img src="./img/institute_img/${logoKey}.png"
+                              alt="${inst}"
+                              style="max-height:20px;vertical-align:middle;margin:0 2px;">`;
+              }).join('');
+            } else if (entry.institute) {
+              const logoKey = getInstituteLogoKey(entry.institute);
+              instituteCell.innerHTML =
+                `<img src="./img/institute_img/${logoKey}.png"
+                      alt="${entry.institute}"
+                      style="max-height:20px;vertical-align:middle;">`;
+            }
+
+            const linkCell = row.insertCell();
+            if (entry.link) {
+              linkCell.innerHTML = `<a href="${entry.link}" target="_blank">🔗</a>`;
+            }
+
+            const dateCell = row.insertCell();
+            if (entry.rves === highestRVES) {
+              dateCell.innerHTML = `<span class="date-cell-first">${entry.date}</span>`;
+            } else if (isWithinPast14Days(entry.date)) {
+              dateCell.innerHTML = `<span class="date-cell-new">${entry.date}</span>`;
+            } else {
+              dateCell.innerHTML = `<span class="date-cell">${entry.date}</span>`;
+            }
+
+            const tierCell = row.insertCell();
+            tierCell.textContent = entry.tier;
+
+            tbody.appendChild(row);
           });
         }
 
